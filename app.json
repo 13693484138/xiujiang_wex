@@ -31,8 +31,7 @@
     "pages/repair/fault-choose/repair-content/confirm-order/choose-address/choose-address",
     "pages/repair/fault-choose/repair-content/confirm-order/choose-address/add-address/add-address",
     "pages/repair/fault-choose/repair-content/confirm-order/recommend-shop/recommend-shop",
-    "component/date/date",
-    "pages/date-test/date-test"
+    "component/date/date"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -55,7 +54,7 @@
         "text": "订单"
       },
       {
-        "pagePath": "pages/date-test/date-test",
+        "pagePath": "pages/me/me",
         "text": "我的"
       }
     ]

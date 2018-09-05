@@ -321,3 +321,24 @@ textarea {
   color: #000000;
   line-height: 60rpx;
 }
+
+
+
+.alert-content1 {
+  height: 830rpx;
+  width: 100%;
+  background-color:#f9f9f9;
+  z-index: 9999;
+}
+.modal-mask1 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}

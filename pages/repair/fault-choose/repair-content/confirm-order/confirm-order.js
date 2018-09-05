@@ -1,5 +1,6 @@
 // pages/repair/fault-choose/repair-content/confirm-order/confirm-order.js
 var util = require('../../../../../utils/util.js');
+
 Page({
 
   /**
@@ -8,14 +9,18 @@ Page({
   data: {
     showTop: true,
     showModal: false,
-    radioData: 1
+    radioData: 1,
+    dates: [],
+    showDate: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(util.dateLater(util.getCurrentToday, 7));
+    this.setData({
+      dates: this.getDates()
+    })
   },
 
   /**
@@ -93,5 +98,27 @@ Page({
       url: '/pages/repair/fault-choose/repair-content/confirm-order/recommend-shop/recommend-shop'
     })
   },
-  
+
+  getDates: function() {
+    var date = new Date();
+    var datess = [];
+    var todate = date.getFullYear() + "-" + ((date.getMonth() + 1) < 10 ? ("0" + (date.getMonth() + 1)) : date.getMonth() + 1) + "-" + (date.getDate() < 10 ? ("0" + date.getDate()) : date.getDate());
+    for (var i = 0; i < 7; i++) {
+      var date = util.dateLater(todate, i);
+      var datejson = { date: date.newdates, week: date.week };
+      datess.push(datejson);
+    }
+    return datess;
+  },
+
+  hideModal1: function () {
+    this.setData({
+      showDate: false
+    });
+  },
+  chooseDate: function() {
+    this.setData({
+      showDate: true
+    })
+  }
 })
