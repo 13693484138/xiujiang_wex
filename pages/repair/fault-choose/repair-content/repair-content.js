@@ -11,7 +11,8 @@ Page({
     showModel: false,
     price: 0,
     price1: 260,
-    price2: 300
+    price2: 300,
+    colors: []
   },
 
   /**
@@ -68,6 +69,16 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  goToConfirmOrder: function() {
+    wx.navigateTo({
+      url: '/pages/repair/fault-choose/repair-content/confirm-order/confirm-order'
+    })
+  },
+  goToRepairExplain: function() {
+    wx.navigateTo({
+      url: '/pages/repair/fault-choose/repair-content/repair-explain/repair-explain'
+    })
   },
   alertTips: function () {
     this.setData({

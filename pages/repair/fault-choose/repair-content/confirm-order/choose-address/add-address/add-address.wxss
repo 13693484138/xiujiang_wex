@@ -1,0 +1,92 @@
+@import '/utils/iconfont/tongxunlu.wxss';
+
+
+
+.list1 {
+  display: flex;
+  justify-content: center;
+}
+.list1 > view:nth-child(1) {
+  height: 122rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #38b812;
+  width: 90%;
+  padding-left: 15rpx;
+}
+.list1-name {
+  font-size: 30rpx;
+  color: #343434;
+  width: 27%;
+}
+.ph-class {
+  font-size: 30rpx;
+  color: #888888;
+}
+
+
+
+
+
+.list2 {
+  display: flex;
+  justify-content: center;
+}
+.list2 > view:nth-child(1) {
+  height: 122rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #eeeeee;
+  width: 90%;
+  padding-left: 15rpx;
+}
+.list2-name {
+  font-size: 30rpx;
+  color: #343434;
+  width: 27%;
+}
+.icon-tongxunlu {
+  margin-right: 10rpx;
+}
+.icon-dizhi {
+  margin-right: 10rpx;
+}
+
+
+
+
+.list3 {
+  height: 150rpx;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 100rpx;
+}
+.list3 > view {
+  width: 90%;
+  border-top: 1px solid #eeeeee;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.btn1 {
+  width: 229rpx;
+  height: 80rpx;
+  font-size: 36rpx;
+  color: #ff9a00;
+  border: 1px solid #ff9a00;
+  border-radius: 40rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+input {
+  font-size: 30rpx;
+  color: #343434;
+}
+
+
+

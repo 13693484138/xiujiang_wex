@@ -1,0 +1,17 @@
+<view class='list'>
+  <view class='list1'>
+    <view>
+      技术测试，13888888888
+    </view>
+    <text space='ensp'>四川省 成都市 武侯区 天府国际金融中心(锦辉西路xxxx)</text>
+    <view class='icon1'>
+      <view class='iconfont icon-trashbin'></view>
+    </view>
+  </view>
+</view>
+
+
+
+<view class='btn1'>
+  <view class='btn2' bindtap='goToAddAddress'>新增地址</view>
+</view>

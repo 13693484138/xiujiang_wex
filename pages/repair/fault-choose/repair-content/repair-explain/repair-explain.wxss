@@ -1,0 +1,21 @@
+page {
+  background-color: #ececec;
+}
+
+
+.list1 {
+  margin-top: 60rpx;
+  margin-bottom: 10rpx;
+  padding-left: 34rpx;
+  padding-right: 35rpx;
+  font-size: 28rpx;
+  color: #8d8d8d;
+}
+.list1 > view:nth-child(1) {
+  font-size: 30rpx;
+  color: #181818;
+  margin-bottom: 15px;
+}
+.list1 > view:nth-child(2) view {
+  margin-bottom: 10rpx;
+}

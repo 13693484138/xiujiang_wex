@@ -44,7 +44,7 @@
 <view class='interval'></view>
 
 
-<view class='list1'>
+<view class='list1' bindtap='goToRepairExplain'>
   <view>故障维修方案</view>
   <view>
     <view>维修说明</view>
@@ -146,5 +146,5 @@
 
 <view class='list3'>
   <view>￥{{price}}</view>
-  <view>确认</view>
+  <view bindtap='goToConfirmOrder'>确认</view>
 </view>

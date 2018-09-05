@@ -1,0 +1,121 @@
+<view class='co-top' bindtap='goToChooseAddress'>
+  <view class='co-top-1' wx:if='{{showTop}}' bindtap='goToAddAddress'>
+    <view class='iconfont icon-jiahao'></view>
+    <view>添加您的服务地址</view>
+  </view>
+  <view wx:if='{{!showTop}}' class='co-top-2'>
+    <view>技术测试 13578766040</view>
+    <view>四川省 成都市 武侯区 天府国际金融中心(锦晖西一街55号)</view>
+    <view>其他地址</view>
+  </view>
+  <view>
+    <view class='co-top-black'></view>
+    <view class='co-top-black'></view>
+    <view class='co-top-black'></view>
+    <view class='co-top-black'></view>
+    <view class='co-top-black'></view>
+    <view class='co-top-black'></view>
+    <view class='co-top-black'></view>
+    <view class='co-top-black'></view>
+    <view class='co-top-black'></view>
+    <view class='co-top-black'></view>
+    <view class='co-top-black'></view>
+    <view class='co-top-black'></view>
+    <view class='co-top-black'></view>
+    <view class='co-top-black'></view>
+  </view>
+</view>
+
+
+<view class='list1'>
+  <view bindtap='alertTips'>
+    <view>维修方式</view>
+    <view>
+      <text>{{radioData==1?'上门维修':radioData==2?'到店维修':radioData==3?'邮寄维修':''}}</text>
+      <text class='iconfont icon-arrow_left'></text>
+    </view>
+  </view>
+</view>
+<view wx:if='{{radioData==1}}' class='radioList'>
+    <view>选择日期</view>
+    <view class='iconfont icon-arrow_left'></view>
+</view>
+<view wx:if='{{radioData==2}}' class='radioList' bindtap='goToRecommendShop'>
+    <view>推荐网点</view>
+    <view class='iconfont icon-arrow_left'></view>
+</view>
+<!-- 维修方式弹窗 -->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view wx:if="{{showModal}}" class='alert-content'>
+  <radio-group class='radios' bindchange='radioChange'>
+    <view>
+      <label class='{{radioData==1?"select":"noselect"}}'>
+        上门维修
+        <radio value='1' hidden='true'></radio>
+      </label>
+    </view>
+    <view>
+      <label class='{{radioData==2?"select":"noselect"}}'>
+        到店维修
+        <radio value='2' hidden='true'></radio>
+      </label>
+    </view>
+    <view>
+      <label class='{{radioData==3?"select":"noselect"}}'>
+        邮寄维修
+        <radio value='3' hidden='true'></radio>
+      </label>
+    </view>
+  </radio-group>
+</view>
+
+<view class='list2'>
+  <view>
+    
+  </view>
+  <view>
+    <view>iphone 6S Plus</view>
+    <text class='co-text'>屏幕 外屏碎裂（正常使用、显示正常）</text>
+    <view class='co-color'>颜色：金色</view>
+  </view>
+  <view class='co-l2-money'>
+    ￥238.00
+  </view>
+</view>
+
+
+<view class='list3'>
+  <view>
+    <view class='list3-1'>
+      <view>
+        项目经验<text>实际费用以工程师确认后为准</text>
+      </view>
+      <view class='co-l3-money'>￥238.00</view>
+    </view>
+    <view class='list3-2'>
+      <view>订单金额</view>
+      <view class='co-l3-money co-l3-yellowmoney'>￥238.00</view>
+    </view>
+  </view>
+</view>
+
+
+
+
+<view class='list4'>
+  <view>买家备注</view>
+  <view>
+    <textarea placeholder='选填：对本次交易的说明' placeholder-class='pl-class'></textarea>
+  </view>
+</view>
+
+
+
+
+<view class='list5'>
+  <view class='list5-1'>
+    <view class='co-l5-money'>￥238.00</view>
+    <view>提交订单既同意<text>平台服务条款</text></view>
+  </view>
+  <view>确认</view>
+</view>

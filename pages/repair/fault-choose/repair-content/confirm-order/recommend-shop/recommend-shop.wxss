@@ -1,0 +1,28 @@
+page {
+  background-color: #efefef;
+}
+
+
+.list1 {
+  height: 158rpx;
+  padding-left: 55rpx;
+  padding-right: 39rpx;
+  padding-top: 60rpx;
+  border-bottom: 1px solid #929292;
+  color: #0a0a0a;
+}
+.list1 > view:nth-child(1) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.list1 > view:nth-child(2) {
+  margin-top: 30rpx;
+  font-size: 26rpx;
+}
+text:nth-child(1) {
+  font-size: 32rpx;
+}
+text:nth-child(2) {
+  font-size: 26rpx;
+}

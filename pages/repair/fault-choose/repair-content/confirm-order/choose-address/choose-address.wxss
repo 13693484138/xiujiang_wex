@@ -1,0 +1,79 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.list1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 130rpx;
+  width: 90%;
+  border-bottom: 1px solid #eeeeee;
+  padding-left: 20rpx;
+  position: relative;
+}
+.list1 view {
+  font-size: 36rpx;
+  color: #343434;
+}
+.list1 text {
+  font-size: 28rpx;
+  width: 85%;
+  color: #888888;
+  margin-top: 10rpx;
+  overflow:hidden; /* 超出一行文字自动隐藏  */
+  text-overflow:ellipsis;  /* 文字隐藏后添加省略号 */
+  white-space:nowrap;  /* 强制不换行 */
+}
+
+
+@font-face {
+  font-family: 'iconfont';  /* project id 812265 */
+  src: url('//at.alicdn.com/t/font_812265_in65adp62dr.eot');
+  src: url('//at.alicdn.com/t/font_812265_in65adp62dr.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_812265_in65adp62dr.woff') format('woff'),
+  url('//at.alicdn.com/t/font_812265_in65adp62dr.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_812265_in65adp62dr.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:20px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-trashbin:before { content: "\e648"; font-size: 66rpx;}
+.icon1 {
+  width: 66rpx;
+  height: 66rpx;
+  border-radius: 33rpx;
+  background-color: #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 10rpx;
+  top: 37%;
+}
+
+
+
+
+.btn1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 160rpx;
+}
+.btn2 {
+  width: 230rpx;
+  height: 82rpx;
+  font-size: 36rpx;
+  color: #f69c00;
+  text-align: center;
+  line-height: 82rpx;
+  border: 1px solid #f69c00;
+  border-radius: 41rpx;
+}
