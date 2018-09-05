@@ -1,4 +1,5 @@
 const http = require('../../../../utils/http');
+const AppConfig = require("../../../../utils/config");
 // pages/repair/repair.js
 Page({
 
@@ -84,7 +85,21 @@ function getVersionList(brandid,me){
       me.setData({
         brandVersionList: res,
       })
-     
+      var tempList = me.data.brandVersionList;
+      var srcPath = AppConfig.apiHost;
+      srcPath = srcPath.substr(0, srcPath.length - 4) + 'attachment/download/';
+      for (var i in tempList){
+        var tempVersionList = tempList[i].versionList;
+        for(var j in tempVersionList){
+          var tempSrcPath = srcPath;
+          var tempImg = tempVersionList[j].img;
+          tempSrcPath = tempSrcPath + tempImg; 
+          tempVersionList[j].img = tempSrcPath;
+        }
+      }
+        me.setData({
+          brandVersionList:tempList
+        })
     }
   })
 };
@@ -99,7 +114,6 @@ function getBrandList(me) {
         })
         var brandid = me.data.brandList[me.data.brandindex].id;
         getVersionList(brandid, me);
-        
       }
     }
   })

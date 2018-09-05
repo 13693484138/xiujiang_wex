@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -12,8 +12,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.2.3",
-	"appid": "wx17bcdb2aeb489c6b",
-	"projectname": "xiujian2",
+	"appid": "wx6a75cd538fab2b6b",
+	"projectname": "repairman",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

@@ -106,7 +106,7 @@ const wxLogin = () => {
                                 })
                                 wx.setStorage({
                                     key: "_hgc",
-                                    data: res['user']['token'],
+                                    data: res,
                                     success: () => {
                                         resolve(res)
                                     }
