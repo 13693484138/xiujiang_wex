@@ -11,7 +11,14 @@ Page({
     showModal: false,
     radioData: 1,
     dates: [],
-    showDate: false
+    showDate: false,
+    today: '',
+    tomorrow: '',
+    chooseRadio: '',
+    comeTime: [],
+    alertDateRadio: '',
+    date: '',
+    time: ''
   },
 
   /**
@@ -20,7 +27,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       dates: this.getDates()
-    })
+    });
   },
 
   /**
@@ -104,8 +111,20 @@ Page({
     var datess = [];
     var todate = date.getFullYear() + "-" + ((date.getMonth() + 1) < 10 ? ("0" + (date.getMonth() + 1)) : date.getMonth() + 1) + "-" + (date.getDate() < 10 ? ("0" + date.getDate()) : date.getDate());
     for (var i = 0; i < 7; i++) {
+      
       var date = util.dateLater(todate, i);
-      var datejson = { date: date.newdates, week: date.week };
+      if (i == 0) {
+        this.setData({
+          today: date.newdates,
+        })
+      }
+      if(i == 1) {
+        this.setData({
+          tomorrow: date.newdates,
+          chooseRadio: this.data.today
+        })
+      }
+      var datejson = { date: date.newdates, week: date.week, dates: date.dates };
       datess.push(datejson);
     }
     return datess;
@@ -119,6 +138,50 @@ Page({
   chooseDate: function() {
     this.setData({
       showDate: true
+    })
+  },
+  clickRadio: function(event) {
+    var date = event.detail.value;
+    this.setData({
+      chooseRadio: date
+    });
+    if(date != this.data.today) {
+      this.setData({
+        comeTime: [
+          {date: '10:00'},
+          { date: '10:30' },
+          { date: '11:00' },
+          { date: '11:30' },
+          { date: '13:00' },
+          { date: '13:30' },
+          { date: '14:00' },
+          { date: '14:30' },
+          { date: '15:00' },
+          { date: '15:30' },
+          { date: '16:00' },
+          { date: '16:30' },
+        ]
+      })
+    
+    }else {
+      this.setData({
+        comeTime: []
+      })
+    }
+  for (var item of this.data.dates) {
+    if(date == item.date) {
+      this.setData({
+        date: item.dates.replace(/0/g,'')+' '+item.week+' '
+      });
+      break;
+    }
+  }
+  },
+  alertDateRadio: function(event) {
+    var date = event.detail.value;
+    this.setData({
+      alertDateRadio: date,
+      time: this.data.date+date
     })
   }
 })

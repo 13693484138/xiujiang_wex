@@ -324,21 +324,85 @@ textarea {
 
 
 
-.alert-content1 {
+.alert-date-content {
+  width: 100%;
   height: 830rpx;
-  width: 100%;
-  background-color:#f9f9f9;
-  z-index: 9999;
-}
-.modal-mask1 {
-  width: 100%;
-  height: 100%;
+  background-color:#ffffff;
   position: fixed;
-  top: 0;
-  left: 0;
-  background: #000;
-  opacity: 0.5;
-  overflow: hidden;
-  z-index: 9000;
-  color: #fff;
+  z-index: 9999;
+  bottom: 0rpx;
 }
+.alert-date-top {
+  height: 91rpx;
+  width: 100%;
+  background-color: #eeeeee;
+  color: #0a0a0a;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 91rpx;
+}
+.alert-date-bottom {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.alert-date-bottom > view:nth-child(1) {
+  height: 100%;
+}
+.alert-date-bottom > view:nth-child(2) {
+  height: 100%;
+  width: 100%;
+  padding-left: 30rpx;
+  color: #0a0a0a;
+  font-size: 28rpx;
+}
+
+.alert-date-radios {
+  width: 225rpx;
+  display: flex;
+  flex-direction: column;
+}
+.alert-date-radios label {
+  font-size: 28rpx;
+  color: #a4a4a4;
+  height: 106rpx;
+  line-height: 106rpx;
+  text-align: center;
+}
+.noChooseRadio {
+  background-color: #eeeeee;
+}
+.chooseRadio {
+  background-color: #ffffff;
+}
+.alert-date-radios2 {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  
+}
+.alert-date-radios2 label{
+  height: 106rpx;
+  line-height: 106rpx;
+}
+.alert-date-radios2 text {
+  margin-left: 30rpx;
+}
+@font-face {
+  font-family: 'iconfont';  /* project id 812265 */
+  src: url('//at.alicdn.com/t/font_812265_r0shrriu9mj.eot');
+  src: url('//at.alicdn.com/t/font_812265_r0shrriu9mj.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_812265_r0shrriu9mj.woff') format('woff'),
+  url('//at.alicdn.com/t/font_812265_r0shrriu9mj.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_812265_r0shrriu9mj.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-gou:before { content: "\e615"; color: #07bb60;}
+
