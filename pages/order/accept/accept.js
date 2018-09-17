@@ -1,24 +1,19 @@
 // pages/order/accept/accept.js
+const http = require('../../../utils/http');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    orders: [
-      {
-        id: '3454', orderno: '12334524', phoneName: '苹果iphone X', 
-        color: '白色', serviceMode: '上门', address: '天府国际金融中心',
-        date: '08月22日 14：00-18：00', remark: '少放辣', state: 2
-      }
-    ]
+    order: {},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    getOrderDetail(this, options.id, options.state);
   },
 
   /**
@@ -74,3 +69,21 @@ Page({
     })
   }
 })
+
+
+function getOrderDetail(me, orderno, state) {
+  console.log(orderno+'---'+state);
+  http.request({
+    apiName: 'order/orderdetail',
+    method: 'POST',
+    data: { orderno: orderno, status: state },
+    success: function (res) {
+      console.log(res);
+      me.setData({
+        order: res
+      });
+    },fail: function(res) {
+      console.log(res);
+    }
+  })
+}

@@ -1,4 +1,5 @@
 // pages/order/comment/comment.js
+const http = require('../../../utils/http');
 Page({
 
   /**
@@ -12,14 +13,22 @@ Page({
     text: '非常好',
     text1: '非常好',
     text2: '非常好',
-    text3: '非常好'
+    text3: '非常好',
+    score: 5,
+    servscore: 5,
+    techscore: 5,
+    satiscore: 5,
+    orderno: '',
+    comment: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.setData({
+      orderno: options.id
+    })
   },
 
   /**
@@ -71,6 +80,7 @@ Page({
   
   },
   starClick1: function(event) {
+    var servscore = 5;
     var index = event.currentTarget.dataset.id + 1;
     var newStars = [];
     for(var i = 1; i <= 5; i++) {
@@ -78,15 +88,20 @@ Page({
     }
     var text = '';
     if(index == 5) {
-      text = '非常好'
+      text = '非常好';
+      servscore = 5;
     }else if(index == 4) {
-      text = '很好'
+      text = '很好';
+      servscore = 4;
     }else if(index == 3) {
-      text = '不错'
+      text = '不错';
+      servscore = 3;
     }else if(index == 2) {
-      text = '一般'
+      text = '一般';
+      servscore = 2;
     }else if(index == 1) {
-      text = '较差'
+      text = '较差';
+      servscore = 1
     }
     for (var item of this.data.stars2) {
       if (!item) {
@@ -118,10 +133,12 @@ Page({
       stars: newstars2,
       text: text2,
       stars1: newStars,
-      text1: text
+      text1: text,
+      servscore: servscore
     })
   },
   starClick2: function (event) {
+    var techscore = 5;
     var index = event.currentTarget.dataset.id + 1;
     var newStars = [];
     for (var i = 1; i <= 5; i++) {
@@ -129,15 +146,20 @@ Page({
     }
     var text = '';
     if (index == 5) {
-      text = '非常好'
+      text = '非常好';
+      techscore = 5
     } else if (index == 4) {
-      text = '很好'
+      text = '很好';
+      techscore = 4
     } else if (index == 3) {
-      text = '不错'
+      text = '不错';
+      techscore = 3
     } else if (index == 2) {
-      text = '一般'
+      text = '一般';
+      techscore = 2
     } else if (index == 1) {
-      text = '较差'
+      text = '较差';
+      techscore = 1
     }
     for (var item of this.data.stars1) {
       if (!item) {
@@ -169,10 +191,12 @@ Page({
       stars: newstars2,
       text: text2,
       stars2: newStars,
-      text2: text
+      text2: text,
+      techscore: techscore
     })
   },
   starClick3: function (event) {
+    var satiscore = 5;
     var index = event.currentTarget.dataset.id + 1;
     var newStars = [];
     for (var i = 1; i <= 5; i++) {
@@ -180,15 +204,20 @@ Page({
     }
     var text = '';
     if (index == 5) {
-      text = '非常好'
+      text = '非常好';
+      satiscore: 5
     } else if (index == 4) {
-      text = '很好'
+      text = '很好';
+      satiscore = 4
     } else if (index == 3) {
-      text = '不错'
+      text = '不错';
+      satiscore = 3
     } else if (index == 2) {
-      text = '一般'
+      text = '一般';
+      satiscore = 2
     } else if (index == 1) {
-      text = '较差'
+      text = '较差';
+      satiscore = 1
     }
     for(var item of this.data.stars1){
       if(!item) {
@@ -220,7 +249,34 @@ Page({
       stars: newstars2,
       text: text2,
       stars3: newStars,
-      text3: text
+      text3: text,
+      satiscore: satiscore
+    })
+  },
+  getComment: function(event) {
+    this.setData({
+      comment: event.detail.value
+    })
+  },
+  submitComment: function() {
+    this.setData({
+      score: parseInt((this.data.servscore + this.data.techscore + this.data.satiscore) / 3)
+    })
+    console.log(this.data.score+'---'+this.data.servscore+'---'+this.data.techscore+'---'+this.data.satiscore);
+    console.log(this.data.comment);
+    http.request({
+      apiName: 'order/commentorder',
+      method: 'PUT',
+      data: {
+        orderno: this.data.orderno, comment: this.data.comment,
+        score: this.data.score, servscore: this.data.servscore,
+        techscore: this.data.techscore, satiscore: this.data.satiscore},
+      success: function(res) {
+        console.log(res);
+      },
+      fail: function(res) {
+        console.log(res);
+      }
     })
   }
 })

@@ -399,6 +399,10 @@ page {
   font-size: 28rpx;
   color: #5d5d5d;
 }
+textarea {
+  font-size: 28rpx;
+  color: #5d5d5d;
+}
 .alert-footer {
   height: 150rpx;
   display: flex;
@@ -418,29 +422,16 @@ page {
   font-size: 30rpx;
   color: #ffffff;
 }
-.alert-btn1 {
-  width: 60rpx;
-  height: 60rpx;
-  border-radius: 30rpx;
-  background-color: #ffcc01;
-  position: relative;
-  left: 30rpx;
-}
+
 .alert-btn2 {
-  width: 240rpx;
+  width: 289rpx;
   height: 60rpx;
   background-color: #ffcc01;
+  border-radius: 30rpx;
   font-size: 30rpx;
   color: #ffffff;
   text-align: center;
   line-height: 60rpx;
 }
-.alert-btn3 {
-  width: 60rpx;
-  height: 60rpx;
-  border-radius: 30rpx;
-  background-color: #ffcc01;
-  position: relative;
-  right: 30rpx;
-}
+
 

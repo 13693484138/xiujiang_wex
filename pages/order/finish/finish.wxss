@@ -288,7 +288,7 @@ page {
 
 
 .order-detail-footer {
-  margin-top: 15rpx;
+  margin-top: 25rpx;
   height: 175rpx;
   display: flex;
   justify-content: flex-end;
@@ -474,6 +474,20 @@ page {
   background-color: #ffcc01;
   position: relative;
   right: 30rpx;
+}
+
+
+
+.order-detail-footer-btn4 {
+  margin: 0rpx;
+  font-size: 28rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  margin-right: 35rpx;
+  border: 1px solid #cccccc;
+  color: #cccccc;
+  background-color: #ffffff;
 }
 
 

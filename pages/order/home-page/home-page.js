@@ -1,41 +1,25 @@
 // pages/order/home-page/home-page.js
+const http = require('../../../utils/http');
+const AppConfig = require("../../../utils/config");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    orders: [
-      {
-        id: '1232',orderno: '12334524', phoneName: '苹果iphone X', color: '白色', serviceMode: '上门', address: '天府国际金融中心', 
-        date: '08月22日 14：00-18：00', remark: '少放辣', state: 1, bgColor: '#fc9b00'
-      },
-      {
-        id: '3454',orderno: '22231224', phoneName: '苹果iphone 8', color: '白色', serviceMode: '上门', address: '天府国际金融中心',
-        date: '08月22日 14：00-18：00', remark: '少放辣', state: 2
-      },
-      {
-        id: '5642',orderno: '12334524', phoneName: '苹果iphone 7', color: '白色', serviceMode: '上门', address: '天府国际金融中心',
-        date: '08月22日 14：00-18：00', remark: '少放辣', state: 3
-      },
-      {
-        id: '2587',orderno: '12334524', phoneName: '苹果iphone 6', color: '白色', serviceMode: '上门', address: '天府国际金融中心',
-        date: '08月22日 14：00-18：00', remark: '少放辣', state: 4
-      },
-      {
-        id: '12384',orderno: '12334524', phoneName: '苹果iphone 5', color: '白色', serviceMode: '上门', address: '天府国际金融中心',
-        date: '08月22日 14：00-18：00', remark: '少放辣', state: 5
-      }
-    ],
-    textColor: false
+    orders: [],
+    textColor: false,
+    nextPage: 0,
+    totalPage: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    getList(this, 1)
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -76,7 +60,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    if(this.data.nextPage <= this.data.totalPage) {
+      getList(this, this.data.nextPage)
+    }
   },
 
   /**
@@ -104,10 +90,29 @@ Page({
       wx.navigateTo({
         url: '/pages/order/payment/payment?id=' + id + '&state=' + state
       })
-    }else if(state == 5) {
+    }else if(state == 5 || state == 6) {
       wx.navigateTo({
         url: '/pages/order/finish/finish?id=' + id + '&state=' + state
       })
     }
   }
 })
+
+
+function getList(me, nextPage) {
+  http.request({
+    apiName: 'order/orderlist',
+    method: 'POST',
+    data: { currentPage: nextPage },
+    success: function (res) {
+      console.log(res);
+      let orders = me.data.orders;
+      orders = orders.concat(res.list);
+      me.setData({
+        orders: orders,
+        nextPage: res.currentPage + 1,
+        totalPage: res.total
+      })
+    }
+  })
+}

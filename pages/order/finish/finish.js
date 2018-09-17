@@ -1,24 +1,24 @@
 // pages/order/finish/finish.js
+const http = require('../../../utils/http');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    orders: [
-      {
-        id: '12384', orderno: '12334524', phoneName: '苹果iphone 5', color: '白色', serviceMode: '上门', address: '天府国际金融中心',
-        date: '08月22日 14：00-18：00', remark: '少放辣', state: 5
-      }
-    ],
-    showModal: false
+    order: {},
+    showModal: false,
+    orderno: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.setData({
+      orderno: options.id
+    })
+    getOrderDetail(this, options.id, options.state);
   },
 
   /**
@@ -75,7 +75,7 @@ Page({
   },
   goToComment: function() {
     wx.navigateTo({
-      url: '/pages/order/comment/comment'
+      url: '/pages/order/comment/comment?id='+this.data.orderno
     })
   },
   preventTouchMove: function () {
@@ -187,3 +187,22 @@ Page({
     }
   }
 })
+
+
+function getOrderDetail(me, orderno, state) {
+  console.log(orderno+'---'+state);
+  http.request({
+    apiName: 'order/orderdetail',
+    method: 'POST',
+    data: { orderno: orderno, status: state },
+    success: function (res) {
+      me.setData({
+        order: res
+      });
+      console.log(me.data.order);
+    },
+    fail: function(res) {
+      console.log(res);
+    }
+  })
+}

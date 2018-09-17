@@ -1,11 +1,11 @@
-<view class="home-page" wx:for="{{orders}}" wx:key="orders" bindtap="goToOrderDetail" data-state="{{item.state}}" data-id="{{item.id}}">
+<view class="home-page">
   <view class="hp-header">
-    <text class="hp-header-text1">订单编号\t{{item.orderno}}</text>
+    <text class="hp-header-text1">订单编号\t{{orderDetail.orderno}}</text>
   </view>
   <view class="hp-content">
     <view class="hp-content-icon">
       <image class='hp-content-icon-image' 
-      src='/images/icon/工程师.png'>
+      src='{{orderDetail.img}}'>
       </image>
     </view>
     <view class="hp-content-text">
@@ -14,32 +14,32 @@
   </view>
   <view class="hp-footer">
     <view class="hp-footer-top"></view>
-    <view class="hp-footer-round1"></view>
-    <text class="hp-footer-text1">已提交</text>
-    <view class="hp-footer-round2" style="background-color: {{item.state>=2?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text2" style="color: {{item.state>=2?'#545454':'#bfbfbf'}}">已受理</text>
-    <view class="hp-footer-round3" style="background-color: {{item.state>=3?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text3" style="color: {{item.state>=3?'#545454':'#bfbfbf'}}">已维修</text>
-    <view class="hp-footer-round4" style="background-color: {{item.state>=4?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text4" style="color: {{item.state>=4?'#545454':'#bfbfbf'}}">已付款</text>
-    <view class="hp-footer-round5" style="background-color: {{item.state>=5?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text5" style="color: {{item.state>=5?'#545454':'#bfbfbf'}}">已结束</text>
+    <view class="hp-footer-round1" style="background-color: {{orderDetail.status>=1?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text1" style="color: {{orderDetail.status>=1?'#545454':'#bfbfbf'}}">已提交</text>
+    <view class="hp-footer-round2" style="background-color: {{orderDetail.status>=2?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text2" style="color: {{orderDetail.status>=2?'#545454':'#bfbfbf'}}">已受理</text>
+    <view class="hp-footer-round3" style="background-color: {{orderDetail.status>=3?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text3" style="color: {{orderDetail.status>=3?'#545454':'#bfbfbf'}}">已维修</text>
+    <view class="hp-footer-round4" style="background-color: {{orderDetail.status>=4?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text4" style="color: {{orderDetail.status>=4?'#545454':'#bfbfbf'}}">已付款</text>
+    <view class="hp-footer-round5" style="background-color: {{orderDetail.status>=5?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text5" style="color: {{orderDetail.status>=5?'#545454':'#bfbfbf'}}">已结束</text>
   </view>
 </view>
 
 <view class='order-detail-information'>
-  <text space='ensp' class='order-detail-information-text1'>技术测试    13827573910\n</text>
-  <text class='order-detail-information-text2'>天府国际金融中心(锦晖西一街55号)</text>
+  <text space='ensp' class='order-detail-information-text1'>技术测试    {{orderDetail.phone}}\n</text>
+  <text class='order-detail-information-text2'>{{orderDetail.address}}</text>
 </view>
 
 <view class="order-detail-content">
   <view class="order-detail-content-1">
     <text class="order-detail-content-text1">设备信息：</text>
-    <text class="order-detail-content-text2">苹果iphone\t6S\tPlus\t银色</text>
+    <text class="order-detail-content-text2">{{orderDetail.version}}\t{{orderDetail.color}}</text>
   </view>
   <view class="order-detail-content-2">
-    <text class="order-detail-content-text3">按键-电源开关键(无法正常开关机、无法锁屏）：</text>
-    <text class="order-detail-content-text4">￥148</text>
+    <text class="order-detail-content-text3">{{orderDetail.fault}}：</text>
+    <text class="order-detail-content-text4">￥{{orderDetail.fee}}</text>
   </view>
   <view class="order-detail-content-3">
     <text class="order-detail-content-text5">技师确认</text>
@@ -47,15 +47,15 @@
   </view>
   <view class="order-detail-content-4">
     <text class="order-detail-content-text7">预约时间</text>
-    <text class="order-detail-content-text8">08月20日\t立即服务</text>
+    <text class="order-detail-content-text8">{{orderDetail.bookingtime}}</text>
   </view>
   <view class="order-detail-content-5">
     <text class="order-detail-content-text9">维修方式</text>
-    <text class="order-detail-content-text10">上门</text>
+    <text class="order-detail-content-text10">{{orderDetail.servertype==1?'上门':orderDetail.servertype==2?'到店':'邮寄'}}</text>
   </view>
   <view class="order-detail-content-6">
     <text class="order-detail-content-text11">预估价格:</text>
-    <text class="order-detail-content-text12">￥148</text>
+    <text class="order-detail-content-text12">￥{{orderDetail.payment}}</text>
   </view>
   <view class="order-detail-content-8">
     <text class="order-detail-content-text15">*待工程师受理确认后再进行支付</text>
@@ -76,23 +76,23 @@
     <text class='alert-text2'>请反馈原因，我们会努力改进</text>
   </view>
   <view class='alert-radios'>
-    <view class='alert-radio' bindtap='changeDuiClass' data-json='first'>
+    <view class='alert-radio' bindtap='changeDuiClass' data-json='first' data-reason='需要重新修改订单信息'>
       <text class='{{first?"alert-radio-dui":"alert-radio-dui1"}}'>√</text>
       <text class='alert-radio-text'>需要重新修改订单信息</text>
     </view>
-    <view class='alert-radio' bindtap='changeDuiClass' data-json='second'>
+    <view class='alert-radio' bindtap='changeDuiClass' data-json='second' data-reason='我选择了其他维修方式'>
       <text class='{{second?"alert-radio-dui":"alert-radio-dui1"}}'>√</text>
       <text class='alert-radio-text'>我选择了其他维修方式</text>
     </view>
-    <view class='alert-radio' bindtap='changeDuiClass' data-json='third'>
+    <view class='alert-radio' bindtap='changeDuiClass' data-json='third' data-reason='突然计划有变，不需要维修了'>
       <text class='{{third?"alert-radio-dui":"alert-radio-dui1"}}'>√</text>
       <text class='alert-radio-text'>突然计划有变，不需要维修了</text>
     </view>
-    <view class='alert-radio' bindtap='changeDuiClass' data-json='fourth'>
+    <view class='alert-radio' bindtap='changeDuiClass' data-json='fourth' data-reason='客服人员告诉我需要等很久'>
       <text class='{{fourth?"alert-radio-dui":"alert-radio-dui1"}}'>√</text>
       <text class='alert-radio-text'>客服人员告诉我需要等很久</text>
     </view>
-    <view class='alert-radio' bindtap='changeDuiClass' data-json='fifth'>
+    <view class='alert-radio' bindtap='changeDuiClass' data-json='fifth' data-reason='工程师无法在约定时间到达'>
       <text class='{{fifth?"alert-radio-dui":"alert-radio-dui1"}}'>√</text>
       <text class='alert-radio-text'>工程师无法在约定时间内到达</text>
     </view>
@@ -102,12 +102,10 @@
     </view>
   </view>
   <view>
-    <textarea placeholder='您可以输入100个字' class='alert-textarea' 
-    placeholder-class='alert-placeholder'></textarea>
+    <textarea disabled='{{!disable}}' placeholder='您可以输入100个字' class='alert-textarea' 
+    placeholder-class='alert-placeholder' bindinput='getReason'></textarea>
   </view>
   <view class='alert-footer'>
-    <view class='alert-btn1'></view>
-    <view class='alert-btn2'>提交</view>
-    <view class='alert-btn3'></view>
+    <view class='alert-btn2' bindtap='cancelOrder'>提交</view>
   </view>
 </view>

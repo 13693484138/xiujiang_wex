@@ -1,33 +1,33 @@
-<view class="home-page" wx:for="{{orders}}" wx:key="*this" wx:for-index="index" wx:for-item="item" catchtap="goToOrderDetail" data-state="{{item.state}}" data-id="{{item.id}}">
+<view class="home-page" wx:for="{{orders}}" wx:key="*this" wx:for-index="index" wx:for-item="item" catchtap="goToOrderDetail" data-state="{{item.status}}" data-id="{{item.orderno}}">
   <view class="hp-header">
     <text class="hp-header-text1">订单编号\t{{item.orderno}}</text>
   </view>
   <view class="hp-content">
     <view class="hp-content-icon">
       <image class='hp-content-icon-image' 
-      src='/images/icon/工程师.png'>
+      src='{{item.img}}'>
       </image>
     </view>
     <view class="hp-content-text">
-      <text>{{item.phoneName}}\t{{item.color}}\n</text>
+      <text>{{item.version}}\t{{item.color}}\n</text>
       <text>服务方式：{{item.serviceMode}}\n</text>
       <text>地址信息：{{item.address}}\n</text>
-      <text>预约时间：{{item.date}}\n</text>
+      <text>预约时间：{{item.bookingtime}}\n</text>
       <text>备注订单：{{item.remark}}</text>
     </view>
   </view>
   <view class="hp-footer">
     <view class="hp-footer-top"></view>
-    <view class="hp-footer-round1"></view>
-    <text class="hp-footer-text1">已提交</text>
-    <view class="hp-footer-round2" style="background-color: {{item.state>=2?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text2" style="color: {{item.state>=2?'#545454':'#bfbfbf'}}">已受理</text>
-    <view class="hp-footer-round3" style="background-color: {{item.state>=3?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text3" style="color: {{item.state>=3?'#545454':'#bfbfbf'}}">已维修</text>
-    <view class="hp-footer-round4" style="background-color: {{item.state>=4?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text4" style="color: {{item.state>=4?'#545454':'#bfbfbf'}}">已付款</text>
-    <view class="hp-footer-round5" style="background-color: {{item.state>=5?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text5" style="color: {{item.state>=5?'#545454':'#bfbfbf'}}">已结束</text>
+    <view class="hp-footer-round1" style="background-color: {{item.status>=1?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text1" style="color: {{item.status>=1?'#545454':'#bfbfbf'}}">已提交</text>
+    <view class="hp-footer-round2" style="background-color: {{item.status>=2?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text2" style="color: {{item.status>=2?'#545454':'#bfbfbf'}}">已受理</text>
+    <view class="hp-footer-round3" style="background-color: {{item.status>=3?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text3" style="color: {{item.status>=3?'#545454':'#bfbfbf'}}">已维修</text>
+    <view class="hp-footer-round4" style="background-color: {{item.status>=4?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text4" style="color: {{item.status>=4?'#545454':'#bfbfbf'}}">已付款</text>
+    <view class="hp-footer-round5" style="background-color: {{item.status>=5?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text5" style="color: {{item.status>=5?'#545454':'#bfbfbf'}}">已结束</text>
   </view>
 </view>
 

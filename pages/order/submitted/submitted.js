@@ -1,28 +1,32 @@
 // pages/order/submitted/submitted.js
+const http = require('../../../utils/http');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    orders: [{
-      id: '1232', orderno: '12334524', phoneName: '苹果iphone X', color: '白色', serviceMode: '上门', address: '天府国际金融中心',
-      date: '08月22日 14：00-18：00', remark: '少放辣', state: 1, bgColor: '#fc9b00'
-    }],
+    orderDetail: {},
     showModal: false,
     first: true,
     second: false,
     third: false,
     fourth: false,
     fifth: false,
-    sixth: false
+    sixth: false,
+    orderno: '',
+    reason: '需要重新修改订单信息',
+    disable: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.setData({
+      orderno: options.id
+    })
+    getOrderDetail(this, options.id, options.state);
   },
 
   /**
@@ -92,8 +96,19 @@ Page({
   },
   changeDuiClass: function(event) {
     var str = event.currentTarget.dataset.json;
+    var reason = event.currentTarget.dataset.reason;
+    if(reason) {
+      this.setData({
+        reason: reason
+      })
+    }else {
+      this.setData({
+        reason: ''
+      })
+    }
+    console.log(this.data.reason);
     var flag = this.data[str];
-    console.log(flag);
+    
     if (str == 'first') {
       if(!this.data.first) {
         this.setData({
@@ -102,7 +117,8 @@ Page({
           third: false,
           fourth: false,
           fifth: false,
-          sixth: false
+          sixth: false,
+          disable: false
         })
       }else {
         this.setData({
@@ -117,7 +133,8 @@ Page({
           third: false,
           fourth: false,
           fifth: false,
-          sixth: false
+          sixth: false,
+          disable: false
         })
       }else {
         this.setData({
@@ -132,7 +149,8 @@ Page({
           second: false,
           fourth: false,
           fifth: false,
-          sixth: false
+          sixth: false,
+          disable: false
         })
       }else {
         this.setData({
@@ -147,7 +165,8 @@ Page({
           second: false,
           third: false,
           fifth: false,
-          sixth: false
+          sixth: false,
+          disable: false
         })
       }else {
         this.setData({
@@ -162,7 +181,8 @@ Page({
           second: false,
           third: false,
           fourth: false,
-          sixth: false
+          sixth: false,
+          disable: false
         })
       }else {
         this.setData({
@@ -177,13 +197,51 @@ Page({
           second: false,
           third: false,
           fourth: false,
-          fifth: false
+          fifth: false,
+          disable: true
         })
       }else {
         this.setData({
-          sixth: !this.data.sixth
+          sixth: !this.data.sixth,
+          disable: false
         })
       }
     }
+  },
+  getReason: function(event) {
+    this.setData({
+      reason: event.detail.value
+    })
+  },
+  cancelOrder: function() {
+    http.request({
+      apiName: 'order/cancelorder',
+      method: 'put',
+      data: {orderno: this.data.orderno, reason: this.data.reason},
+      success: function(res) {
+        wx.showToast({
+          title: res.data,
+          icon: 'success',
+          duration: 2000
+        });
+        this.setData({
+          showModal: false
+        })
+      }
+    })
   }
 })
+
+function getOrderDetail(me, orderno, state) {
+  http.request({
+    apiName: 'order/orderdetail',
+    method: 'POST',
+    data: {orderno: orderno, status: state},
+    success: function(res) {
+      console.log(res);
+      me.setData({
+        orderDetail: res
+      })
+    }
+  })
+}
