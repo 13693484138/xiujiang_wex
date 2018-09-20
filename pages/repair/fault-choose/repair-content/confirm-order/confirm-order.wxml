@@ -1,11 +1,11 @@
-<view class='co-top' bindtap='goToChooseAddress'>
-  <view class='co-top-1' wx:if='{{showTop}}' bindtap='goToAddAddress'>
+<view class='co-top' bindtap='goToAddAddress'>
+  <view class='co-top-1' wx:if='{{showTop}}'>
     <view class='iconfont icon-jiahao'></view>
     <view>添加您的服务地址</view>
   </view>
   <view wx:if='{{!showTop}}' class='co-top-2'>
-    <view>技术测试 13578766040</view>
-    <view>四川省 成都市 武侯区 天府国际金融中心(锦晖西一街55号)</view>
+    <view>{{address.name}} {{address.phone}}</view>
+    <view>{{address.province}} {{address.city}} {{address.district}} {{address.address}}</view>
     <view>其他地址</view>
   </view>
   <view>
@@ -37,12 +37,28 @@
   </view>
 </view>
 <view wx:if='{{radioData==1}}' class='radioList' bindtap='chooseDate'>
-    <view>选择日期</view>
+  <view>选择日期</view>
+  <view class='flex-row '>
+    <view>{{date}} {{time}}</view>
     <view class='iconfont icon-arrow_left'></view>
+  </view>
 </view>
-<view wx:if='{{radioData==2}}' class='radioList' bindtap='goToRecommendShop'>
-    <view>推荐网点</view>
+<view wx:if='{{radioData !=1}}' class='radioList' bindtap='goToRecommendShop'>
+  <view>推荐网点</view>
+  <view class='flex-row'>
+    <view>{{recommendationNetwork.name}}</view>
     <view class='iconfont icon-arrow_left'></view>
+  </view>
+</view>
+<view wx:if='{{recommendationNetworkId > 0}}' class='recommendation'>
+  <view class='flex-row flex-between'>
+    <view class='recommendation_text1'>网点地址</view>
+    <view class='recommendation_text2'>{{recommendationNetwork.address}}</view>
+  </view>
+  <view class='flex-row flex-between'>
+    <view>联系电话</view>
+    <view>{{recommendationNetwork.phone}}</view>
+  </view>
 </view>
 <!-- 维修方式弹窗 -->
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
@@ -69,28 +85,30 @@
   </radio-group>
 </view>
 <!-- 上门时间弹窗 -->
-<view class="modal-mask1" bindtap="hideModal1" catchtouchmove="preventTouchMove" wx:if="{{showDate}}"></view>
+<view class="modal-mask" bindtap="hideModal1" catchtouchmove="preventTouchMove" wx:if="{{showDate}}"></view>
 <view wx:if="{{showDate}}" class='alert-content1'>
-  <radio-group class='radios' bindchange='radioChange1'>
-    <view>
-      <label>
-        今日
-      </label>
-    </view>
-  </radio-group>
+  <view class='chooseTime'>选择日期</view>
+  <view class='pRepairDate flex-row'>
+    <view class='repairDate {{dateIndex == index?"active":""}}' wx:for="{{dateList}}" wx:for-item="date" wx:for-index="index" bindtap='chooseRepairDate' data-dateIndex="{{index}}" data-curdate='{{date.curdate}}'>{{date.date}}</view>
+  </view>
+  <view class='chooseTime'>选择时间</view>
+  <view class='pRepairTime'>
+    <view class='repairTime {{timeIndex == index?"active":""}}' wx:for="{{timeList}}" wx:for-item="time" wx:for-index="index" data-timeIndex="{{index}}" bindtap='chooseRepairTime'>{{time}}</view>
+  </view>
+  <view class='enterDate' bindtap='enterDate'>确定</view>
 </view>
 
-<view class='list2'>
+<view class='list2' wx:for="{{repairObj.faultList}}" wx:for-item="fault">
   <view>
-    
+    <image src='{{fault.versionimg}}'></image>
   </view>
   <view>
-    <view>iphone 6S Plus</view>
-    <text class='co-text'>屏幕 外屏碎裂（正常使用、显示正常）</text>
-    <view class='co-color'>颜色：金色</view>
+    <view>{{fault.versionname}}</view>
+    <text class='co-text'>{{fault.faultname}}</text>
+    <view class='co-color'>{{fault.color}}</view>
   </view>
   <view class='co-l2-money'>
-    ￥238.00
+    ￥{{fault.faultprice}}
   </view>
 </view>
 
@@ -99,13 +117,14 @@
   <view>
     <view class='list3-1'>
       <view>
-        项目经验<text>实际费用以工程师确认后为准</text>
+        项目金额
+        <text>实际费用以工程师确认后为准</text>
       </view>
-      <view class='co-l3-money'>￥238.00</view>
+      <view class='co-l3-money'>{{repairObj.totalmoney}}</view>
     </view>
     <view class='list3-2'>
       <view>订单金额</view>
-      <view class='co-l3-money co-l3-yellowmoney'>￥238.00</view>
+      <view class='co-l3-money co-l3-yellowmoney'>{{repairObj.totalmoney}}</view>
     </view>
   </view>
 </view>
@@ -115,8 +134,13 @@
 
 <view class='list4'>
   <view>买家备注</view>
-  <view>
-    <textarea placeholder='选填：对本次交易的说明' placeholder-class='pl-class'></textarea>
+  <view class='flex-row' wx:if="{{orderRemarks != ''}}">
+    <view>{{orderRemarks}}</view>
+    <view class='iconfont icon-arrow_left'></view>
+  </view>
+  <view class='flex-row' wx:elif="{{orderRemarks == ''}}">
+    <view>输入备注信息</view>
+    <view class='iconfont icon-arrow_left'></view>
   </view>
 </view>
 
@@ -125,10 +149,10 @@
 
 <view class='list5'>
   <view class='list5-1'>
-    <view class='co-l5-money'>￥238.00</view>
-    <view>提交订单既同意<text>平台服务条款</text></view>
+    <view class='co-l5-money'>{{repairObj.totalmoney}}</view>
+    <view>提交订单既同意
+      <text>平台服务条款</text>
+    </view>
   </view>
-  <view>确认</view>
+  <view bindtap='enterOrder'>确认</view>
 </view>
-
-

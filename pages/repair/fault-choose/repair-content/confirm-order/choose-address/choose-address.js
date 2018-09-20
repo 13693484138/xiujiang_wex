@@ -1,18 +1,33 @@
 // pages/repair/fault-choose/repair-content/confirm-order/choose-address/choose-address.js
+const http = require('../../../../../../utils/http');
+const AppConfig = require("../../../../../../utils/config");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+      preOrderNo:'',
+      addressList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options.preOrderNo+'++++++++');
+    this.setData({
+      preOrderNo: options.preOrderNo
+    })
+    http.request({
+      apiName:'reqair/getaddresslist',
+      method:'get',
+      success:(res) => {
+        this.setData({
+          addressList: res
+        })
+      }
+    })
   },
 
   /**
@@ -66,6 +81,18 @@ Page({
   goToAddAddress: function() {
     wx.navigateTo({
       url: '/pages/repair/fault-choose/repair-content/confirm-order/choose-address/add-address/add-address'
+    })
+  },
+  enterAddressInfo:function(e){
+    var addressId = e.currentTarget.dataset.addressid;
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2]; 
+    prevPage.setData({
+      addressId: addressId
+    })
+    wx.navigateBack
+      ({
+      url: '/pages/repair/fault-choose/repair-content/confirm-order/confirm-order'
     })
   }
 })

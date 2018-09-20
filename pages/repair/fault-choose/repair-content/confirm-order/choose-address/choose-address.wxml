@@ -1,9 +1,9 @@
 <view class='list'>
-  <view class='list1'>
+  <view class='list1' wx:for="{{addressList}}" wx:for-item="item" data-addressId="{{item.id}}" bindtap='enterAddressInfo'>
     <view>
-      技术测试，13888888888
+      {{item.name}}，{{item.phone}}
     </view>
-    <text space='ensp'>四川省 成都市 武侯区 天府国际金融中心(锦辉西路xxxx)</text>
+    <text space='ensp'>{{item.province}} {{item.city}} {{item.district}} {{item.address}}</text>
     <view class='icon1'>
       <view class='iconfont icon-trashbin'></view>
     </view>

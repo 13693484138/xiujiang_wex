@@ -13,7 +13,7 @@
       <view  wx:for="{{brandVersionList}}" wx:for-index="index" wx:for-item="brandVersion">
         <view class='section-right-title'>{{brandVersion.title}}</view>
         <view class="section-right-item ">
-          <view class='section-right-item-view flex-col' wx:for="{{brandVersion.versionList}}" wx:for-index="index" wx:for-item="version">
+          <view class='flex-col section-right-item-view {{version.id == versionID?"active":""}}' wx:for="{{brandVersion.versionList}}" wx:for-index="index" wx:for-item="version" bindtap='sectionRightClick' data-id="{{version.id}}">
             <image src='{{version.img}}' class='version-img'></image>
             <view>{{version.title}}</view>
           </view>

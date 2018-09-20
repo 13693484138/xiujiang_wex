@@ -9,13 +9,15 @@ Page({
   data: {
     brandindex:0,
     brandList : [],
-    brandVersionList: []
+    brandVersionList: [],
+    versionID : 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("执行load--------------");
     getBrandList(this);
   },
 
@@ -30,7 +32,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    console.log("执行show");
+    this.setData({
+      brandindex: 0,
+      versionID: 0
+    })
   },
 
   /**
@@ -74,9 +80,19 @@ Page({
     });
     var brandid = this.data.brandList[listIndex].id;
     getVersionList(brandid,this);
+  },
+  sectionRightClick: function (e) {
+    console.log(e);
+    var id = e.currentTarget.dataset.id;
+    this.setData({
+      versionID: id
+    })
+    wx.navigateTo({
+      url: '../../fault-choose/repair-content/repair-content?versionID=' + this.data.versionID
+    })
   }
-
 });
+
 function getVersionList(brandid,me){
   http.request({
     apiName: "reqair/versionlist/"+brandid,

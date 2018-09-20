@@ -69,6 +69,9 @@ page{
 .section-right-item-view:nth-child(3n){
   margin-right: 0rpx;
 }
+.section-right-item-view.active{
+  border:solid 1rpx #FEAA42;
+}
 .section-right-item-view view{
   overflow: hidden;
   white-space:nowrap;
