@@ -45,10 +45,14 @@ Page({
       apiName: 'reqair/getdefaultaddress',
       method: 'get',
       success: (res) => {
+        console.log(res);
+        if(res != null && res != ''){
         this.setData({
           address: res,
           addressId: res.id
         })
+
+        }
       }
     })
   },
@@ -193,31 +197,6 @@ Page({
       showRemind("请先选择服务地址");
     }
   },
-
-  getDates: function () {
-    var date = new Date();
-    var datess = [];
-    var todate = date.getFullYear() + "-" + ((date.getMonth() + 1) < 10 ? ("0" + (date.getMonth() + 1)) : date.getMonth() + 1) + "-" + (date.getDate() < 10 ? ("0" + date.getDate()) : date.getDate());
-    for (var i = 0; i < 7; i++) {
-      
-      var date = util.dateLater(todate, i);
-      if (i == 0) {
-        this.setData({
-          today: date.newdates,
-        })
-      }
-      if(i == 1) {
-        this.setData({
-          tomorrow: date.newdates,
-          chooseRadio: this.data.today
-        })
-      }
-      var datejson = { date: date.newdates, week: date.week, dates: date.dates };
-      datess.push(datejson);
-    }
-    return datess;
-  },
-
   hideModal1: function () {
     this.setData({
       showDate: false
