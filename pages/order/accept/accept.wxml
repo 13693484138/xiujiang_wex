@@ -1,11 +1,11 @@
-<view class="home-page" wx:for="{{orders}}" wx:key="orders" bindtap="goToOrderDetail" data-state="{{item.state}}" data-id="{{item.id}}">
+<view class="home-page">
   <view class="hp-header">
-    <text class="hp-header-text1">订单编号\t{{item.orderno}}</text>
+    <text class="hp-header-text1">订单编号\t{{order.orderno}}</text>
   </view>
   <view class="hp-content">
     <view class="hp-content-icon">
       <image class='hp-content-icon-image' 
-      src='/images/icon/工程师.png'>
+      src='{{order.img}}'>
       </image>
     </view>
     <view class="hp-content-text">
@@ -14,34 +14,34 @@
   </view>
   <view class="hp-footer">
     <view class="hp-footer-top"></view>
-    <view class="hp-footer-round1"></view>
-    <text class="hp-footer-text1">已提交</text>
-    <view class="hp-footer-round2" style="background-color: {{item.state>=2?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text2" style="color: {{item.state>=2?'#545454':'#bfbfbf'}}">已受理</text>
-    <view class="hp-footer-round3" style="background-color: {{item.state>=3?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text3" style="color: {{item.state>=3?'#545454':'#bfbfbf'}}">已维修</text>
-    <view class="hp-footer-round4" style="background-color: {{item.state>=4?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text4" style="color: {{item.state>=4?'#545454':'#bfbfbf'}}">已付款</text>
-    <view class="hp-footer-round5" style="background-color: {{item.state>=5?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text5" style="color: {{item.state>=5?'#545454':'#bfbfbf'}}">已结束</text>
+    <view class="hp-footer-round1" style="background-color: {{order.status>=1?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text1" style="color: {{order.status>=1?'#545454':'#bfbfbf'}}">已提交</text>
+    <view class="hp-footer-round2" style="background-color: {{order.status>=2?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text2" style="color: {{order.status>=2?'#545454':'#bfbfbf'}}">已受理</text>
+    <view class="hp-footer-round3" style="background-color: {{order.status>=3?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text3" style="color: {{order.status>=3?'#545454':'#bfbfbf'}}">已维修</text>
+    <view class="hp-footer-round4" style="background-color: {{order.status>=4?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text4" style="color: {{order.status>=4?'#545454':'#bfbfbf'}}">已付款</text>
+    <view class="hp-footer-round5" style="background-color: {{order.status>=5?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text5" style="color: {{order.status>=5?'#545454':'#bfbfbf'}}">已结束</text>
   </view>
 </view>
 
 
 
 <view class='order-detail-information'>
-  <text space='ensp' class='order-detail-information-text1'>技术测试    13827573910\n</text>
-  <text class='order-detail-information-text2'>天府国际金融中心(锦晖西一街55号)</text>
+  <text space='ensp' class='order-detail-information-text1'>技术测试    {{order.phone}}\n</text>
+  <text class='order-detail-information-text2'>{{order.address}}</text>
 </view>
 
 <view class="order-detail-content">
   <view class="order-detail-content-1">
     <text class="order-detail-content-text1">设备信息：</text>
-    <text class="order-detail-content-text2">苹果iphone\t6S\tPlus\t银色</text>
+    <text class="order-detail-content-text2">{{order.version}}\t{{order.color}}</text>
   </view>
   <view class="order-detail-content-2">
-    <text class="order-detail-content-text3">按键-电源开关键(无法正常开关机、无法锁屏）：</text>
-    <text class="order-detail-content-text4">￥148</text>
+    <text class="order-detail-content-text3">{{order.fault}}：</text>
+    <text class="order-detail-content-text4">￥{{order.fee}}</text>
   </view>
   <view class="order-detail-content-3">
     <text class="order-detail-content-text5">技师确认</text>
@@ -49,15 +49,15 @@
   </view>
   <view class="order-detail-content-4">
     <text class="order-detail-content-text7">预约时间</text>
-    <text class="order-detail-content-text8">08月20日\t立即服务</text>
+    <text class="order-detail-content-text8">{{order.bookingtime}}</text>
   </view>
   <view class="order-detail-content-5">
     <text class="order-detail-content-text9">维修方式</text>
-    <text class="order-detail-content-text10">上门/到店</text>
+    <text class="order-detail-content-text10">{{orderDetail.servertype==1?'上门':orderDetail.servertype==2?'到店':'邮寄'}}</text>
   </view>
   <view class="order-detail-content-6">
     <text class="order-detail-content-text11">预估价格:</text>
-    <text class="order-detail-content-text12">￥148</text>
+    <text class="order-detail-content-text12">￥{{order.fee}}</text>
   </view>
   <!-- <view class="order-detail-content-7">
     <text class="order-detail-content-text13">支付价格:</text>

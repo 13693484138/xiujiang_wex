@@ -73,3 +73,8 @@ page {
   bottom: 0rpx;
   width: 100%;
 }
+
+textarea {
+  font-size: 28rpx;
+  color: #343434;
+}

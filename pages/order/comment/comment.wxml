@@ -41,10 +41,10 @@
 
 <view class='comment-third'>
   <view class='comment-third-text'>维修评价</view>
-  <textarea class='comment-third-textarea'></textarea>
+  <textarea class='comment-third-textarea' bindinput='getComment'></textarea>
 </view>
 
-<view class='comment-fourth'>
+<view class='comment-fourth' bindtap='submitComment'>
   发表评论
 </view>
 

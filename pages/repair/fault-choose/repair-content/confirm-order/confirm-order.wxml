@@ -97,6 +97,13 @@
   </view>
   <view class='enterDate' bindtap='enterDate'>确定</view>
 </view>
+<view class="modal-mask" bindtap="hideModal1" catchtouchmove="preventTouchMove" wx:if="{{showDate}}"></view>
+
+
+
+
+
+
 
 <view class='list2' wx:for="{{repairObj.faultList}}" wx:for-item="fault">
   <view>

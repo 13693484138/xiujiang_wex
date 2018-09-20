@@ -28,6 +28,10 @@ page {
 }
 .hp-content-icon {
   width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .hp-content-icon-image {
   width: 120rpx;
@@ -36,6 +40,8 @@ page {
   background-color: #5fd5ff;
 }
 .hp-content-text {
+  width: 70%;
+  height: 100%;
   font-size: 24rpx;
   color: #b3b3b3;
   margin: 0 0 20rpx 0;

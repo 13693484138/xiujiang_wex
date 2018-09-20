@@ -365,11 +365,19 @@ textarea {
    width: 100%;
   background-color:#f9f9f9;
   position: fixed;
-  bottom: 0rpx;
   z-index: 9999;
+  bottom: 0rpx;
 }
-.modal-mask1 {
+.alert-date-top {
+  height: 91rpx;
   width: 100%;
+  background-color: #eeeeee;
+  color: #0a0a0a;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 91rpx;
+}
+.alert-date-bottom {
   height: 100%;
   position: fixed;
   top: 0;

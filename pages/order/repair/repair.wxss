@@ -171,10 +171,19 @@ page {
 .order-detail-content-1 {
   border-bottom: 1px solid #d0d0d0;
   width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 .order-detail-content-2 {
   border-bottom: 1px solid #d0d0d0;
   width: 90%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 .order-detail-content-3 {
   border-bottom: 1px solid #d0d0d0;
@@ -204,18 +213,15 @@ page {
 }
 .order-detail-content-text2 {
   float: right;
-  margin-top: 30rpx;
   margin-right: 15rpx;
 }
 .order-detail-content-text3 {
   display: inline-block;
-  margin-top: 30rpx;
   margin-left: 15rpx;
 }
 .order-detail-content-text4 {
   float: right;
   margin-right: 15rpx;
-  margin-bottom: 30rpx;
   color: #fc9317;
 }
 .order-detail-content-text5 {
@@ -309,5 +315,6 @@ page {
   color: #fefff9;
   background-color: #f6882f;
 }
+
 
 
