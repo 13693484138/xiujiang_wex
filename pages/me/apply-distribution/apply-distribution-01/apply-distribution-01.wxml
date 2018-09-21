@@ -3,19 +3,21 @@
   <view class='content1-text'>姓名\n</view>
   <view class='content11'>
     <view class='content11-1'></view>
-    <input class='content11-input' placeholder='请输入您的姓名' 
-    placeholder-style='font-size: 22rpx;color: #888888;'
+    <input id='name' class='content11-input' placeholder='请输入您的姓名' 
+    placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;'
     bindinput='dataInput'></input>
     <view class='content11-2'></view>
   </view>
+  <view class='error hidden'>请输入正确的姓名！</view>
 </view>
+
 
 <view class='content1'>
   <view class='content1-text'>手机\n</view>
   <view class='content11'>
     <view class='content11-1'></view>
-    <input class='content11-input' placeholder='请输入您的手机号码' 
-    placeholder-style='font-size: 22rpx;color: #888888;'></input>
+    <input id='tel' class='content11-input' placeholder='请输入您的手机号码' 
+    placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;' bindinput='dataInput'></input>
     <view class='content11-2'></view>
   </view>
 </view>
@@ -24,8 +26,8 @@
   <view class='content1-text'>性别\n</view>
   <view class='content11'>
     <view class='content11-1'></view>
-    <input class='content11-input' placeholder='请输入性别' 
-    placeholder-style='font-size: 22rpx;color: #888888;'></input>
+    <input id='gender' class='content11-input' placeholder='请输入性别' 
+    placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;' bindinput='dataInput'></input>
     <view class='content11-2'></view>
   </view>
 </view>
@@ -34,8 +36,8 @@
   <view class='content1-text'>家庭住址\n</view>
   <view class='content11'>
     <view class='content11-1'></view>
-    <input class='content11-input' placeholder='请填写家庭住址' 
-    placeholder-style='font-size: 22rpx;color: #888888;'></input>
+    <input id='address' class='content11-input' placeholder='请填写家庭住址' 
+    placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;' bindinput='dataInput'></input>
     <view class='content11-2'></view>
   </view>
 </view>
@@ -44,8 +46,8 @@
   <view class='content1-text'>公司名称\n</view>
   <view class='content11'>
     <view class='content11-1'></view>
-    <input class='content11-input' placeholder='请输入公司名称' 
-    placeholder-style='font-size: 22rpx;color: #888888;'></input>
+    <input id='corporateName' class='content11-input' placeholder='请输入公司名称' 
+    placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;' bindinput='dataInput'></input>
     <view class='content11-2'></view>
   </view>
 </view>
@@ -54,8 +56,8 @@
   <view class='content1-text'>公司住址\n</view>
   <view class='content11'>
     <view class='content11-1'></view>
-    <input class='content11-input' placeholder='请填写公司住址' 
-    placeholder-style='font-size: 22rpx;color: #888888;'></input>
+    <input id='corporateAddress' class='content11-input' placeholder='请填写公司住址' 
+    placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;' bindinput='dataInput'></input>
     <view class='content11-2'></view>
   </view>
 </view>
@@ -64,8 +66,8 @@
   <view class='content1-text'>家庭住址\n</view>
   <view class='content11'>
     <view class='content11-1'></view>
-    <input class='content11-input' placeholder='请填写家庭住址' 
-    placeholder-style='font-size: 22rpx;color: #888888;'></input>
+    <input id='homeAddress' class='content11-input' placeholder='请填写家庭住址' 
+    placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;' bindinput='dataInput'></input>
     <view class='content11-2'></view>
   </view>
 </view>
@@ -74,8 +76,8 @@
   <view class='content1-text'>职位\n</view>
   <view class='content11'>
     <view class='content11-1'></view>
-    <input class='content11-input' placeholder='您的职位' 
-    placeholder-style='font-size: 22rpx;color: #888888;'></input>
+    <input id='position' class='content11-input' placeholder='您的职位' 
+    placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;' bindinput='dataInput'></input>
     <view class='content11-2'></view>
   </view>
 </view>
@@ -84,8 +86,8 @@
   <view class='content1-text'>省/市区代理\n</view>
   <view class='content11'>
     <view class='content11-1'></view>
-    <input class='content11-input' placeholder='选择代理' 
-    placeholder-style='font-size: 22rpx;color: #888888;'></input>
+    <input id='agent' class='content11-input' placeholder='选择代理' 
+    placeholder-style='font-size: 26rpx;color: #888888;' bindinput='dataInput'></input>
     <view class='content11-2'></view>
   </view>
 </view>
@@ -105,7 +107,7 @@
   </view>
 </view>
 
-<view class='btn1'>
+<view class='btn1' bindtap="goToBecomeDistritutor">
   <view class='btn'>
   立即申请
   </view>
