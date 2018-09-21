@@ -265,7 +265,7 @@ Page({
           orderNo:res
         })
         wx.navigateTo({
-          url: '/pages/order/repair/repair?orderNo='+this.data.orderNo
+          url: '/pages/order/repair/repair?orderNo='+this.data.orderNo+'&status=1'
         })
       }
     })
