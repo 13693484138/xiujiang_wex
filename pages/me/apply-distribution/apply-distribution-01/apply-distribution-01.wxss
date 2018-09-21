@@ -69,3 +69,15 @@
   justify-content: center;
   margin-top: 100rpx;
 }
+
+
+.eorro{
+  display: block;
+  color: red;
+  font-size: 11px;
+  padding-left: 15px;
+  letter-spacing: 1px;
+}
+.hidden{
+  display: none;
+}
