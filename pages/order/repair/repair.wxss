@@ -53,7 +53,7 @@ page {
 .hp-footer-round1 {
   width: 38rpx;
   height: 38rpx;
-  background-color: #fc9b00;
+  background-color: #bfbfbf;
   border-radius: 19rpx;
   position: relative;
   top: -20rpx;
@@ -95,9 +95,26 @@ page {
   top: -369rpx;
   left: 482rpx;
 }
+
+
+.hp-footer-round1.bag {
+  background: #fc9b00
+}
+.hp-footer-round2.bag {
+  background: #fc9b00
+}
+.hp-footer-round3.bag {
+  background: #fc9b00
+}
+.hp-footer-round4.bag {
+  background: #fc9b00
+}
+.hp-footer-round5.bag {
+  background: #fc9b00
+}
 .hp-footer-text1 {
   font-size: 20rpx;
-  color: #545454;
+  color: #bfbfbf;
   position: relative;
   top: -40rpx;
   left: 160rpx;
@@ -118,21 +135,34 @@ page {
 }
 .hp-footer-text4 {
   font-size: 20rpx;
-  color: #545454;
+  color: #bfbfbf;
   position: relative;
   top: -301rpx;
   left: 394rpx;
 }
 .hp-footer-text5 {
   font-size: 20rpx;
-  color: #545454;
+  color: #bfbfbf;
   position: relative;
   top: -390rpx;
   left: 472rpx;
 }
 
-
-
+.hp-footer-text1.col {
+  color: black
+}
+.hp-footer-text2.col {
+  color: black
+}
+.hp-footer-text3.col {
+  color: black
+}
+.hp-footer-text4.col {
+  color: black
+}
+.hp-footer-text5.col {
+  color: black
+}
 
 .order-detail-information {
   background-color: #ffffff;
@@ -186,6 +216,8 @@ page {
   align-items: center;
 }
 .order-detail-content-3 {
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
   border-bottom: 1px solid #d0d0d0;
   width: 90%;
 }
@@ -224,14 +256,11 @@ page {
   margin-right: 15rpx;
   color: #fc9317;
 }
-.order-detail-content-text5 {
-  display: inline-block;
-  margin-top: 30rpx;
+.order-detail-content-text5{
   margin-left: 15rpx;
 }
 .order-detail-content-text6 {
-  margin-left: 15rpx;
-  margin-bottom: 30rpx;
+  margin-right: 15rpx;
   color: #ff001d;
 }
 .order-detail-content-text7 {
@@ -291,6 +320,7 @@ page {
 
 .order-detail-footer {
   margin-top: 15rpx;
+  margin-right: 35rpx;
   height: 175rpx;
   display: flex;
   justify-content: flex-end;
@@ -314,6 +344,17 @@ page {
   line-height: 60rpx;
   color: #fefff9;
   background-color: #f6882f;
+}
+.order_detail-footer_cancel {
+  margin: 0rpx;
+  margin-right: 10rpx;
+  font-size: 28rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  background: white;
+  border: 1px solid #bbbaba;
+  color: #bbbaba;
 }
 
 

@@ -43,7 +43,7 @@
   </view>
   <view class="order-detail-content-3">
     <text class="order-detail-content-text5">技师确认</text>
-    <text class="order-detail-content-text6">待诊断</text>
+    <text class="order-detail-content-text6">{{orderDetail.parts}}</text>
   </view>
   <view class="order-detail-content-4">
     <text class="order-detail-content-text7">预约时间</text>
@@ -51,7 +51,7 @@
   </view>
   <view class="order-detail-content-5">
     <text class="order-detail-content-text9">维修方式</text>
-    <text class="order-detail-content-text10">{{orderDetail.servertype==1?'上门':orderDetail.servertype==2?'到店':'邮寄'}}</text>
+    <text class="order-detail-content-text10">{{orderDetail.servertype==1?"上门":orderDdetail.servertype==2?"到店":"邮寄"}}</text>
   </view>
   <view class="order-detail-content-6">
     <text class="order-detail-content-text11">预估价格:</text>

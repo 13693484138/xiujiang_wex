@@ -55,6 +55,16 @@ Page({
       apiName: "reqair/deviceinfo/" + this.data.versionID,
       method: "get",
       success: (res) => {
+        console.log(res)
+        for(let i in res){
+          var tempFault = res[i].faultList;
+          for (let j in tempFault){
+            var tempPrice = tempFault[j].fee;
+            tempPrice = tempPrice.toFixed(2);
+            tempFault[j].fee = tempPrice
+          }
+          res[i].faultList = tempFault;
+        }
         this.setData({
           pfaultList: res
         })
@@ -203,7 +213,7 @@ Page({
         if (tempFault.check_ED) {
           tempChooseFaultList.push(tempFault.id);
           chooseFaultNumber++;
-          tempPrice += tempFault.fee;
+          tempPrice += parseFloat(tempFault.fee);
         }
       }
       tempTotalPrice += tempPrice;

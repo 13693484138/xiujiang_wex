@@ -253,8 +253,18 @@ page {
   height: 110rpx;
   padding-left: 30rpx;
   padding-right: 30rpx;
-  font-size: 28rpx;
-  color: #000000;
+  font-size: 26rpx;
+  color: #444444;
+  box-sizing: border-box;
+}
+.list4 > view:nth-child(1){
+  width: 150rpx;
+}
+.remarks_right{
+  width: 540rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
 }
 textarea {
   font-size: 26rpx;
@@ -454,4 +464,8 @@ textarea {
   border-radius: 15rpx;
   box-sizing: border-box;
   margin-top: 30rpx;
+}
+textarea{
+  width:100%;
+  font-size: 50rpx;
 }

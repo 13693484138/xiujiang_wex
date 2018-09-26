@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    order: {}
+    orderStatus: 0,
+    order: {},
   },
 
   /**
@@ -16,7 +17,7 @@ Page({
     var orderNo = options.orderNo;
     var orderStatus = options.status;
     console.log(options)
-    getOrderDetail(this, orderNo, orderStatus);
+    getOrderDetail(this, orderNo);
   },
 
   /**
@@ -73,17 +74,29 @@ Page({
   }
 })
 
-function getOrderDetail(me, orderno, state) {
-  console.log(orderno+'-----'+state)
+function getOrderDetail(me, orderno) {
   http.request({
     apiName: 'order/orderdetail',
     method: 'POST',
-    data: { orderno: orderno, status: state },
+    data: { orderno: orderno},
     success: function (res) {
+      console.log(res)
       me.setData({
+        orderStatus: res.status,
         order: res
       })
-      console.log(me.data.order);
+      let tempParts = res.parts;
+      let tempOrderarts = '';
+      switch (tempParts)
+      {
+        case 1:
+          tempOrderarts = '待诊断';
+        break;
+
+      }
+      me.setData({
+        orderParts:''
+      })
     }
   })
 }

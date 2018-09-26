@@ -38,6 +38,6 @@
 
 <view class='list3'>
   <view>
-    <view class='btn1'>完成</view>
+    <view class='btn1' bindtap='createAddress'>完成</view>
   </view>
 </view>
