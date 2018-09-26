@@ -70,5 +70,37 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+  /*自定义方法*/
+
+  //电话预约
+  subscribe(){
+    wx.makePhoneCall({
+      phoneNumber:'预约电话',
+      success:res=>{
+        console.log("ok")
+      },
+      fail:err=>{
+        console.log(err)
+      }
+    })
+  },
+  enterRepair(){
+    wx.switchTab({
+      url: '../repair/smx/repair-index/repair-index'
+    })
+  },
+  
+  //联系客服
+  customerService(){
+    wx.makePhoneCall({
+      phoneNumber:'客服电话',
+      success:res=>{
+        console.log("ok")
+      },
+      fail:err=>{
+        console.log(err)
+      }
+    })
+  },
 })
