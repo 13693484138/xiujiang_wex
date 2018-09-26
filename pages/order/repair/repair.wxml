@@ -14,16 +14,16 @@
   </view>
   <view class="hp-footer">
     <view class="hp-footer-top"></view>
-    <view class="hp-footer-round1" style="background-color: {{order.status>=2?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text1" style="color: {{order.status>=2?'#545454':'#bfbfbf'}}">已提交</text>
-    <view class="hp-footer-round2" style="background-color: {{order.status>=2?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text2" style="color: {{order.status>=2?'#545454':'#bfbfbf'}}">已受理</text>
-    <view class="hp-footer-round3" style="background-color: {{order.status>=3?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text3" style="color: {{order.status>=3?'#545454':'#bfbfbf'}}">已维修</text>
-    <view class="hp-footer-round4" style="background-color: {{order.status>=4?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text4" style="color: {{order.status>=4?'#545454':'#bfbfbf'}}">已付款</text>
-    <view class="hp-footer-round5" style="background-color: {{order.status>=5?'#fc9b00':'#bfbfbf'}}"></view>
-    <text class="hp-footer-text5" style="color: {{order.status>=5?'#545454':'#bfbfbf'}}">已结束</text>
+    <view class='hp-footer-round1 {{order.status >= 1?"bag":""}}'></view>
+    <text class='hp-footer-text1 {{order.status >= 1?"col":""}}'>已提交</text>
+    <view class='hp-footer-round2 {{order.status >= 2?"bag":""}}'></view>
+    <text class='hp-footer-text2 {{order.status >= 2?"col":""}}' >已受理</text>
+    <view class='hp-footer-round3 {{order.status >= 3?"bag":""}}'></view>
+    <text class='hp-footer-text3 {{order.status >= 3?"col":""}}'>已维修</text>
+    <view class='hp-footer-round4 {{order.status >= 4?"bag":""}}'></view>
+    <text class='hp-footer-text4 {{order.status >= 4?"col":""}}'>已付款</text>
+    <view class='hp-footer-round5 {{order.status >= 5?"bag":""}}'></view>
+    <text class='hp-footer-text5 {{order.status >= 5?"col":""}}'>已结束</text>
   </view>
 </view>
 
@@ -39,13 +39,12 @@
     <text class="order-detail-content-text1">设备信息：</text>
     <text class="order-detail-content-text2">{{order.version}}\t{{order.color}}</text>
   </view>
-  <view class="order-detail-content-2">
-    <text class="order-detail-content-text3">{{order.fault}}：</text>
-    <text class="order-detail-content-text4">￥{{order.fee}}</text>
+  <view class="order-detail-content-2" wx:for='{{order.list}}' wx:for-item='fault'>
+    <text class="order-detail-content-text3">{{fault.fault}}：</text>
+    <text class="order-detail-content-text4">￥{{fault.fee}}</text>
   </view>
-  <view class="order-detail-content-3">
+  <view class="order-detail-content-3 flex-row flex-between">
     <text class="order-detail-content-text5">技师确认</text>
-    <!-- <text class="order-detail-content-text6">待诊断</text> -->
     <view class='order-detail-content-text6'>
       {{order.parts}}
     </view>
@@ -56,11 +55,11 @@
   </view>
   <view class="order-detail-content-5">
     <text class="order-detail-content-text9">维修方式</text>
-    <text class="order-detail-content-text10">{{orderDetail.servertype==1?'上门':orderDetail.servertype==2?'到店':'邮寄'}}</text>
+    <text class="order-detail-content-text10">{{order.servertype}}</text>
   </view>
   <view class="order-detail-content-6">
     <text class="order-detail-content-text11">待支付价格:</text>
-    <text class="order-detail-content-text12">￥{{order.payment}}</text>
+    <text class="order-detail-content-text12">￥{{order.totalprice}}</text>
   </view>
   <view class="order-detail-content-8">
     <text class="order-detail-content-text15">*待工程师受理确认后再进行支付</text>
@@ -69,6 +68,13 @@
 
 <view class='order-detail-footer'>
   <button class='order-detail-footer-btn1' bindtap='goToOrderList'>返回</button>
-  <button class='order-detail-footer-btn2'>支付</button>
+  <block wx:if='{{order.status == 1}}'>
+    <button class='order_detail-footer_cancel'>取消订单</button>
+</block>
+  
+    <block wx:if='{{order.status == 2}}'>
+    <button class='order_detail-footer_cancel'>联系工程师</button>
+</block>
+  
 </view>
 

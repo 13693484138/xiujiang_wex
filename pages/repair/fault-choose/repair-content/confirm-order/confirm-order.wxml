@@ -1,9 +1,9 @@
-<view class='co-top' bindtap='goToAddAddress'>
-  <view class='co-top-1' wx:if='{{addressId == 0}}'>
+<view class='co-top'>
+  <view class='co-top-1' wx:if='{{addressId == 0}}' bindtap='goToAddAddress'  data-tt='1'>
     <view class='iconfont icon-jiahao'></view>
     <view>添加您的服务地址</view>
   </view>
-  <view wx:if='{{addressId > 0}}' class='co-top-2'>
+  <view wx:if='{{addressId > 0}}' class='co-top-2' bindtap='goToAddAddress' data-tt='2'>
     <view>{{address.name}} {{address.phone}}</view>
     <view>{{address.province}} {{address.city}} {{address.district}} {{address.address}}</view>
     <view>其他地址</view>
@@ -139,10 +139,10 @@
 
 
 
-<view class='list4'>
+<view class='list4' bindtap='inputRemarks'>
   <view>买家备注</view>
-  <view class='flex-row' wx:if="{{orderRemarks != ''}}">
-    <view>{{orderRemarks}}</view>
+  <view class='flex-row flex-end remarks_right' wx:if="{{orderRemarks != ''}}">
+    <view class='text_control'>{{orderRemarks}}</view>
     <view class='iconfont icon-arrow_left'></view>
   </view>
   <view class='flex-row' wx:elif="{{orderRemarks == ''}}">
@@ -150,6 +150,19 @@
     <view class='iconfont icon-arrow_left'></view>
   </view>
 </view>
+
+
+<view class="modal-mask" bindtap="hideRemarks" catchtouchmove="preventTouchMove" wx:if="{{showRemarks}}"></view>
+<view wx:if="{{showRemarks}}" class='alert-content1'>
+  <view class="section">
+    <form bindsubmit="bindFormSubmit">
+      <textarea placeholder="form 中的 textarea" name="textarea" auto-focus placeholder='请输入备注' value='{{orderRemarks}}' />
+      <button form-type="submit" type='primary'> 提交 </button>
+    </form>
+  </view>
+</view>
+
+
 
 
 
