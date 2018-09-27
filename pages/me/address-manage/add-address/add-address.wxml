@@ -12,6 +12,7 @@
       <view class='list2-name'>手机号码</view>
       <input maxlength="11" name="phone" placeholder='手机号' placeholder-class='ph-class'></input>
       <!-- <view class='iconfont icon-tongxunlu' bindtap='phoneContact'></view> -->
+      
     </view>
   </view>
 
