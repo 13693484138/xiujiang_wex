@@ -1,9 +1,9 @@
 <view class='co-top'>
-  <view class='co-top-1' wx:if='{{addressId}}' bindtap='goToAddAddress'  data-tt='1'>
+  <view class='co-top-1' wx:if='{{addressId == ""}}' bindtap='goToAddAddress'  data-tt='1'>
     <view class='iconfont icon-jiahao'></view>
     <view>添加您的服务地址</view>
   </view>
-  <view wx:if='{{addressId > 0}}' class='co-top-2' bindtap='goToAddAddress' data-tt='2'>
+  <view wx:if='{{addressId != ""}}' class='co-top-2' bindtap='goToAddAddress' data-tt='2'>
     <view>{{address.name}} {{address.phone}}</view>
     <view>{{address.province}} {{address.city}} {{address.district}} {{address.address}}</view>
     <view>其他地址</view>

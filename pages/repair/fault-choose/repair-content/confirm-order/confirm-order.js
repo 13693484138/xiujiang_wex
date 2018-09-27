@@ -37,9 +37,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    if(options.addressId != 0){
+      this.setData({
+        addressId: options.addressId,
+      })
+    }
     this.setData({
       preOrderNo: options.preOrderNo,
-      addressId: options.addressId,
       showTop: false
     })
     http.request({
