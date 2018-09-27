@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    region: '' //地区选择器
+    region: '', //地区选择器
+    latitude: '', //纬度
+    longitude: '', //经度
 
   },
 
@@ -82,22 +84,26 @@ Page({
       key: 'NQHBZ-KFYRI-HRJGZ-5EUUW-YE4KF-VSBW4' // 必填
     });
     let latitude; //纬度
-    let longitude; //精度	
+    let longitude; //经度	
     wx.getLocation({
       type: 'wgs84',
       success: (res) => {
         // console.log(res)
         latitude = res.latitude;
         longitude = res.longitude;
+        this.setData({
+          latitude: res.latitude,
+          longitude: res.longitude
+        })
         //调用腾讯地址将经纬度转地址
         demo.reverseGeocoder({
           location: {
-            latitude: latitude,
-            longitude: longitude
+            latitude: this.data.latitude,
+            longitude: this.data.longitude
           },
           success: (res) => {
-            // console.log(res.result.address_component);
-            if(res){
+            // console.log(res.result);
+            if (res) {
               let province = res.result.address_component.province;
               let city = res.result.address_component.city;
               let district = res.result.address_component.district;
@@ -171,6 +177,32 @@ Page({
     json.province = this.data.region[0];
     json.city = this.data.region[1];
     json.district = this.data.region[2];
+    if (this.data.latitude != '' && this.data.longitude != '') {
+      console.log("自动定位省市区")
+      json.lat = this.data.latitude;
+      json.lon = this.data.longitude;
+    } else {
+      console.log("手动填写省市区-->转经纬度")
+      let detailAddress = json.province + json.city + json.district + json.address
+      console.log(detailAddress)
+      /*物理地址逆向解析*/
+      // 实例化API核心类
+      let demo = new QQMapWX({
+        key: 'NQHBZ-KFYRI-HRJGZ-5EUUW-YE4KF-VSBW4' // 必填
+      });
+      demo.geocoder({
+        address: detailAddress,
+        success: res => {
+          console.log(res.result.location);
+          json.lat = res.result.location.lat;
+          json.lon = res.result.location.lng;
+        },
+        fail: err => {
+          console.log(err);
+        },
+      });
+    }
+
     console.log(json)
     /*进行表单验证*/
     // if (!this.validationRules(json)) {
@@ -181,10 +213,11 @@ Page({
     wx.showModal({
       title: '提交',
       content: '请确定你的信息无误',
-      success:(res)=>{
+      success: (res) => {
         //点击确定后
-        if(res.confirm){
+        if (res.confirm) {
           console.log("开始提交表单")
+          this.submit(json)
         }
       }
     })
@@ -192,9 +225,18 @@ Page({
 
 
   //提交表单方法
-  submit(json){
+  submit(json) {
     http.request({
-      
+      apiName: 'my/insertAddress',
+      method: 'put',
+      data: json,
+      isShowProgress: true,
+      success: res => {
+        console.log(res)
+        if(res=='新增成功'){
+          wx.navigateBack({})
+        }
+      },
     })
   }
 })

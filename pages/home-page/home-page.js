@@ -1,4 +1,5 @@
 // pages/home-page/home-page.js
+let http = require('../../utils/http.js')
 Page({
 
   /**
@@ -13,14 +14,15 @@ Page({
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
-    duration: 1000
+    duration: 1000,
+    circular: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.requestData()
   },
 
   /**
@@ -34,7 +36,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    
   },
 
   /**
@@ -48,7 +50,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+    
   },
 
   /**
@@ -103,4 +105,18 @@ Page({
       }
     })
   },
+  //请求评论
+  requestData(){
+    http.request({
+      apiName: 'index/curmembercomment',
+      method: 'post',
+      isShowProgress: true,
+      success: res => {
+        console.log(res)
+      },
+      fail:err=>{
+        console.log(err)
+      }
+    })
+  }
 })

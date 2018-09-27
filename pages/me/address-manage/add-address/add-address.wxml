@@ -41,7 +41,7 @@
   <view class='list2'>
     <view class='deauflt'>
       <view class='list2-name'>默认地址</view>
-       <view><switch name="isDefault"></switch></view>
+       <view><switch name="isdefault"></switch></view>
       <!-- <input placeholder='家    公司    学校' placeholder-class='ph-class'></input> -->
     </view>
   </view>
