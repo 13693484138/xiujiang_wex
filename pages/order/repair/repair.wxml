@@ -4,20 +4,24 @@
   </view>
   <view class="hp-content">
     <view class="hp-content-icon">
-      <image class='hp-content-icon-image' 
-      src='{{order.img}}'>
+      <image class='hp-content-icon-image' src='{{order.img}}'>
       </image>
     </view>
-    <view class="hp-content-text">
-      维修已结束，请支付此项维修费用
+    <view class="hp-content-text" wx:if="{{order.status == 1}}">
+      下单成功，待工程师受理订单
+    </view>
+    <view class="hp-content-text" wx:if="{{order.status == 2}}">
+      订单已受理，，请等待工程师维修
     </view>
   </view>
   <view class="hp-footer">
     <view class="hp-footer-top"></view>
+     <view class='hp-footer-round0 {{order.status == 0?"bag":""}}'></view>
+    <text class='hp-footer-text0 {{order.status == 0?"col":""}}'>已取消</text>
     <view class='hp-footer-round1 {{order.status >= 1?"bag":""}}'></view>
     <text class='hp-footer-text1 {{order.status >= 1?"col":""}}'>已提交</text>
     <view class='hp-footer-round2 {{order.status >= 2?"bag":""}}'></view>
-    <text class='hp-footer-text2 {{order.status >= 2?"col":""}}' >已受理</text>
+    <text class='hp-footer-text2 {{order.status >= 2?"col":""}}'>已受理</text>
     <view class='hp-footer-round3 {{order.status >= 3?"bag":""}}'></view>
     <text class='hp-footer-text3 {{order.status >= 3?"col":""}}'>已维修</text>
     <view class='hp-footer-round4 {{order.status >= 4?"bag":""}}'></view>
@@ -39,7 +43,7 @@
     <text class="order-detail-content-text1">设备信息：</text>
     <text class="order-detail-content-text2">{{order.version}}\t{{order.color}}</text>
   </view>
-  <view class="order-detail-content-2" wx:for='{{order.list}}' wx:for-item='fault'>
+  <view class="order-detail-content-2" wx:for='{{order.list}}' wx:for-item='fault' wx:key='index' wx:for-index='index'>
     <text class="order-detail-content-text3">{{fault.fault}}：</text>
     <text class="order-detail-content-text4">￥{{fault.fee}}</text>
   </view>
@@ -55,7 +59,9 @@
   </view>
   <view class="order-detail-content-5">
     <text class="order-detail-content-text9">维修方式</text>
-    <text class="order-detail-content-text10">{{order.servertype}}</text>
+    <text class="order-detail-content-text10" wx:if="{{order.servertype == 1}}">上门</text>
+    <text class="order-detail-content-text10" wx:if="{{order.servertype == 2}}">到店</text>
+    <text class="order-detail-content-text10" wx:if="{{order.servertype == 3}}">邮寄</text>
   </view>
   <view class="order-detail-content-6">
     <text class="order-detail-content-text11">待支付价格:</text>
@@ -69,12 +75,38 @@
 <view class='order-detail-footer'>
   <button class='order-detail-footer-btn1' bindtap='goToOrderList'>返回</button>
   <block wx:if='{{order.status == 1}}'>
-    <button class='order_detail-footer_cancel'>取消订单</button>
-</block>
-  
-    <block wx:if='{{order.status == 2}}'>
+    <button class='order_detail-footer_cancel' bindtap='alertTips'>取消订单</button>
+  </block>
+
+   <block wx:if='{{order.status == 2 && order.servertype == 1}}'>
     <button class='order_detail-footer_cancel'>联系工程师</button>
-</block>
-  
+  </block>
+
+    <block wx:if='{{order.status == 2 && order.servertype == 2}}'>
+    <button class='order_detail-footer_cancel'>导航到店</button>
+  </block>
+
 </view>
 
+
+
+<!-- 弹出窗 -->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view wx:if="{{showModal}}" class='alert-content'>
+  <view class='alert-header'>
+    <text class='alert-text1'>订单取消原因\n</text>
+    <text class='alert-text2'>请反馈原因，我们会努力改进</text>
+  </view>
+  <view class='alert-radios'>
+    <view class='alert-radio' wx:for='{{reasonList}}' wx:key="index" wx:for-index="index" wx:for-item="item" bindtap='changeDuiClass' data-json='{{index}}'>
+      <text class='{{reasonIndex == index?"alert-radio-dui":"alert-radio-dui1"}}'>√</text>
+      <text class='alert-radio-text'>{{item.reason}}</text>
+    </view>
+  </view>
+  <view wx:if="{{disable}}">
+    <textarea placeholder='您可以输入100个字' class='alert-textarea' auto-focus='true' focus="true" placeholder-class='alert-placeholder' bindinput='getReason' id='textReason'></textarea>
+  </view>
+  <view class='alert-footer'>
+    <view class='alert-btn2' bindtap='cancelOrder'>提交</view>
+  </view>
+</view>

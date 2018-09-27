@@ -103,7 +103,7 @@
   </view>
   <view>
     <textarea disabled='{{!disable}}' placeholder='您可以输入100个字' class='alert-textarea' 
-    placeholder-class='alert-placeholder' bindinput='getReason'></textarea>
+    placeholder-class='alert-placeholder' bindinput='getReason' auto-focus></textarea>
   </view>
   <view class='alert-footer'>
     <view class='alert-btn2' bindtap='cancelOrder'>提交</view>

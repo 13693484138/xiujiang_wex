@@ -55,6 +55,15 @@ page {
   height: 19rpx;
   border-bottom: 1px solid #d0d0d0;
 }
+.hp-footer-round0{
+  width: 38rpx;
+  height: 38rpx;
+  background-color: #fc9b00;
+  border-radius: 19rpx;
+  position: absolute;
+  top: -2rpx;
+  left: 92rpx;
+}
 .hp-footer-round1 {
   width: 38rpx;
   height: 38rpx;
@@ -99,6 +108,13 @@ page {
   position: absolute;
   top: -2rpx;
   left: 482rpx;
+}
+.hp-footer-text0 {
+  font-size: 20rpx;
+  color: #545454;
+  position: absolute;
+  top: 35rpx;
+  left: 82rpx;
 }
 .hp-footer-text1 {
   font-size: 20rpx;

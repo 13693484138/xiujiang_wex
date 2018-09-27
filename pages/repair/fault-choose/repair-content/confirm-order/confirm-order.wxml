@@ -1,5 +1,5 @@
 <view class='co-top'>
-  <view class='co-top-1' wx:if='{{addressId == 0}}' bindtap='goToAddAddress'  data-tt='1'>
+  <view class='co-top-1' wx:if='{{addressId}}' bindtap='goToAddAddress'  data-tt='1'>
     <view class='iconfont icon-jiahao'></view>
     <view>添加您的服务地址</view>
   </view>
