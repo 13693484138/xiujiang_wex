@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    getList(this, 1)
+    console.log("list--onLoad");
   },
 
 
@@ -25,27 +25,29 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    console.log("list--onReady");
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    console.log("list--onShow");
+    getList(this, 1)
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+    console.log("list--onHide");
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    console.log("list--onUnload");
   
   },
 
@@ -53,13 +55,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    console.log("onPullDownRefresh");
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    console.log("onReachBottom");
     if(this.data.nextPage <= this.data.totalPage) {
       getList(this, this.data.nextPage)
     }
@@ -73,28 +76,9 @@ Page({
   },
   goToOrderDetail: function(event) {
     var id = event.currentTarget.dataset.id;
-    var state = event.currentTarget.dataset.state;
-    if(state == 1) {
       wx.navigateTo({
-        url: '/pages/order/submitted/submitted?id='+id+'&state='+state
+        url: '/pages/order/repair/repair?orderNo=' + id +'&type=1'
       })
-    }else if(state == 2) {
-      wx.navigateTo({
-        url: '/pages/order/accept/accept?id='+id+'&state='+state
-      })
-    }else if(state == 3) {
-      wx.navigateTo({
-        url: '/pages/order/repair/repair?id=' + id + '&state=' + state
-      })
-    }else if(state == 4) {
-      wx.navigateTo({
-        url: '/pages/order/payment/payment?id=' + id + '&state=' + state
-      })
-    }else if(state == 5 || state == 6) {
-      wx.navigateTo({
-        url: '/pages/order/finish/finish?id=' + id + '&state=' + state
-      })
-    }
   }
 })
 

@@ -13,7 +13,7 @@ Page({
     radioData: 1,
     showDate: false,
     preOrderNo: '',
-    addressId: 0,
+    addressId: '',
     repairObj: {},
     address: {},
     recommendationNetworkId: 0,
@@ -69,7 +69,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    if (this.data.addressId > 0) {
+    if (this.data.addressId != '') {
       http.request({
         apiName: 'reqair/getOneAddress/' + this.data.addressId,
         method: 'get',
@@ -168,7 +168,7 @@ Page({
     }
   },
   alertTips: function() {
-    if (this.data.addressId <= 0) {
+    if (this.data.addressId == '') {
       showRemind("请先选择服务地址");
     } else {
       this.setData({
@@ -187,7 +187,7 @@ Page({
     this.setData({
       showModal: false
     })
-    if (this.data.addressId > 0) {
+    if (this.data.addressId != '') {
       if (radioValue > 1) {
         getRecommendation(this, this.data.addressId);
         this.setData({
@@ -202,7 +202,7 @@ Page({
     }
   },
   goToRecommendShop: function() {
-    if (this.data.addressId > 0) {
+    if (this.data.addressId != '') {
       wx.navigateTo({
         url: '/pages/repair/fault-choose/repair-content/confirm-order/recommend-shop/recommend-shop?addressId=' + this.data.addressId
       })
@@ -280,7 +280,7 @@ Page({
   enterOrder: function(e) {
     let params = {};
     let addressId = this.data.addressId;
-    if (addressId <= 0) {
+    if (addressId == '') {
       showRemind("请选择服务地址")
     }
     params['addressid'] = addressId;
@@ -302,8 +302,8 @@ Page({
         this.setData({
           orderNo: res
         })
-        wx.navigateTo({
-          url: '/pages/order/repair/repair?orderNo=' + this.data.orderNo
+        wx.reLaunch({
+          url: '/pages/order/repair/repair?orderNo=' + this.data.orderNo +'&type=2'
         })
       }
     })
