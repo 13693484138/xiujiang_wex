@@ -6,7 +6,7 @@ Page({
    */
   data: {
     showTop: false,
-    showModal: false
+    showModal: false,
   },
 
   /**
@@ -64,10 +64,27 @@ Page({
   onShareAppMessage: function () {
   
   },
+
   goToAddressManage: function() {
     wx.navigateTo({
       url: '/pages/me/address-manage/address-manage'
     })
+  },
+  goToApplyDistribution:function(event) {
+    console.log(event.currentTarget.id);
+    if (event.currentTarget.id == 'view1'){
+      wx.navigateTo({
+        url: '/pages/me/apply-distribution/apply-distribution-01/apply-distribution-01?id='+ 1
+      })
+    } else if (event.currentTarget.id == 'view4'){
+      wx.navigateTo({
+        url: '/pages/me/apply-distribution/apply-distribution-01/apply-distribution-01?id=' + 3
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/me/apply-distribution/apply-distribution-01/apply-distribution-01?id=' + 2
+      })
+    }
   },
   goToSetting: function() {
     wx.navigateTo({

@@ -18,7 +18,7 @@ page{
   height: 117rpx;
   background: #FEAA42;
   margin-top: 4rpx;
-  border-radius: 5%;
+  border-radius: 15%;
   color:#FFFFFF;
   vertical-align: middle;
   text-align: center;

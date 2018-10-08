@@ -2,26 +2,26 @@
   基本信息
 </view>
 
-
+<form bindsubmit="formSubmit">
 <view class='list1'>
   <view>
     收货人
   </view>
-  <input placeholder='请输入收货人姓名' placeholder-class='ph-class'></input>
+  <input placeholder='请输入收货人姓名' placeholder-class='ph-class' name='name'></input>
 </view>
 
 <view class='list1'>
   <view>
     联系电话
   </view>
-  <input placeholder='请输入收货人联系电话' placeholder-class='ph-class'></input>
+  <input placeholder='请输入收货人联系电话' placeholder-class='ph-class' name='tel'></input>
 </view>
 
 <view class='list1'>
   <view>
     收货地址
   </view>
-  <input placeholder='请输入收货人收货地址' placeholder-class='ph-class'></input>
+  <input placeholder='请输入收货人收货地址' placeholder-class='ph-class' name='address'></input>
 </view>
 
 
@@ -30,7 +30,7 @@
     物料种类
   </view>
   <view bindtap='alertTips'>
-    请选择种类
+    <input placeholder='请选择种类' placeholder-class='ph-class' name='kind'></input>
   </view>
 </view>
 
@@ -39,7 +39,7 @@
   <view>
     申请数量
   </view>
-  <input placeholder='物料申请数量，单次最大1000' placeholder-class='ph-class'></input>
+  <input placeholder='物料申请数量，单次最大1000' placeholder-class='ph-class' name='num'></input>
 </view>
 
 
@@ -47,17 +47,16 @@
   <view>
     接收邮箱
   </view>
-  <input placeholder='物料发送邮箱' placeholder-class='ph-class'></input>
+  <input placeholder='物料发送邮箱' placeholder-class='ph-class' name='email'></input>
 </view>
 
 
 <view class='btn1'>
   <view class='btn2'>
-    <text>保存提交</text>
+    <button formType="submit" class='btn2'>保存提交</button>
   </view>
 </view>
-
-
+</form>
 
 
 
@@ -65,12 +64,9 @@
 
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 <view wx:if="{{showModal}}" class='alert-content'>
-  <view>
-    <view class='alert-round-true'></view>
     <view>请选择种类</view>
-  </view>
   <view bindtap='changeIsChoose'>
-    <view class='{{isChoose?"alert-round-true":"alert-round-false"}}'></view>
+    <view class='{{isChoose?"alert-round-true":"alert-round-false"}}' value='kind'></view>
     <view>门店物料</view>
   </view>
 </view>

@@ -13,10 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var orderNo = options.orderNo;
-    var orderStatus = options.status;
-    console.log(options)
-    getOrderDetail(this, orderNo, orderStatus);
+    getOrderDetail(this, options.id, options.state);
   },
 
   /**
@@ -74,7 +71,6 @@ Page({
 })
 
 function getOrderDetail(me, orderno, state) {
-  console.log(orderno+'-----'+state)
   http.request({
     apiName: 'order/orderdetail',
     method: 'POST',
