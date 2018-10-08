@@ -15,6 +15,13 @@
 }
 .icon-touxiang:before { content: "\e648"; font-size: 20px;}
 
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  /* margin: 20rpx; */
+  border-radius: 100rpx;
+  /* outline: 1px solid silver; */
+}
 
 .list1 {
   height: 200rpx;
@@ -51,7 +58,7 @@
 }
 .ph-class1 {
   color: #888888;
-  width: 220rpx;
+  width: 280rpx;
   margin-left: 40rpx;
 }
 
