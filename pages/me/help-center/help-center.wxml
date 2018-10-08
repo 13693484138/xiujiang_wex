@@ -1,0 +1,63 @@
+<view class='me-center2 me-top' bindtap='gotoProblem'>
+  <view class='me-text1'>
+    常见问题
+  </view>
+  <view class='me-right'>
+    <image src='/images/me/Arrow拷贝.png' class='me-image2'></image>
+  </view>
+</view>
+
+<view class='me-center2'  bindtap='gotoAfterSale'>
+  <view class='me-text1'>
+    申请售后
+  </view>
+  <view class='me-right'>
+    <image src='/images/me/Arrow拷贝.png' class='me-image2'></image>
+  </view>
+</view>
+
+<view class='me-center1'  bindtap='gotoLocation'>
+  <view class='me-text1'>
+    门店地址
+  </view>
+  <view class='me-right'>
+    <image src='/images/me/Arrow拷贝.png' class='me-image2'></image>
+  </view>
+</view>
+
+<view class='me-center2'  bindtap='gotoflow'>
+  <view class='me-text1'>
+    服务流程
+  </view>
+  <view class='me-right'>
+    <image src='/images/me/Arrow拷贝.png' class='me-image2'></image>
+  </view>
+</view>
+
+<view class='me-center1'  bindtap='gotoTerms'>
+  <view class='me-text1'>
+    服务条款
+  </view>
+  <view class='me-right'>
+    <image src='/images/me/Arrow拷贝.png' class='me-image2'></image>
+  </view>
+</view>
+
+<view class='me-text2'>
+  <text>成都市武侯区 交子金融科技中心</text>
+  <view>
+    <text>成都xxxx公司</text>
+  </view>
+</view>
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view wx:if="{{showModal}}" class='alert-content'>
+  <view class='alert-view1'>
+    <view class='alert-view1-1'>温馨提示</view>
+    <view class='alert-view1-2'>是否拨打电话：400-200-2320</view>
+    <view class='alert-view1-3'>(若点击拨打未成功跳转到手机拨打页面)</view>
+    <view class='btn-group'>
+      <view bindtap="hideModal" class='cancel'>取消</view>
+      <view class='phone'>拨打</view>
+    </view>
+  </view>
+</view>

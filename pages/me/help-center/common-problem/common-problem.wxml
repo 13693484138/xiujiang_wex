@@ -1,0 +1,7 @@
+<!--pages/me/help-center/common-problem/common-problem.wxml-->
+<view class='wrap' wx:for="{{4}}">
+  <view class='title'>一、修匠是什么？</view>
+  <text class='content'>开发者通过框架将逻辑层数据中的 name 与视图层的 name 进行了绑定，所以在页面一打开的时候会显示 Hello WeChat!；
+  当点击按钮的时候，视图层会发送 changeName 的事件给逻辑层，逻辑层找到并执行对应的事件处理函数；
+  回调函数触发后，逻辑层执行 setData 的操作，将 data 中的 name 从 WeChat 变为 MINA，因为该数据和视图层已经绑定了，从而视图层会自动改变为 Hello MINA!</text>
+</view>

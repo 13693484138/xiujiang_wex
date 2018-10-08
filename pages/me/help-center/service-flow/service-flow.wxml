@@ -1,0 +1,11 @@
+<!--pages/me/help-center/service-flow/service-flow.wxml-->
+<view class='wrap' wx:for="{{4}}">
+  <view class='title'>一、填写信息？</view>
+  <text class='content'>
+   1. WXML 数据绑定：用于父组件向子组件的指定属性设置数据，仅能设置 JSON 兼容数据（自基础库版本 2.0.9 开始，还可以在数据中包含函数）。具体在 组件模版和样式 章节中介绍。
+
+   2. 事件：用于子组件向父组件传递数据，可以传递任意数据。
+   
+   3.如果以上两种方式不足以满足需要，父组件还可以通过 this.selectComponent 方法获取子组件实例对象，这样就可以直接访问组件的任意数据和方法。
+</text>
+</view>
