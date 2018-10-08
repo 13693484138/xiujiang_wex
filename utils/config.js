@@ -4,3 +4,4 @@ module.exports = {
   mapkey: "Z2EBZ-EXYEJ-YTMFD-K3Y4O-3HQEK-PPF5U",
   loginApi: 'index/login'
 };
+

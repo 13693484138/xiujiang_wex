@@ -1,0 +1,20 @@
+/* pages/me/help-center/service-terms/service-terms.wxss */
+.wrap{
+  padding: 20rpx 10rpx;
+}
+.title{
+  font-size: 30rpx;
+  color: #343434;
+  margin-bottom:10rpx;
+}
+.content{
+  font-size: 26rpx;
+  color: #8f8888;
+  display: flex;
+  text-align: justify;
+}
+.content-order{
+  font-size: 26rpx;
+  color: #8f8888;
+  padding: 20rpx 0;
+}
