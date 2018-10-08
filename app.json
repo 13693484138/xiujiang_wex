@@ -29,15 +29,21 @@
     "pages/repair/fault-choose/repair-content/repair-content",
     "pages/repair/fault-choose/repair-content/repair-explain/repair-explain",
     "pages/repair/fault-choose/repair-content/confirm-order/confirm-order",
-"pages/repair/fault-choose/repair-content/confirm-order/choose-address/choose-address",
+    "pages/repair/fault-choose/repair-content/confirm-order/choose-address/choose-address",
     "pages/repair/fault-choose/repair-content/confirm-order/choose-address/add-address/add-address",
     "pages/repair/fault-choose/repair-content/confirm-order/recommend-shop/recommend-shop",
-    "component/date/date"
+    "component/date/date",
+    "pages/me/help-center/common-problem/common-problem",
+    "pages/me/help-center/help-center",
+    "pages/me/help-center/after-sale/after-sale",
+    "pages/me/help-center/location/location",
+    "pages/me/help-center/service-flow/service-flow",
+    "pages/me/help-center/service-terms/service-terms"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "修匠",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

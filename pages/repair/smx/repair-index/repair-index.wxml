@@ -2,7 +2,7 @@
 
   <view class="section-left">
     <scroll-view scroll-y="true" enable-back-to-top="true" style="height: 100%;">
-      <view wx:for="{{brandList}}" wx:for-index="index" wx:for-item="brand" class='section-left-item {{index==brandindex?"active":""}}' data-index="{{index}}" bindtap='sectionLeftClick'>
+      <view wx:for="{{brandList}}" wx:key="index" wx:for-index="index" wx:for-item="brand" class='section-left-item {{index==brandindex?"active":""}}' data-index="{{index}}" bindtap='sectionLeftClick'>
         {{brand.title}}
       </view>
     </scroll-view>
@@ -10,10 +10,10 @@
 
   <view class='section-right'>
     <scroll-view scroll-y="true" enable-back-to-top="true" style="height: 100%">
-      <view  wx:for="{{brandVersionList}}" wx:for-index="index" wx:for-item="brandVersion">
+      <view  wx:for="{{brandVersionList}}" wx:key="index" wx:for-index="index" wx:for-item="brandVersion">
         <view class='section-right-title'>{{brandVersion.title}}</view>
         <view class="section-right-item ">
-          <view class='flex-col section-right-item-view {{version.id == versionID?"active":""}}' wx:for="{{brandVersion.versionList}}" wx:for-index="index" wx:for-item="version" bindtap='sectionRightClick' data-id="{{version.id}}">
+          <view class='flex-col section-right-item-view {{version.id == versionID?"active":""}}' wx:for="{{brandVersion.versionList}}" wx:key="index" wx:for-index="index" wx:for-item="version" bindtap='sectionRightClick' data-id="{{version.id}}">
             <image src='{{version.img}}' class='version-img'></image>
             <view>{{version.title}}</view>
           </view>

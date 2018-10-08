@@ -91,6 +91,12 @@ Page({
       url: '/pages/me/setting/setting'
     })
   },
+  goToHelpCenter: function () {
+    wx.navigateTo({
+      url: '/pages/me/help-center/help-center'
+    })
+  },
+
   alertTips: function () {
     this.setData({
       showModal: true

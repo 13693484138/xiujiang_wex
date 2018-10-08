@@ -1,5 +1,5 @@
 <swiper indicator-dots="{{indicatorDots}}"
-  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='hp=swiper'>
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" class='hp=swiper'>
   <block wx:for="{{imgUrls}}" wx:key='imgUrls'>
     <swiper-item>
       <image src="{{item}}" class="slide-image"/>
@@ -30,13 +30,13 @@
   
   <image src='/images/home-page/bg1.png' class='hp-images2-bg'></image>
   <view>
-    <image src='/images/home-page/图层8.png' class='hp-images2-1'></image>
+    <image src='/images/home-page/图层8.png' class='hp-images2-1' bindtap="subscribe"></image>
   </view>
   <view>
-    <image src='/images/home-page/马上维修.png' class='hp-images2-2'></image>
+    <image src='/images/home-page/马上维修.png' class='hp-images2-2' bindtap="enterRepair"></image>
   </view>
   <view>
-    <image src='/images/home-page/联系客服.png' class='hp-images2-3'></image>
+    <image src='/images/home-page/联系客服.png' class='hp-images2-3' bindtap="customerService"></image>
   </view>
 </view>
 

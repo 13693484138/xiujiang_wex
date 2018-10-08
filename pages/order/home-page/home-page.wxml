@@ -1,4 +1,4 @@
-<view class="home-page" wx:for="{{orders}}" wx:key="*this" wx:for-index="index" wx:for-item="item" catchtap="goToOrderDetail" data-state="{{item.status}}" data-id="{{item.orderno}}">
+<view class="home-page" wx:for="{{orders}}" wx:key="*this" wx:for-index="index" wx:for-item="item" catchtap="goToOrderDetail"  data-id="{{item.orderno}}">
   <view class="hp-header">
     <text class="hp-header-text1">订单编号\t{{item.orderno}}</text>
   </view>
@@ -18,6 +18,8 @@
   </view>
   <view class="hp-footer">
     <view class="hp-footer-top"></view>
+    <view class="hp-footer-round0" style="background-color: {{item.status == 0?'#fc9b00':'#bfbfbf'}}"></view>
+    <text class="hp-footer-text0" style="color: {{item.status == 0?'#545454':'#bfbfbf'}}">已取消</text>
     <view class="hp-footer-round1" style="background-color: {{item.status>=1?'#fc9b00':'#bfbfbf'}}"></view>
     <text class="hp-footer-text1" style="color: {{item.status>=1?'#545454':'#bfbfbf'}}">已提交</text>
     <view class="hp-footer-round2" style="background-color: {{item.status>=2?'#fc9b00':'#bfbfbf'}}"></view>

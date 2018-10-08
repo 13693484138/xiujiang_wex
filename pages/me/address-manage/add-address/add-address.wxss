@@ -50,10 +50,26 @@
 .icon-tongxunlu {
   margin-right: 10rpx;
 }
+/*地区选择器部分*/
+picker{
+  display: inline-block;
+  width: 417rpx;
+  font-size: 30rpx;
+  color: #888888;
+}
+.regionValue{
+  color:black;
+  font-size: 34rpx;
+  font-family: UICTFontTextStyleBody;
+}
 .icon-dizhi {
   margin-right: 10rpx;
 }
 
+.deauflt{
+  display: flex;
+  justify-content: space-between
+}
 
 
 
@@ -77,6 +93,7 @@
   height: 80rpx;
   font-size: 36rpx;
   color: #ff9a00;
+  background: #fff;
   border: 1px solid #ff9a00;
   border-radius: 40rpx;
   text-align: center;

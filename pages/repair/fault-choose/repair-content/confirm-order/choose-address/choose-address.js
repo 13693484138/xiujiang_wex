@@ -80,7 +80,7 @@ Page({
   }, 
   goToAddAddress: function() {
     wx.navigateTo({
-      url: '/pages/repair/fault-choose/repair-content/confirm-order/choose-address/add-address/add-address'
+      url: '/pages/repair/fault-choose/repair-content/confirm-order/choose-address/add-address/add-address',
     })
   },
   enterAddressInfo:function(e){

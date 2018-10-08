@@ -26,7 +26,7 @@
 <!-- 弹出窗 -->
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 <view wx:if="{{showModal}}" class='alert-content'>
-  <view class='alert-content-item {{color_index == index?"active":""}}' wx:for="{{colors}}" wx:for-index="index" data-index="{{index}}" bindtap='changeVersionColor'>
+  <view class='alert-content-item {{color_index == index?"active":""}}' wx:for="{{colors}}" wx:key="index" wx:for-index="index" data-index="{{index}}" bindtap='changeVersionColor'>
     <text>{{item}}</text>
   </view>
 </view>
@@ -44,7 +44,7 @@
 </view>
 
 
-<view class='' wx:for="{{pfaultList}}" wx:for-item="pfault">
+<view class='' wx:for="{{pfaultList}}" wx:key="index" wx:for-item="pfault">
   <view class='list2'>
     <view>{{pfault.title}}</view>
     <view class='flex-row'>

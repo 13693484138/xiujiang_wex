@@ -67,7 +67,7 @@
   </view>
 </view>
 
-<view class='me-center1'>
+<view class='me-center1'  bindtap='goToHelpCenter'>
   <view>
     <image src='/images/me/帮助中心.png' class='me-image1'></image>
   </view>

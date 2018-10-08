@@ -1,0 +1,113 @@
+/* pages/me/help-center/help-center.wxss */
+page {
+  background-color: #eeeeee;
+}
+.me-center1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  background-color: #ffffff;
+  margin-bottom: 20rpx;
+  height: 90rpx;
+}
+.me-center2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-bottom: 1rpx solid #eeeeee;
+  height: 90rpx;
+}
+.me-image2 {
+  width: 20rpx;
+  height: 26rpx;
+}
+.me-text1 {
+  font-size: 26rpx;
+  color: #343434;
+  position: absolute;
+  left: 30rpx;
+}
+.me-text2{
+  font-size: 26rpx;
+  color: #9c9797;
+  position: absolute;
+  bottom: 30rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.me-top {
+  margin-top: 20rpx;
+}
+.me-right {
+  color: #343434;
+  position: absolute;
+  right: 30rpx;
+}
+/* 弹出窗 */
+.alert-content {
+  width: 595rpx;
+  background-color:#ffffff;
+  position: fixed;
+  top: 220rpx;
+  left: 75rpx;
+  z-index: 9999;
+  border-radius: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9;
+  color: #fff;
+}
+.alert-view1{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:20rpx 0 0 0;
+  width: 100%;
+}
+.alert-view1-1{
+  padding:20rpx 0;
+}
+.alert-view1-2,.alert-view1-3{
+  font-size: 30rpx;
+}
+.btn-group{
+  display: flex;
+  justify-content:space-around;
+  width:100%;
+  height:80rpx;
+  align-items:center;
+  border-top:1rpx solid #eee;
+  margin-top:10rpx;
+}
+.cancel{
+  height:80rpx;
+  flex:1;
+  text-align:center;
+  color:rgb(197, 183, 183);
+  line-height:80rpx;
+  border-right:1px solid #eee;
+}
+.phone{
+  color: red;
+  flex:1;
+  text-align:center;
+}

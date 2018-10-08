@@ -1,0 +1,6 @@
+<!--pages/me/help-center/location/location.wxml-->
+<view class='wrap' wx:for="{{10}}">
+  <view class='name'>北京分部</view>
+  <view class='detail'>网点地址 北京市海淀区万泉河路68号紫金大厦409室</view>
+  <view class='detail'>联系方式 010-64653654</view>
+</view>

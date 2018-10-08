@@ -1,0 +1,13 @@
+<!--pages/me/help-center/service-terms/service-terms.wxml-->
+<view class='wrap'>
+<view class='title'>导言</view>
+  <text class='content'>首页欢迎选择修匠！为了帮助开发者简单和高效地开发和调试微信小程序，我们在原有的公众号网页调试工具的基础上，推出了全新的 微信开发者工具，集成了公众号网页调试和小程序调试两种开发模式</text>
+</view>
+<view class='wrap' wx:for="{{4}}">
+  <view class='title'>一、协议范围</view>
+  <view class='content-order'>1.1</view>
+  <text class='content'>开发者通过框架将逻辑层数据中的 name 与视图层的 name 进行了绑定，所以在页面一打开的时候会显示 Hello WeChat!；
+  当点击按钮的时候，视图层会发送 changeName 的事件给逻辑层，逻辑层找到并执行对应的事件处理函数；
+  回调函数触发后，逻辑层执行 setData 的操作，将 data 中的 name 从 WeChat 变为 MINA，因为该数据和视图层已经绑定了，从而视图层会自动改变为 Hello MINA!</text>
+</view>
+
