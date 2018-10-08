@@ -1,46 +1,49 @@
-<view class='list1'>
-  <view>
+<form bindreset="formReset" bindsubmit="saveData">
+  <view class='list1'>
     <view>
-      头像
+      <view>
+        头像
+      </view>
+      <image bindtap="changeAvatar" class="userinfo-avatar" src="{{avatar}}" mode="cover"></image>
+      <!-- <view class='iconfont icon-touxiang'></view> -->
     </view>
-    <view class='iconfont icon-touxiang'></view>
-  </view>
-  <view>
     <view>
-      昵称
+      <view>
+        昵称
+      </view>
+      <input placeholder='请输入昵称' placeholder-class='ph-class' name="nickname" value='{{nickname}}'></input>
     </view>
-    <input placeholder='请输入昵称' placeholder-class='ph-class'></input>
   </view>
-</view>
 
-<view class='center1'></view>
+  <view class='center1'></view>
 
-<view class='list2'>
-  <view>
+  <view class='list2'>
     <view>
-      姓名
+      <view>
+        姓名
+      </view>
+      <input placeholder='请输入真实姓名' placeholder-class='ph-class' name="username" value='{{username}}' ></input>
     </view>
-    <input placeholder='请输入真实姓名' placeholder-class='ph-class'></input>
-  </view>
-  <view>
     <view>
-      手机号
+      <view>
+        手机号
+      </view>
+      <input placeholder='请输入手机号' placeholder-class='ph-class' name="phone" value='{{phone}}' maxlength='11' bindblur="getPhoneNum"></input>
     </view>
-    <input placeholder='请输入手机号' placeholder-class='ph-class'></input>
-  </view>
-  <view>
     <view>
-      验证码
+      <view>
+        验证码
+      </view>
+      <input placeholder='请输入验证码' placeholder-class='ph-class1' name="code" maxlength='6'></input>
+      <view class='btn1' bindtap='getCode'>获取验证码</view>
     </view>
-    <input placeholder='请输入验证码' placeholder-class='ph-class1'></input>
-    <view class='btn1'>获取验证码</view>
   </view>
-</view>
 
 
-<view class='center1'></view>
+  <view class='center1'></view>
 
 
-<view class='btn2'>
-  <view class='btn3'>提交</view>
-</view>
+  <view class='btn2'>
+    <button class='btn3' form-type='submit'>提交</button>
+  </view>
+</form>

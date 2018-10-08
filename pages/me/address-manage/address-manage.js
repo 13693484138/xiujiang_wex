@@ -117,5 +117,13 @@ Page({
     wx.navigateTo({
       url: '/pages/me/address-manage/add-address/add-address'
     })
+  },
+
+  //地址跳转修改页面
+  updateAdd:function(e){
+    let id = e.currentTarget.id
+    wx.navigateTo({
+      url: '/pages/me/address-manage/add-address/add-address?id='+id,
+    })
   }
 })
