@@ -4,7 +4,7 @@ const http = require('../../../../../utils/http');
 const AppConfig = require("../../../../../utils/config");
 Page({
 
-  /**
+  /**f
    * 页面的初始数据
    */
   data: {
@@ -78,7 +78,9 @@ Page({
         apiName: 'reqair/getOneAddress/' + this.data.addressId,
         method: 'get',
         success: (res) => {
+          console.log(res)
           this.setData({
+            addressId:res.id,
             address: res,
             showTop: false
           })
@@ -167,7 +169,7 @@ Page({
       })
     }else{
       wx.navigateTo({
-        url: '/pages/me/address-manage/address-manage'
+        url: '/pages/me/address-manage/address-manage?preOrderNo='+this.data.preOrderNo
       })
     }
   },

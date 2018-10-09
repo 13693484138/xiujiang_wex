@@ -67,7 +67,7 @@
   </view>
 </view>
 
-<view class='me-center1'>
+<view class='me-center1'  bindtap='goToHelpCenter'>
   <view>
     <image src='/images/me/帮助中心.png' class='me-image1'></image>
   </view>
@@ -98,28 +98,28 @@
 
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 <view wx:if="{{showModal}}" class='alert-content'>
-  <view class='alert-view1'>
+  <view class='alert-view1' bindtap="goToApplyDistribution" id='view1'>
     <view class='alert-view1-1'></view>
     <view class='alert-view1-2'>普通伙伴</view>
     <view class='alert-view1-3'></view>
   </view>
-  <view class='alert-view2'>
+  <view class='alert-view2' bindtap="goToApplyDistribution" id='view2'>
     <view class='alert-view2-1'></view>
     <view class='alert-view2-2'>合作伙伴</view>
     <view class='alert-view2-3'></view>
   </view>
-  <view class='alert-view3'>
+  <view class='alert-view3' bindtap="goToApplyDistribution" id='view3'>
     <view class='alert-view3-1'></view>
     <view class='alert-view3-2'>高级合作伙伴</view>
     <view class='alert-view3-3'></view>
   </view>
-  <view class='alert-view4'>
+  <view class='alert-view4' bindtap="goToApplyDistribution" id='view4'>
     <view class='alert-view4-1'></view>
     <view class='alert-view4-2'>省/市/区代理</view>
     <view class='alert-view4-3'></view>
   </view>
 </view>
-<view class='alert-bottom-x' wx:if="{{showModal}}">
+<view class='alert-bottom-x' wx:if="{{showModal}}" bindtap="hideModal">
   x
 </view>
 

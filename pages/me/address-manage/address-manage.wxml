@@ -1,10 +1,10 @@
 <view class='list' wx:for="{{addressList}}" wx:key="index">
-  <view class='list1'  >
+  <view class='list1' bindtap='updateAdd' id='{{item.id}}'>
     <view>
       {{item.name}}   {{item.phone}}
     </view>
     <text space='ensp'>{{item.province}} {{item.city}} {{item.district}} {{item.address}}</text>
-    <view class='icon1' id="{{item.id}}" bindtap='deleteAddress'>
+    <view class='icon1' id="{{item.id}}" catchtap='deleteAddress' wx:if='{{preOrderNo == ""}}'>
       <view class='iconfont icon-trashbin'></view>
     </view>
   </view>

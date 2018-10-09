@@ -7,6 +7,7 @@ Page({
    */
   data: {
     addresslist: [], //请求回的地址列表
+    preOrderNo:''
   },
 
   /**
@@ -14,6 +15,13 @@ Page({
    */
   onLoad: function(options) {
     console.log(options)
+    let tempPreOrderNo = options.preOrderNo;
+    console.log(tempPreOrderNo);
+    if (tempPreOrderNo != ''){
+      this.setData({
+        preOrderNo: tempPreOrderNo
+      })
+    }
   },
 
   /**
@@ -117,5 +125,24 @@ Page({
     wx.navigateTo({
       url: '/pages/me/address-manage/add-address/add-address?tt=0'
     })
+  },
+
+  //地址跳转修改页面
+  updateAdd:function(e){
+    let id = e.currentTarget.id
+    if(this.data.preOrderNo == ''){
+      wx.navigateTo({
+        url: '/pages/me/address-manage/add-address/add-address?id='+id,
+      })
+    }else{
+      let pages = getCurrentPages();
+      let prevPage = pages[pages.length - 2];
+      prevPage.setData({
+        addressId:id
+      });
+      wx.navigateBack({
+        
+      })
+    }
   }
 })

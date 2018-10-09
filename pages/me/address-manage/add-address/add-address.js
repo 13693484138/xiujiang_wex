@@ -8,6 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    haveId: false,
+    addressId:'',
+    oldAddressInfo: null,
     region: '', //地区选择器
     latitude: '', //纬度
     longitude: '', //经度
@@ -22,7 +25,22 @@ Page({
     this.setData({
       type: tt
     })
-    console.log(this.data.type+'===================')
+    //判断是如何进此页面的 如果带id那么是编辑页面跳转,就渲染原来的地址信息
+    let updateId = options.id;
+    if (updateId) {
+      console.log("有id")
+      this.setData({
+        haveId: true,
+        addressId: updateId
+      })
+      this.requestOldAddress(updateId)
+    } else {
+      console.log("没有id")
+      this.setData({
+        haveId: false
+      })
+      return;
+    }
   },
 
   /**
@@ -73,6 +91,26 @@ Page({
   onShareAppMessage: function() {
 
   },
+
+  //编辑地址需要请求原地址
+  requestOldAddress(param) {
+    http.request({
+      apiName: 'my/getAddressById',
+      method: 'post',
+      data: {
+        id: param
+      },
+      isShowProgress: true,
+      success: res => {
+        this.setData({
+          oldAddressInfo: res,
+          region: [res.province, res.city, res.district]
+        })
+      }
+    })
+
+  },
+
   //地区选择器赋值
   bindRegionChange(e) {
     let region = e.detail.value;
@@ -210,10 +248,10 @@ Page({
 
     console.log(json)
     /*进行表单验证*/
-    // if (!this.validationRules(json)) {
-    //   console.log("表单验证无法通过")
-    //   return false;
-    // }
+    if (!this.validationRules(json)) {
+      console.log("表单验证无法通过")
+      return false;
+    }
     /*通过表单验证人机交互*/
     wx.showModal({
       title: '提交',
@@ -222,14 +260,22 @@ Page({
         //点击确定后
         if (res.confirm) {
           console.log("开始提交表单")
-          this.submit(json)
+          //判断是新增提交还是更新提交
+          if(this.data.haveId){
+            //更新提交
+            json.id=this.data.addressId
+            this.updateAddress(json)
+          }else{
+            //新增提交
+            this.submit(json)
+          }
         }
       }
     })
   },
 
 
-  //提交表单方法
+  //新增地址提交表单方法
   submit(json) {
     http.request({
       apiName: 'my/insertAddress',
@@ -237,13 +283,26 @@ Page({
       data: json,
       isShowProgress: true,
       success: res => {
-        console.log(res)
-        if(res=='新增成功'){
           if(this.data.type == 1){
             let pages = getCurrentPages();
             let prevPage = pages[pages.length - 2];
             prevPage.data.addressId = res
           }
+          wx.navigateBack({})
+      }
+    })
+  },
+
+  //更新提交方法
+  updateAddress(json){
+    http.request({
+      apiName: 'my/updateAddress',
+      method: 'put',
+      data: json,
+      isShowProgress: true,
+      success: res => {
+        console.log(res)
+        if(res=="修改成功"){
           wx.navigateBack({})
         }
       },
