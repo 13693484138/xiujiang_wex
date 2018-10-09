@@ -41,6 +41,9 @@ Page({
    */
   onHide: function () {
     console.log("list--onHide");
+    this.setData({
+      orders:[]
+    })
   },
 
   /**
@@ -97,6 +100,7 @@ function getList(me, nextPage) {
         nextPage: res.currentPage + 1,
         totalPage: res.total
       })
+      console.log(me.data.orders)
     }
   })
 }

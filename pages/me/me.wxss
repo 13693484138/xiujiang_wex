@@ -119,20 +119,6 @@ page {
 
 
 /* 弹出窗 */
-.alert-content {
-  width: 595rpx;
-  height: 638rpx;
-  background-color:#ffffff;
-  position: fixed;
-  top: 220rpx;
-  left: 75rpx;
-  z-index: 9999;
-  border-radius: 30rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .alert-view1 {
   display: flex;
   flex-direction: row;
@@ -273,8 +259,21 @@ page {
   z-index: 9999;
   font-size: 50rpx;
   position: fixed;
-  top: 878rpx;
+  top: 950rpx;
   left: 335rpx;
+}
+.alert-content {
+  width: 640rpx;
+  height: 638rpx;
+  background-color:#ffffff;
+  position: fixed;
+  top: 284rpx;
+  left: 55rpx;
+  z-index: 9999;
+  border-radius: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .modal-mask {
   width: 100%;
