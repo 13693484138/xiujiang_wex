@@ -11,14 +11,18 @@ Page({
     region: '', //地区选择器
     latitude: '', //纬度
     longitude: '', //经度
-
+    type:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    var tt = options.tt; //判断是从哪个页面跳转过来的
+    this.setData({
+      type: tt
+    })
+    console.log(this.data.type+'===================')
   },
 
   /**
@@ -177,6 +181,7 @@ Page({
     json.province = this.data.region[0];
     json.city = this.data.region[1];
     json.district = this.data.region[2];
+    json.id='';
     if (this.data.latitude != '' && this.data.longitude != '') {
       console.log("自动定位省市区")
       json.lat = this.data.latitude;
@@ -234,6 +239,11 @@ Page({
       success: res => {
         console.log(res)
         if(res=='新增成功'){
+          if(this.data.type == 1){
+            let pages = getCurrentPages();
+            let prevPage = pages[pages.length - 2];
+            prevPage.data.addressId = res
+          }
           wx.navigateBack({})
         }
       },

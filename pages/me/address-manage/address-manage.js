@@ -115,7 +115,7 @@ Page({
   //页面跳转至新增地址
   goToAddAddress: function() {
     wx.navigateTo({
-      url: '/pages/me/address-manage/add-address/add-address'
+      url: '/pages/me/address-manage/add-address/add-address?tt=0'
     })
   }
 })

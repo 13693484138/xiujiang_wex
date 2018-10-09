@@ -163,11 +163,11 @@ Page({
     var tt = e.currentTarget.dataset.tt;
     if (1 == tt) {
       wx.navigateTo({
-        url: '/pages/repair/fault-choose/repair-content/confirm-order/choose-address/add-address/add-address?tt='+tt,
+        url: '/pages/me/address-manage/add-address/add-address?tt='+tt,
       })
     }else{
       wx.navigateTo({
-        url: '/pages/repair/fault-choose/repair-content/confirm-order/choose-address/choose-address?preOrderNo=' + this.data.preOrderNo
+        url: '/pages/me/address-manage/address-manage'
       })
     }
   },
