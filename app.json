@@ -38,7 +38,8 @@
     "pages/me/help-center/after-sale/after-sale",
     "pages/me/help-center/location/location",
     "pages/me/help-center/service-flow/service-flow",
-    "pages/me/help-center/service-terms/service-terms"
+    "pages/me/help-center/service-terms/service-terms",
+    "pages/repair/fault-choose/repair-content/repair-explainLists/repair-explainLists"
   ],
   "window": {
     "backgroundTextStyle": "light",
