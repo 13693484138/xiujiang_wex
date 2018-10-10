@@ -19,10 +19,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-<<<<<<< HEAD
-  onLoad: function (options) {
-    getOrderDetail(this, options.id, options.state);
-=======
+
   onLoad: function(options) {
     console.log("repair--onLoad")
     var orderNo = options.orderNo;
@@ -32,7 +29,6 @@ Page({
       type: tempType
     })
     getOrderDetail(this, orderNo);
->>>>>>> 9f485e9dbb8745158299e14b0b8ccd6ba611d1e3
   },
 
   /**
@@ -172,11 +168,8 @@ Page({
   }
 })
 
-<<<<<<< HEAD
-function getOrderDetail(me, orderno, state) {
-=======
+
 function getOrderDetail(me, orderno) {
->>>>>>> 9f485e9dbb8745158299e14b0b8ccd6ba611d1e3
   http.request({
     apiName: 'order/orderdetail',
     method: 'POST',

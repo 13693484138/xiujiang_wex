@@ -74,28 +74,31 @@ Page({
       //     icon: 'none'
       //   })
       // } else {
-        // http.request({
-        //   apiName: 'my/applycommondistributor',
-        //   method: 'PUT',
-        //   data: {
-        //     username: this.data.name,
-        //     job: this.data.position,
-        //     familyaddress: this.data.address,
-        //     sex: this.data.gender
-        //   }, 
-        //   success: function(res) {
-        //     wx.showToast({
-        //       title: '申请成功！',
-        //       icon: 'success'
-        //     })
-            wx.navigateTo({
-              url: '/pages/me/become-distributor/become-distributor'
+      //   http.request({
+      //     apiName: 'my/applycommondistributor',
+      //     method: 'PUT',
+      //     data: {
+      //       username: this.data.name,
+      //       job: this.data.position,
+      //       familyaddress: this.data.address,
+      //       sex: this.data.gender
+      //     }, 
+      //     success: function(res) {
+      //       wx.showToast({
+      //         title: '申请成功！',
+      //         icon: 'success'
+      //       })
+            // wx.navigateTo({
+            //   url: '/pages/me/me'
+            // })
+            wx.switchTab({
+              url: '/pages/me/me'
             })
-        //   },
-        //   fail: function(res) {
-        //     console.log(res);
-        //   }
-        // })
+      //     },
+      //     fail: function(res) {
+      //       console.log(res);
+      //     }
+      //   })
       // };
     }
     if (this.data.id == 3) {

@@ -306,13 +306,8 @@ Page({
         this.setData({
           orderNo: res
         })
-<<<<<<< HEAD
-        wx.navigateTo({
-          url: '/pages/order/repair/repair?orderNo='+this.data.orderNo
-=======
         wx.reLaunch({
           url: '/pages/order/repair/repair?orderNo=' + this.data.orderNo +'&type=2'
->>>>>>> 9f485e9dbb8745158299e14b0b8ccd6ba611d1e3
         })
       }
     })

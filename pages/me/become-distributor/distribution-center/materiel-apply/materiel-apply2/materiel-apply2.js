@@ -13,7 +13,9 @@ Page({
     address: '',
     num: '',
     email: '',
-    kind: '',
+    type: '',
+    Array: ['请选择种类','门店物料'],
+    index: 0
   },
 
   /**
@@ -23,12 +25,11 @@ Page({
   
   },
 
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  changeSelect: function (e) {
+    this.setData({
+      index: e.detail.value
+    })
+    console.log(this.data.index)
   },
   alertTips: function () {
     this.setData({
@@ -54,7 +55,8 @@ Page({
       tel: e.detail.value.tel,
       address: e.detail.value.address,
       num: e.detail.value.num,
-      email: e.detail.value.email
+      email: e.detail.value.email,
+      type: this.data.index
     })
     let flag = true;
       let warn = '';
@@ -70,7 +72,7 @@ Page({
         warn = '您输入的数量不正确！'
       } else if (!(/^[\u4E00-\u9FA5A-Za-z]+$/.test(e.detail.value.corporateAddress))) {
         warn = '请输入详细的地址！'
-    } else if (!(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2, 6} $/)){
+    } else if (!(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/).test(e.detail.value.email)){
       warn = '请输入正确的邮箱！'
       }else {
         flag = false;
@@ -90,16 +92,16 @@ Page({
             address: this.data.address,
             num: this.data.num,
             email: this.data.email,
-            type: this.data.kind
+            type: this.data.index
           },
           success: function (res) {
             wx.showToast({
               title: '申请成功！',
               icon: 'success'
             })
-            // wx.navigateTo({
-            //   url: '/pages/me/become-distributor/become-distributor'
-            // })
+            wx.navigateTo({
+            url:'/pages/me/become-distributor/distribution-center/distribution-center.js'
+            })
           },
           fail: function (res) {
             console.log(res);
