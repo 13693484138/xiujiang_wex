@@ -20,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
 
-  onLoad: function(options) {
+  onLoad: function (options) {
     console.log("repair--onLoad")
     var orderNo = options.orderNo;
     var tempType = options.type;
@@ -167,7 +167,6 @@ Page({
 
   }
 })
-
 
 function getOrderDetail(me, orderno) {
   http.request({

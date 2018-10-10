@@ -14,13 +14,17 @@ Page({
     region: '', //地区选择器
     latitude: '', //纬度
     longitude: '', //经度
-
+    type:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var tt = options.tt; //判断是从哪个页面跳转过来的
+    this.setData({
+      type: tt
+    })
     //判断是如何进此页面的 如果带id那么是编辑页面跳转,就渲染原来的地址信息
     let updateId = options.id;
     if (updateId) {
@@ -215,6 +219,7 @@ Page({
     json.province = this.data.region[0];
     json.city = this.data.region[1];
     json.district = this.data.region[2];
+    json.id='';
     if (this.data.latitude != '' && this.data.longitude != '') {
       console.log("自动定位省市区")
       json.lat = this.data.latitude;
@@ -278,11 +283,13 @@ Page({
       data: json,
       isShowProgress: true,
       success: res => {
-        console.log(res)
-        if (res == '新增成功') {
+          if(this.data.type == 1){
+            let pages = getCurrentPages();
+            let prevPage = pages[pages.length - 2];
+            prevPage.data.addressId = res
+          }
           wx.navigateBack({})
-        }
-      },
+      }
     })
   },
 
