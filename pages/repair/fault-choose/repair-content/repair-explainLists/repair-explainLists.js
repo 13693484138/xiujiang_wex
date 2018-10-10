@@ -1,79 +1,84 @@
-let http = require("../../../../../utils/http.js")
+let http=require("../../../../../utils/http.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    explainDetail: []
+    explainLists:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    let id = options.id
-    this.requestData(id)
+  onLoad: function (options) {
+    this.requestLists()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
-  requestData(param) {
+  requestLists(){
     http.request({
-      apiName: "reqair/deviceexplaindetail/" + param,
+      apiName: "reqair/deviceexplainlist",
       method: "get",
       success: (res) => {
         // console.log(res)
         this.setData({
-          explainDetail: res
+          explainLists:res
         })
       }
     })
-  }
+  },
+  //进入故障详细 说明
+  explainDetail(e){
+    wx.navigateTo({
+      url: '../repair-explain/repair-explain?id=' + e.currentTarget.id,
+    })
+  },
 })

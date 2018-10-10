@@ -1,18 +1,18 @@
-<view class='list1'>
-  <view>外屏碎（显示正常）</view>
+<view class='list1' wx:for="{{explainDetail}}" wx:key="{{index}}">
+  <view>{{item.title}}</view>
   <view>
     <view>
-    维修方案：更换总成对换，质保180天，旧屏回收
+    维修方案：{{item.solution}}
     </view>
-    <view>维修说明：内屏显示异常，一般是指，手机屏幕显示花</view>
-    <view>屏，液晶破裂，触摸无法使用等情况。此服务产品使用</view>
-    <view>严选品质配件</view>
+    <view>维修说明：{{item.explain}}</view>
+    <!-- <view>屏，液晶破裂，触摸无法使用等情况。此服务产品使用</view>
+    <view>严选品质配件</view> -->
   </view>
 </view>
 
 
 
-<view class='list1'>
+<!-- <view class='list1'>
   <view>内屏碎（液晶坏）</view>
   <view>
     <view>
@@ -22,4 +22,4 @@
     <view>屏，液晶破裂，触摸无法使用等情况。此服务产品使用</view>
     <view>严选品质配件</view>
   </view>
-</view>
+</view> -->
