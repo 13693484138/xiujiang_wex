@@ -156,28 +156,27 @@ Page({
     let values = e.detail.value;
     values.imgid = this.data.imgid
     //表单验证---判断昵称姓名手机号是否为空
-    // if(values.nickname===""){
-    //   wx.showToast({
-    //     image:'../../../images/icon/err.png',
-    //     title: '昵称不能为空',
-    //   })
-    //   return false;
-    // }
-    // if(values.username===""){
-    //   wx.showToast({
-    //     image: '../../../images/icon/err.png',
-    //     title: '姓名不能为空',
-    //   })
-    //   return false;
-    // }
-    // if(values.code===""){
-    //   wx.showToast({
-    //     image: '../../../images/icon/err.png',
-    //     title: '验证码不能为空',
-    //   })
-    //   return false;
-    // }
-    console.log("表单验证通过")
+    if(values.nickname===""){
+      wx.showToast({
+        image:'../../../images/icon/err.png',
+        title: '昵称不能为空',
+      })
+      return false;
+    }
+    if(values.username===""){
+      wx.showToast({
+        image: '../../../images/icon/err.png',
+        title: '姓名不能为空',
+      })
+      return false;
+    }
+    if(values.code===""){
+      wx.showToast({
+        image: '../../../images/icon/err.png',
+        title: '验证码不能为空',
+      })
+      return false;
+    }        
     //人机交互--弹窗
     wx.showModal({
       title: '提示',
