@@ -284,6 +284,7 @@ Page({
     }
   },
   enterOrder: function(e) {
+
     let params = {};
     let addressId = this.data.addressId;
     if (addressId == '') {
@@ -299,20 +300,28 @@ Page({
     }
     params["preorderno"] = this.data.preOrderNo;
     params["remark"] = this.data.orderRemarks;
-    console.log(params);
     http.request({
-      apiName: 'reqair/submitorder',
-      method: 'post',
-      data: params,
+      apiName: 'reqair/savetoken',
+      method:'post',
+      data:params,
       success: (res) => {
-        this.setData({
-          orderNo: res
-        })
-        wx.reLaunch({
-          url: '/pages/order/repair/repair?orderNo=' + this.data.orderNo +'&type=2'
+        params['checkData'] = res;
+        http.request({
+          apiName: 'reqair/submitorder',
+          method: 'post',
+          data: params,
+          success: (res) => {
+            this.setData({
+              orderNo: res
+            })
+            wx.reLaunch({
+              url: '/pages/order/repair/repair?orderNo=' + this.data.orderNo + '&type=2'
+            })
+          }
         })
       }
     })
+   
   }
 })
 /**
