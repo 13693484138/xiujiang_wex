@@ -54,5 +54,20 @@ module.exports = {
   formatTime: formatTime,
   compareDate: compareDate,
   getCurrentToday: getCurrentToday,
-  dateLater: dateLater
+  dateLater: dateLater,
+  showRemind: showRemind
+}
+//提示框
+function showRemind(content) {
+  wx.showModal({
+    title: '提示',
+    content: content,
+    success: function (res) {
+      if (res.confirm) {
+        console.log('用户点击确定')
+      } else if (res.cancel) {
+        console.log('用户点击取消')
+      }
+    }
+  })
 }
