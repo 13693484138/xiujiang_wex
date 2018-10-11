@@ -7,7 +7,6 @@
       <input name='name' class='content11-input' placeholder='请输入您的姓名' placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;'></input>
       <view class='content11-2'></view>
     </view>
-    <view class='eorro'>{{showEorro}}</view>
   </view>
 
 
@@ -15,21 +14,19 @@
     <view class='content1-text'>手机\n</view>
     <view class='content11'>
       <view class='content11-1'></view>
-      <input name='tel' class='content11-input' placeholder='请输入您的手机号码' placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;'></input>
+      <input name='tel' class='content11-input' placeholder='请输入11位手机号码' placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;'></input>
       <view class='content11-2'></view>
     </view>
-    <view class='eorro'>{{showEorro}}</view>
   </view>
 
-  <view class='content1' wx:if="{{showOrdinary || showAgent}}">
+  <picker name='gender' class='content1' wx:if="{{showOrdinary || showAgent}}" bindchange="Select" value="{{idx}}" range="{{Arr}}">
     <view class='content1-text'>性别\n</view>
     <view class='content11'>
       <view class='content11-1'></view>
-      <input name='gender' class='content11-input' placeholder='请输入性别' placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;'></input>
+      <input value='{{Arr[idx]}}' class='content11-input' placeholder='请输入性别' placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;'></input>
       <view class='content11-2'></view>
     </view>
-    <view class='eorro'>{{showEorro}}</view>
-  </view>
+  </picker>
 
   <view class='content1' wx:if="{{showOrdinary}}">
     <view class='content1-text'>家庭住址\n</view>
@@ -38,7 +35,6 @@
       <input name='address' class='content11-input' placeholder='请填写家庭住址' placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;'></input>
       <view class='content11-2'></view>
     </view>
-    <view class='eorro'>{{showEorro}}</view>
   </view>
 
   <view class='content1' wx:if="{{showCooperation}}">
@@ -48,7 +44,6 @@
       <input name='corporateName' class='content11-input' placeholder='请输入公司名称' placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;'></input>
       <view class='content11-2'></view>
     </view>
-    <view class='eorro'>{{showCorporateName}}</view>
   </view>
 
   <view class='content1' wx:if="{{showCooperation}}">
@@ -58,7 +53,6 @@
       <input name='corporateAddress' class='content11-input' placeholder='请填写公司住址' placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;'></input>
       <view class='content11-2'></view>
     </view>
-    <view class='eorro'>{{showCorporateAddress}}</view>
   </view>
 
   <view class='content1' wx:if="{{showAgent}}">
@@ -68,7 +62,6 @@
       <input name='homeAddress' class='content11-input' placeholder='请填写家庭住址' placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;'></input>
       <view class='content11-2'></view>
     </view>
-    <view class='eorro'>{{showHomeAddress}}</view>
   </view>
 
   <view class='content1'>
@@ -78,7 +71,6 @@
       <input name='position' class='content11-input' placeholder='您的职位' placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;'></input>
       <view class='content11-2'></view>
     </view>
-    <view class='eorro'>{{showEorro}}</view>
   </view>
 
   <picker class='content1' wx:if="{{showAgent}}" bindchange="changeSelect" value="{{index}}" range="{{Array}}">
@@ -88,7 +80,6 @@
       <input name='agent' class='content11-input' value='{{Array[index]}}' placeholder='选择代理' placeholder-style='font-size: 26rpx;color: #888888;letter-spacing: 1px;'></input>
       <view class='content11-2'></view>
     </view>
-    <view class='eorro'>{{showAgents}}</view>
   </picker>
 
 

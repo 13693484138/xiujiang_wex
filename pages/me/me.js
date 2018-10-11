@@ -16,30 +16,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options);
-    http.request({
-      apiName: 'my/getmyinfo',
-      method: 'GET',
-      success: function(res) {
-        console.log('成功' + res.level)
-        this.setData({
-          level: res.level
-        })
-      },
-      fail: function(res) {
-        // console.log(res);
-      }
-    })
-    console.log(this.data.level)
-    if (this.data.level == '0' || this.data.level == '') {
-      this.setData({
-        pages: '申请分销'
-      })
-    } else {
-      this.setData({
-        pages: '分销中心'
-      })
-    }
+   
+
+   
   },
 
   /**
@@ -53,7 +32,27 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    var that = this;
+    http.request({
+      apiName: 'my/getmyinfo',
+      method: 'GET',
+      success: function (res) {
+        console.log(res.level)
+        if (res.level == '0' || res.level == '') {
+          console.log('dksnkjvdnkvsnkjdfnvk')
+          that.setData({
+            pages: '申请分销'
+          })
+        } else {
+          that.setData({
+            pages: '分销中心'
+          })
+        }
+      },
+      fail: function (res) {
+        // console.log(res);
+      }
+    })
   },
 
   /**
@@ -105,10 +104,17 @@ Page({
       wx.navigateTo({
         url: '/pages/me/apply-distribution/apply-distribution-01/apply-distribution-01?id=' + 3
       })
-    } else {
-      wx.navigateTo({
-        url: '/pages/me/apply-distribution/apply-distribution-01/apply-distribution-01?id=' + 2
-      })
+    }else {
+      if (event.currentTarget.id == 'view2'){
+        wx.navigateTo({
+          url: '/pages/me/apply-distribution/apply-distribution-01/apply-distribution-01?id=' + 2 + '&pid=' + 2
+        })
+      }
+      if (event.currentTarget.id == 'view3') {
+        wx.navigateTo({
+          url: '/pages/me/apply-distribution/apply-distribution-01/apply-distribution-01?id=' + 2 + '&pid=' + 7
+        })
+      }
     }
   },
   goToSetting: function() {
@@ -122,12 +128,16 @@ Page({
     })
   },
 
-  alertTips: function(e) {
-    
-    console.log(e);
-    this.setData({
-      showModal: true
-    })
+  alertTips: function() {
+    if(this.data.pages == '申请分销'){
+      this.setData({
+        showModal: true
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/me/become-distributor/distribution-center/distribution-center',
+      })
+    }
   },
 
 
