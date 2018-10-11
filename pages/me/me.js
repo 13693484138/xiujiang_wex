@@ -1,4 +1,5 @@
 // pages/me/me.js
+const http = require('../../utils/http.js');
 Page({
 
   /**
@@ -7,62 +8,87 @@ Page({
   data: {
     showTop: false,
     showModal: false,
+    level: '',
+    pages: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
+  onLoad: function(options) {
+    console.log(options);
+    http.request({
+      apiName: 'my/getmyinfo',
+      method: 'GET',
+      success: function(res) {
+        console.log('成功' + res.level)
+        this.setData({
+          level: res.level
+        })
+      },
+      fail: function(res) {
+        // console.log(res);
+      }
+    })
+    console.log(this.data.level)
+    if (this.data.level == '0' || this.data.level == '') {
+      this.setData({
+        pages: '申请分销'
+      })
+    } else {
+      this.setData({
+        pages: '分销中心'
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
+  onShow: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-  
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  
+  onPullDownRefresh: function() {
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
+  onReachBottom: function() {
+
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function() {
+
   },
 
   goToAddressManage: function() {
@@ -70,17 +96,16 @@ Page({
       url: '/pages/me/address-manage/address-manage'
     })
   },
-  goToApplyDistribution:function(event) {
-    console.log(event.currentTarget.id);
-    if (event.currentTarget.id == 'view1'){
+  goToApplyDistribution: function(event) {
+    if (event.currentTarget.id == 'view1') {
       wx.navigateTo({
-        url: '/pages/me/apply-distribution/apply-distribution-01/apply-distribution-01?id='+ 1
+        url: '/pages/me/apply-distribution/apply-distribution-01/apply-distribution-01?id=' + 1
       })
-    } else if (event.currentTarget.id == 'view4'){
+    } else if (event.currentTarget.id == 'view4') {
       wx.navigateTo({
         url: '/pages/me/apply-distribution/apply-distribution-01/apply-distribution-01?id=' + 3
       })
-    }else{
+    } else {
       wx.navigateTo({
         url: '/pages/me/apply-distribution/apply-distribution-01/apply-distribution-01?id=' + 2
       })
@@ -91,28 +116,30 @@ Page({
       url: '/pages/me/setting/setting'
     })
   },
-  goToHelpCenter: function () {
+  goToHelpCenter: function() {
     wx.navigateTo({
       url: '/pages/me/help-center/help-center'
     })
   },
 
-  alertTips: function () {
+  alertTips: function(e) {
+    
+    console.log(e);
     this.setData({
       showModal: true
     })
   },
-  hideModal: function () {
+
+
+  hideModal: function() {
     this.setData({
       showModal: false
     });
   },
-  preventTouchMove: function () {
-  },
-  changeDuiClass: function (event) {
+  preventTouchMove: function() {},
+  changeDuiClass: function(event) {
     var str = event.currentTarget.dataset.json;
     var flag = this.data[str];
-    console.log(flag);
     if (str == 'first') {
       if (!this.data.first) {
         this.setData({

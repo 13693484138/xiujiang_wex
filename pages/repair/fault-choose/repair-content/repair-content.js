@@ -151,9 +151,9 @@ Page({
     })
   
   },
-  goToRepairExplain: function () {
+  goToRepairExplainLists: function () {
     wx.navigateTo({
-      url: '/pages/repair/fault-choose/repair-content/repair-explain/repair-explain'
+      url: '/pages/repair/fault-choose/repair-content/repair-explainLists/repair-explainLists'
     })
   },
   alertTips: function () {

@@ -24,7 +24,7 @@
     <image src='/images/me/分销商-34.png' class='me-image1'></image>
   </view>
   <view class='me-text1'>
-    申请分销
+    {{pages}}
   </view>
   <view class='me-right'>
     <image src='/images/me/Arrow拷贝.png' class='me-image2'></image>

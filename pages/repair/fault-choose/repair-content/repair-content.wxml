@@ -35,7 +35,7 @@
 <view class='interval'></view>
 
 
-<view class='list1' bindtap='goToRepairExplain'>
+<view class='list1' bindtap='goToRepairExplainLists'>
   <view>故障维修方案</view>
   <view>
     <view>维修说明</view>

@@ -1,0 +1,5 @@
+<view class='header'>常用手机服务说明</view>
+<view class='list' wx:for="{{explainLists}}" wx:key="{{index}}" id='{{item.id}}' bindtap='explainDetail'>
+  <view class='title'>{{item.title}}</view>
+  <view class='icon'><image src='../../../../../images/me/Arrow拷贝.png'></image></view>
+</view>
