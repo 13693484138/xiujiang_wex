@@ -1,5 +1,6 @@
 const http = require('../../../../utils/http');
 const AppConfig = require("../../../../utils/config");
+const utils = require("../../../../utils/util");
 // pages/repair/fault-choose/repair-content/repair-content.js
 Page({
 
@@ -121,7 +122,15 @@ Page({
 
   },
   goToConfirmOrder: function () {
+    if(this.data.chooseFaultList.length <= 0){
+      utils.showRemind('请选择手机故障')
+      return;
+    }
    var faultidStr = this.data.chooseFaultList.join(',');
+    if (this.data.versionColor == '' || this.data.versionColor == null || this.data.versionColor == '选择您的机型配色'){
+      utils.showRemind('请选择手机颜色')
+      return;
+   }
     var params = {
       'versionid': this.data.versionID,
       'color': this.data.versionColor,
