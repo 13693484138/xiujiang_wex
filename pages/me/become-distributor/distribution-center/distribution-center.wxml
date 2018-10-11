@@ -4,17 +4,17 @@
       <image src='/images/me/distribution-center/头像.png' class='dis-center-image1'></image>
     </view>
     <view class='dis-center-text1'>
-      <view>姓名\t\t15256523654</view>
+      <view>姓名{{distributionData.username}}\t\t</view>
       <view>推荐人：某某某</view>
     </view>
     <view class='dis-center-btn1'>
-      普通分销
+      {{distributionData.level}}
     </view>
   </view>
   <view class='dis-center-top2'>
     <view class='dis-center-top2-1'>
       <view>
-        50
+        {{distributionData.today}}
       </view>
       <view>
         今日收入
@@ -22,7 +22,7 @@
     </view>
     <view class='dis-center-top2-2'>
       <view>
-        60
+        {{distributionData.yesterday}}
       </view>
       <view>
         昨日收入
@@ -30,7 +30,7 @@
     </view>
     <view class='dis-center-top2-3'>
       <view>
-        1020
+        {{distributionData.thismonth}}
       </view>
       <view>
       本月收入
@@ -38,7 +38,7 @@
     </view>
     <view class='dis-center-top2-4'>
       <view>
-        2000
+        {{distributionData.lastmonth}}
       </view>
       <view>
         上月收入
@@ -53,7 +53,7 @@
 <view class='yongjin'>
   <view class='yongjin-1'>
     <view>
-      0.00
+      {{distributionData.drawsuccess}}
     </view>
     <view>
       成功提现佣金（元）
@@ -61,7 +61,7 @@
   </view>
   <view class='yongjin-2'>
     <view>
-      416.50
+      {{distributionData.candraw}}
     </view>
     <view>
       可提现佣金（元）
@@ -85,7 +85,7 @@
             分销佣金
           </view>
           <view>
-            416.50元
+            {{distributionData.allmoney}}元
           </view>
         </view>
       </view>
@@ -98,7 +98,7 @@
             分销订单
           </view>
           <view>
-            10笔
+            {{distributionData.countorder}}笔
           </view>
         </view>
       </view>
@@ -113,7 +113,7 @@
             提现明细
           </view>
           <view>
-            0笔
+            {{distributionData.drawcount}}笔
           </view>
         </view>
       </view>
@@ -126,7 +126,7 @@
             我的下线
           </view>
           <view>
-            225人
+            {{distributionData.mymember}}人
           </view>
         </view>
       </view>
@@ -135,7 +135,7 @@
 </view>
 
 
-<view class='dis-center-bottom'>
+<view class='dis-center-bottom' bindtap='QRcode'>
   <view>
     <image src='/images/me/distribution-center/二维码.png' class='dis-center-bottom-image1'></image>
   </view>
