@@ -73,3 +73,9 @@ page {
   color: #8f8f8f;
   padding: 20rpx 0rpx 20rpx 30rpx;
 }
+
+.noMore{
+  font-size: 30rpx;
+  text-align: center;
+  color: #444;
+}
