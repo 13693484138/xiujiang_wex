@@ -18,46 +18,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
 
-
-  getClassA: function () {
-    var that = this;
-    http.request({
-      apiName: 'my/subordinatelist',
-      method: 'POST',
-      data: {
-        currentPage: that.data.classA
-      },
-      success: function (res) {
-        that.setData({
-          listA: res.list
-        })
-      },
-      fail: function (res) {
-        console.log(res)
-      }
-    })
-  },
-  getClassB: function () {
-    var that = this;
-    http.request({
-      apiName: 'my/secondsubordinatelist',
-      method: 'POST',
-      data: {
-        currentPage: that.data.classB
-      },
-      success: function (res) {
-        that.setData({
-          listB: res.list
-        })
-      },
-      fail: function (res) {
-        console.log(res)
-      }
-    })
-  },
   onLoad: function (options) {   
     if(this.data.bindClass) {
-      
+      var that = this;
+      http.request({
+        apiName: 'my/subordinatelist',
+        method: 'POST',
+        data: {
+          currentPage: that.data.classA
+        },
+        success: function (res) {
+          console.log(res)
+          that.setData({
+            lists: res.list
+          })
+        },
+        fail: function (res) {
+          console.log(res)
+        }
+      })
+    }else{
+      var that = this;
+      http.request({
+        apiName: 'my/secondsubordinatelist',
+        method: 'POST',
+        data: {
+          currentPage: that.data.classB
+        },
+        success: function (res) {
+          that.setData({
+            lists: res.list
+          })
+        },
+        fail: function (res) {
+          console.log(res)
+        }
+      })
     }
   },
 
@@ -115,26 +111,12 @@ Page({
     if (id == 1 && !this.data.bindClass) {
       this.setData({
         bindClass: !this.data.bindClass,
-        // lists: [
-        //   { name: '小明', date: '02-27 12:13', member: 3 },
-        //   { name: '小红', date: '03-27 13:13', member: 4 },
-        //   { name: '小强', date: '04-27 14:13', member: 5 },
-        //   { name: '小刚', date: '05-27 15:13', member: 6 },
-        //   { name: '小王', date: '06-27 16:13', member: 6 }
-        // ]
       })
       return;
     }
     if (id == 2 && this.data.bindClass) {
       this.setData({
         bindClass: !this.data.bindClass,
-        // lists: [
-        //   { name: '大明', date: '07-27 17:13', member: 7 },
-        //   { name: '大红', date: '08-27 18:13', member: 8 },
-        //   { name: '大强', date: '09-27 19:13', member: 9 },
-        //   { name: '大刚', date: '10-27 20:13', member: 10 },
-        //   { name: '大王', date: '11-27 21:13', member: 11 }
-        // ]
       })
     }
   }

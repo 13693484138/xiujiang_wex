@@ -21,16 +21,16 @@
         <image src=''></image>
       </view>
       <view>
-        <view class='list-text1'>{{item.name}}</view>
+        <view class='list-text1'>{{item.username}}</view>
         <view class='list-text2'>
-        <text space='ensp'>注册时间：{{item.date}}</text>
+        <text space='ensp'>注册时间：{{item.addtime}}</text>
         </view>
       </view>
     </view>
     <view class='list2'>
       <view>
-        <view>+{{item.member}}</view>
-        <view>{{item.member}}个成员</view>
+        <view>+{{item.count}}</view>
+        <view>{{item.count}}个成员</view>
       </view>
     </view>
   </view>
