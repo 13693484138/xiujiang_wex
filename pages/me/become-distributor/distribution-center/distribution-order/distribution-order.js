@@ -91,6 +91,11 @@ Page({
       },
       success: res => {
         console.log(res)
+        //第一次请求无数据时候
+        if(res.data==null){
+          console.log("没有图片")
+        }
+        //分页到底无数据加载时
         if (res.list.length==0) {
           this.setData({
             noMore:true
