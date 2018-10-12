@@ -39,7 +39,6 @@ Page({
       success: function (res) {
         console.log(res.level)
         if (res.level !== '0' || res.level !== '') {
-          console.log('dksnkjvdnkvsnkjdfnvk')
           that.setData({
             pages: '分销中心'
           })

@@ -1,6 +1,6 @@
 <view class='do-top'>
   <view>
-    <text space='emsp'>累计申领： 0份</text>
+    <text space='emsp'>累计申领： {{totalResult}}份</text>
   </view>
   <view bindtap='goToMaterielApply2'>
     申领物料
@@ -14,27 +14,27 @@
     <text space='ensp'>物料名称 : </text>
     <text space='ensp'>{{item.name}} </text>
     <text space='ensp'>申领状态 : </text>
-    <text>{{item.applyState}}</text>
+    <text>{{(item.status == 1) ? '待审核' : ((item.status == 2) ? '审核成功' : '审核失败')}}</text>
   </view>
   <view class='list2'>
     <text space='ensp'>申领数量 : </text>
-    <text>{{item.totalNum}}</text>
+    <text>{{item.applynum}}</text>
     <text space='ensp'>份  </text>
     <text space='ensp'>绑定数量 : </text>
-    <text>{{item.bindNum}}</text>
+    <text>{{item.usenum}}</text>
     <text space='ensp'>份  </text>
     <text space='ensp'>剩余数量 : </text>
-    <text>{{item.overplus}}</text>
+    <text>{{item.applynum - item.usenum}}</text>
     <text space='ensp'>份  </text>
   </view>
   <view class='list3'>
     <view>
       <text>接收邮箱：</text>
-      <text>{{item.mail}}</text>
+      <text>{{item.email}}</text>
     </view>
     <view>
       <text>申领时间：</text>
-      <text space='ensp'>{{item.date}}</text>
+      <text space='ensp'>{{item.addtime}}</text>
     </view>
   </view>
 </view>

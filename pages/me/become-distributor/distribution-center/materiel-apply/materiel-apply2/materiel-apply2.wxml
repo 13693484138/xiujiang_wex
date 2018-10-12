@@ -56,15 +56,3 @@
 </view>
 </form>
 
-
-
-<!-- 弹出窗 -->
-
-<!-- <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
-<view wx:if="{{showModal}}" class='alert-content'>
-    <view>请选择种类</view>
-  <view bindtap='changeIsChoose'>
-    <view class='{{isChoose?"alert-round-true":"alert-round-false"}}' value='kind'></view>
-    <view>门店物料</view>
-  </view>
-</view> -->
