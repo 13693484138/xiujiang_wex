@@ -1,6 +1,6 @@
 <view class='dm-top'>
   <view>
-    7.56
+    {{data.allmoney}}
   </view>
   <view>
     累积佣金（元）
@@ -16,7 +16,7 @@
     可提现佣金
   </view>
   <view>
-    7.56元
+    {{data.candraw}}元
   </view>
 </view>
 
@@ -30,7 +30,7 @@
     已申请佣金
   </view>
   <view>
-    0.00元
+    {{data.drawapply}}元
   </view>
 </view>
 <view class='dm-row3'>
@@ -41,7 +41,7 @@
     已提现佣金
   </view>
   <view>
-    0.00元
+    {{data.drawsuccess}}元
   </view>
 </view>
 
@@ -55,7 +55,7 @@
     今日收入
   </view>
   <view>
-    0.00元\t/\t0\t笔
+     {{data.today}}元\t/\t{{data.todaycount}}\t笔
   </view>
 </view>
 <view class='dm-row3'>
@@ -66,7 +66,7 @@
     昨日收入
   </view>
   <view>
-    0.00元\t/\t0\t笔
+    {{data.yesterday}}元\t/\t{{data.yesterdaycount}}\t笔
   </view>
 </view>
 
@@ -80,7 +80,7 @@
     本月收入
   </view>
   <view>
-    0.00元\t/\t0\t笔
+     {{data.thismonth}}元\t/\t {{data.thismonthcount}}\t笔
   </view>
 </view>
 <view class='dm-row3'>
@@ -91,7 +91,7 @@
     上月收入
   </view>
   <view>
-    0.00元\t/\t0\t笔
+    {{data.lastmonth}}元\t/\t {{data.lastmonthcount}}\t笔
   </view>
 </view>
 
