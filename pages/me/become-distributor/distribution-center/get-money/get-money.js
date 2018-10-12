@@ -1,18 +1,38 @@
 // pages/me/become-distributor/distribution-center/get-money/get-money.js
+const http = require('../../../../../utils/http.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    lists: '',
+    candraw: '',
+    drawapply: '',
+    drawsuccess: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    http.request({
+      apiName: 'my/depositdetail',
+      method: 'GET',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          lists: res.list,
+          candraw: res.candraw,
+          drawapply: res.drawapply,
+          drawsuccess: res.drawsuccess
+        })
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
   },
 
   /**

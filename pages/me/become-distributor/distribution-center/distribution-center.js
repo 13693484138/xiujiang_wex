@@ -5,87 +5,86 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isShow: false,
     distributionData: {},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.requestData()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
   //页面跳转函数
-  goToDistributionMoney: function() {
+  goToDistributionMoney: function () {
     wx.navigateTo({
       url: '/pages/me/become-distributor/distribution-center/distribution-money/distribution-money'
     })
   },
-  goToDistributionOrder: function() {
+  goToDistributionOrder: function () {
     wx.navigateTo({
       url: '/pages/me/become-distributor/distribution-center/distribution-order/distribution-order'
     })
   },
-  goToMeDownline: function() {
+  goToMeDownline: function () {
     wx.navigateTo({
       url: '/pages/me/become-distributor/distribution-center/me-downline/me-downline'
     })
   },
-  goToGetMoney: function() {
+  goToGetMoney: function () {
     wx.navigateTo({
       url: '/pages/me/become-distributor/distribution-center/get-money/get-money'
     })
   },
-  goToMaterielApply: function() {
+  goToMaterielApply: function () {
     wx.navigateTo({
       url: '/pages/me/become-distributor/distribution-center/materiel-apply/materiel-apply'
     })
@@ -129,23 +128,13 @@ Page({
   },
   //二维码
   QRcode() {
-    this.setData({
-      isShow:true
-    })
     http.request({
       apiName: 'my/scanconcern',
       method: 'GET',
       success: res => {
         console.log(res)
+
       },
-      fail:err=>{
-        console.log(err)
-      }
-    })
-  },
-  closeModal(){
-    this.setData({
-      isShow:false
     })
   }
 })

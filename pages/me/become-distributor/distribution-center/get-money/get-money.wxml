@@ -1,6 +1,6 @@
 <view class='do-top'>
   <view>
-    <text space='emsp'>累计提现： +136.85</text>
+    <text space='emsp'>累计提现： +{{drawsuccess}}元</text>
   </view>
 </view>
 
@@ -14,7 +14,7 @@
     可提现佣金
   </view>
   <view>
-    7.56元
+  {{candraw}}元
   </view>
 </view>
 <view class='dm-row3'>
@@ -25,138 +25,36 @@
     已申请佣金
   </view>
   <view>
-    0.00元
+    {{drawapply}}元
   </view>
 </view>
 
 
 
 
-<view class='list'>
+<view class='list' wx:for='{{lists}}' wx:key='lists'>
   <view class='list1'>
     <view>
       <view>
         提现编号
       </view>
       <view>
-        <text space='ensp'>提现时间：05-26 17:58</text>
+        <text space='ensp'>提现时间：{{item.createtime}}</text>
       </view>
     </view>
     <view>
       <view>
-        219元
-      </view>
-      <view style='clear:both;'></view>
-      <view>
-        提现成功
-      </view>
-    </view>
-  </view>
-  <view class='list1'>
-    <view>
-      <view>
-        提现编号
-      </view>
-      <view>
-        <text space='ensp'>提现时间：05-26 17:58</text>
-      </view>
-    </view>
-    <view>
-      <view>
-        219元
+        {{item.money}}元
       </view>
       <view style='clear:both;'></view>
       <view class='text-color2'>
-        审核中
+        {{(item.status == 1) ? '待审核' : ((item.status == 2) ? '成功' : '失败')}}
       </view>
     </view>
   </view>
-  <view class='list1'>
-    <view>
-      <view>
-        提现编号
-      </view>
-      <view>
-        <text space='ensp'>提现时间：05-26 17:58</text>
-      </view>
-    </view>
-    <view>
-      <view>
-        219元
-      </view>
-      <view style='clear:both;'></view>
-      <view class='text-color3'>
-        提现失败
-      </view>
-    </view>
-  </view>
-  <view class='fail'>
+  <view class='fail' wx:if="{{item.status == 3 ? true : flase}}">
     失败原因：余额不足
   </view>
   <view style='clear: both;'></view>
 </view>
 
-
-
-
-
-
-<view class='list'>
-  <view class='list1'>
-    <view>
-      <view>
-        提现编号
-      </view>
-      <view>
-        <text space='ensp'>提现时间：05-26 17:58</text>
-      </view>
-    </view>
-    <view>
-      <view>
-        219元
-      </view>
-      <view style='clear:both;'></view>
-      <view>
-        提现成功
-      </view>
-    </view>
-  </view>
-  <view class='list1'>
-    <view>
-      <view>
-        提现编号
-      </view>
-      <view>
-        <text space='ensp'>提现时间：05-26 17:58</text>
-      </view>
-    </view>
-    <view>
-      <view>
-        219元
-      </view>
-      <view style='clear:both;'></view>
-      <view class='text-color2'>
-        审核中
-      </view>
-    </view>
-  </view>
-  <view class='list1'>
-    <view>
-      <view>
-        提现编号
-      </view>
-      <view>
-        <text space='ensp'>提现时间：05-26 17:58</text>
-      </view>
-    </view>
-    <view>
-      <view>
-        219元
-      </view>
-      <view style='clear:both;'></view>
-      <view class='text-color3'>
-        提现失败
-      </view>
-    </view>
-  </view>
-</view>

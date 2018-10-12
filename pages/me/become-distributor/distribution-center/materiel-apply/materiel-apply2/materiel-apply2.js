@@ -49,7 +49,6 @@ Page({
     })
   },
   formSubmit: function(e) {
-    console.log(e.detail.value);
     this.setData({
       name: e.detail.value.name,
       tel: e.detail.value.tel,
@@ -66,13 +65,9 @@ Page({
           warn = '请输入正确的姓名！'
       } else if (!(/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/.test(e.detail.value.tel))) {
         warn = '请输入正确的手机号！'
-      } else if (!(/^[\u4E00-\u9FA5A-Za-z]+$/.test(e.detail.value.corporateName))) {
-        warn = '请选择物料种类！'
-      } else if (!(/^[\u4E00-\u9FA5A-Za-z]+$/.test(e.detail.value.position))) {
+      } else if (!(/^[0-9]{1,4}$/.test(e.detail.value.num))) {
         warn = '您输入的数量不正确！'
-      } else if (!(/^[\u4E00-\u9FA5A-Za-z]+$/.test(e.detail.value.corporateAddress))) {
-        warn = '请输入详细的地址！'
-    } else if (!(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/).test(e.detail.value.email)){
+      } else if (!(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/).test(e.detail.value.email)){
       warn = '请输入正确的邮箱！'
       }else {
         flag = false;
@@ -100,11 +95,17 @@ Page({
               icon: 'success'
             })
             wx.navigateTo({
-            url:'/pages/me/become-distributor/distribution-center/distribution-center.js'
+              url: '/pages/me/become-distributor/distribution-center/materiel-apply/materiel-apply'
             })
           },
           fail: function (res) {
-            console.log(res);
+            wx.showToast({
+              title: res.msg,
+              icon: 'none'
+            })
+            wx.navigateTo({
+              url: '/pages/me/become-distributor/distribution-center/materiel-apply/materiel-apply'
+            })
           }
         })
       };   
