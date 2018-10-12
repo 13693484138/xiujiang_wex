@@ -172,3 +172,11 @@
     <image src='/images/me/Arrow拷贝.png' class='me-image2'></image>
   </view>
 </view>
+
+
+<!-- 二维码弹出框 -->
+<view class="{{isShow? '.modal':'.hidden'}}" wx:if="{{isShow}}">
+  <view bindtap='closeModal'>X</view>
+  <!-- <image src='../../../../images/swiper1.jpg'></image> -->
+  <image src='http://192.168.1.88:8080/xcx/my/scanconcern'></image>
+</view>

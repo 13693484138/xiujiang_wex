@@ -1,18 +1,18 @@
-// pages/me/become-distributor/distribution-center/distribution-order/distribution-order.js
+const http=require("../../../../../utils/http.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    data:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.requestOrder()
   },
 
   /**
@@ -62,5 +62,23 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  requestOrder(){
+    http.request({
+      apiName: 'my/distributororder',
+      method: 'POST',
+      data:{
+        'currentPage':1
+      },
+      success: res => {
+        console.log(res)
+        // this.setData({
+        //   data: res
+        // })
+      },
+      fail:err=>{
+        console.log(err)
+      }
+    })
   }
 })
