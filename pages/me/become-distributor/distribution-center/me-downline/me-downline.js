@@ -7,7 +7,9 @@ Page({
    */
   data: {
     bindClass: true,
-    lists: [],
+    lists: '',
+    listA: '',
+    listB: '',
     classA: 1,
     classB: 1,
   },
@@ -15,31 +17,47 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+
+
+  getClassA: function () {
     var that = this;
     http.request({
       apiName: 'my/subordinatelist',
       method: 'POST',
-      data:{
+      data: {
         currentPage: that.data.classA
       },
       success: function (res) {
-        console.log(res)
+        that.setData({
+          listA: res.list
+        })
       },
       fail: function (res) {
         console.log(res)
       }
     })
+  },
+  getClassB: function () {
+    var that = this;
+    http.request({
+      apiName: 'my/secondsubordinatelist',
+      method: 'POST',
+      data: {
+        currentPage: that.data.classB
+      },
+      success: function (res) {
+        that.setData({
+          listB: res.list
+        })
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
+  },
+  onLoad: function (options) {   
     if(this.data.bindClass) {
-      // this.setData({
-      //   lists: [
-      //     { name: '小明', date: '02-27 12:13', member: 3 },
-      //     { name: '小红', date: '03-27 13:13', member: 4 },
-      //     { name: '小强', date: '04-27 14:13', member: 5 },
-      //     { name: '小刚', date: '05-27 15:13', member: 6 },
-      //     { name: '小王', date: '06-27 16:13', member: 6 }
-      //   ]
-      // })
+      
     }
   },
 
