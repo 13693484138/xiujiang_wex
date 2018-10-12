@@ -1,35 +1,26 @@
-<<<<<<< HEAD
+
 const http = require("../../../../../utils/http.js")
-=======
-// pages/me/become-distributor/distribution-center/distribution-order/distribution-order.js
->>>>>>> 874608f47f8b8c8683bf8eaed395611a0048f458
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-<<<<<<< HEAD
+
     data: [],
     allmoney: "",
     pageIndex: 1, //分页默认第一页
     noMore:false,
-=======
-  
->>>>>>> 874608f47f8b8c8683bf8eaed395611a0048f458
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-<<<<<<< HEAD
+
   onLoad: function(options) {
     this.requestOrder()
-=======
-  onLoad: function (options) {
-    
->>>>>>> 874608f47f8b8c8683bf8eaed395611a0048f458
   },
+ 
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -87,7 +78,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-<<<<<<< HEAD
+
   onShareAppMessage: function() {
 
   },
@@ -122,9 +113,5 @@ Page({
       },
 
     })
-=======
-  onShareAppMessage: function () {
-  
->>>>>>> 874608f47f8b8c8683bf8eaed395611a0048f458
-  }
+
 })
