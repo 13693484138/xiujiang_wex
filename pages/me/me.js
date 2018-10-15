@@ -10,6 +10,9 @@ Page({
     showModal: false,
     level: '',
     pages: '申请分销',
+    phone: '',
+    nickname: '',
+    avatar: ''
   },
 
   /**
@@ -37,7 +40,12 @@ Page({
       apiName: 'my/getmyinfo',
       method: 'GET',
       success: function (res) {
-        console.log(res.level)
+        console.log(res)
+        that.setData({
+          phone: res.phone,
+          nickname: res.nickname,
+          avatar: res.avatar
+        })
         if (res.level !== '0' || res.level !== '') {
           that.setData({
             pages: '分销中心'

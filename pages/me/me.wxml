@@ -8,13 +8,13 @@
 
 <view class='me-top2' wx:if='{{!showTop}}'>
   <view class='me-head-image'>
-    <image src='/images/me/head-image.png' class='me-head-image1'></image>
+    <image src='{{avatar}}' class='me-head-image1'></image>
   </view>
   <view class='me-top2-name'>
-    秦芬芬
+    {{nickname}}
   </view>
   <view class='me-top2-phone'>
-    13578766041
+    {{phone}}
   </view>
 </view>
 

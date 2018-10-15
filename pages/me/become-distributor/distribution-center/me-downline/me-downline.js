@@ -10,7 +10,7 @@ Page({
     lists: '',
     listOne: '',
     listTwo: '',
-    currentPage: 2,
+    currentPage: 1,
     totalResult: '',
     totalResult1: ''
   },
@@ -20,7 +20,7 @@ Page({
    */
 
   onLoad: function (options) {
-
+    console.log(this.data.listTwo)
   },
 
   /**
@@ -36,7 +36,6 @@ Page({
           currentPage: that.data.currentPage
         },
         success: function (res) {
-          console.log(res)
           that.setData({
             listOne: res.list,
             lists: res.list,
@@ -55,6 +54,7 @@ Page({
         currentPage: that.data.currentPage
       },
       success: function (res) {
+        console.log(res);
         that.setData({
           listTwo: res.list,
           totalResult1: res.totalResult
