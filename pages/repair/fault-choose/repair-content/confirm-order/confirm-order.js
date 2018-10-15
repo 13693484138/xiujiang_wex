@@ -30,7 +30,8 @@ Page({
     tempCurTime: '',
     orderRemarks: '',
     orderNo: '',
-    showRemarks: false
+    showRemarks: false,
+    token:''
   },
 
   /**
@@ -58,6 +59,15 @@ Page({
           })
 
         }
+      }
+    })
+    http.request({
+      apiName: 'reqair/savetoken',
+      method: 'get',
+      success: (res) => {
+        this.setData({
+          token:res
+        })
       }
     })
   },
@@ -290,6 +300,9 @@ Page({
     if (addressId == '') {
       showRemind("请选择服务地址")
     }
+    if(this.data.token == '' || this.data.token == null){
+      showRemind("请刷新页面，获取订单凭证")
+    }
     params['addressid'] = addressId;
     let radioData = this.data.radioData;
     params["repairtype"] = radioData
@@ -300,12 +313,7 @@ Page({
     }
     params["preorderno"] = this.data.preOrderNo;
     params["remark"] = this.data.orderRemarks;
-    http.request({
-      apiName: 'reqair/savetoken',
-      method:'post',
-      data:params,
-      success: (res) => {
-        params['checkData'] = res;
+    params["token"] = this.data.token;
         http.request({
           apiName: 'reqair/submitorder',
           method: 'post',
@@ -319,8 +327,7 @@ Page({
             })
           }
         })
-      }
-    })
+      
    
   }
 })
