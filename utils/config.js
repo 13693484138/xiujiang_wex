@@ -1,7 +1,7 @@
 module.exports = {
-  apiHost: "http://192.168.1.88:8080/xcx/",
-  downloadInterface: "http://192.168.1.88:8080/attachment/download/",
-  uploadInterface:"http://192.168.1.88:8080/attachment/upload",
+  apiHost: "https://shop.ngrok.michaelch.xyz/xcx/",
+  downloadInterface: "https://shop.ngrok.michaelch.xyz/attachment/download/",
+  uploadInterface:"https://shop.ngrok.michaelch.xyz/attachment/upload",
   mapkey: "Z2EBZ-EXYEJ-YTMFD-K3Y4O-3HQEK-PPF5U",
   loginApi: 'index/login'
 };
