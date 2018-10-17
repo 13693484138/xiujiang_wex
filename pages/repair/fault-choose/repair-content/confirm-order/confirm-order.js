@@ -294,7 +294,6 @@ Page({
     }
   },
   enterOrder: function(e) {
-
     let params = {};
     let addressId = this.data.addressId;
     if (addressId == '') {
@@ -314,6 +313,9 @@ Page({
     params["preorderno"] = this.data.preOrderNo;
     params["remark"] = this.data.orderRemarks;
     params["token"] = this.data.token;
+    wx.showLoading({
+      title:"正在提交..."
+    })
         http.request({
           apiName: 'reqair/submitorder',
           method: 'post',

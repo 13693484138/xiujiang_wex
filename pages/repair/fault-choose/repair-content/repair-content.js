@@ -136,14 +136,19 @@ Page({
       'color': this.data.versionColor,
       'faultid': faultidStr
     }
+    wx.showLoading({
+      title: "正在提交..."
+    })
     http.request({
       apiName:'reqair/getpreorderno',
       method:'post',
       data: params,
       success:(res) => {
+        wx.hideLoading()
         this.setData({
           preOrderNo:res
         })
+
         wx.navigateTo({
           url: '/pages/repair/fault-choose/repair-content/confirm-order/confirm-order?addressId=0&preOrderNo=' + this.data.preOrderNo
         })
