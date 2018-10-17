@@ -96,7 +96,7 @@ Page({
   //联系客服
   customerService(){
     wx.makePhoneCall({
-      phoneNumber:'客服电话',
+      phoneNumber:'17761295425',
       success:res=>{
         console.log("ok")
       },
