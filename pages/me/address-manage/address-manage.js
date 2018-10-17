@@ -7,7 +7,7 @@ Page({
    */
   data: {
     addresslist: [], //请求回的地址列表
-    preOrderNo:''
+    preOrderNo: ''
   },
 
   /**
@@ -17,7 +17,7 @@ Page({
     console.log(options)
     let tempPreOrderNo = options.preOrderNo;
     console.log(tempPreOrderNo);
-    if (tempPreOrderNo != ''){
+    if (tempPreOrderNo != '') {
       this.setData({
         preOrderNo: tempPreOrderNo
       })
@@ -88,32 +88,32 @@ Page({
   },
 
   //删除地址弹框
-  deleteAddress(e){
-    let deleteId = e.currentTarget.id;//删除需要的id参数
+  deleteAddress(e) {
+    let deleteId = e.currentTarget.id; //删除需要的id参数
     wx.showModal({
       title: '删除地址',
       content: '请确认是否删除',
-      success:res=>{
-        if(res.confirm){
+      success: res => {
+        if (res.confirm) {
           console.log('准备提交删除请求')
           this.confirmDelete(deleteId)
         }
       }
     })
   },
-  
+
   //删除地址请求
-  confirmDelete(deleteId){
+  confirmDelete(deleteId) {
     http.request({
       apiName: 'my/deleteAddress',
       method: 'delete',
       isShowProgress: true,
-      data:{
+      data: {
         id: deleteId
       },
       success: res => {
         console.log(res)
-        if(res=='删除成功'){
+        if (res == '删除成功') {
           this.queryAddLists()
         }
       }
@@ -128,20 +128,22 @@ Page({
   },
 
   //地址跳转修改页面
-  updateAdd:function(e){
+  updateAdd: function(e) {
+
     let id = e.currentTarget.id
-    if(this.data.preOrderNo == ''){
+    console.log(this.data.preOrderNo)
+    if (this.data.preOrderNo == undefined || this.data.preOrderNo == "") {
       wx.navigateTo({
-        url: '/pages/me/address-manage/add-address/add-address?id='+id,
+        url: '/pages/me/address-manage/add-address/add-address?id=' + id,
       })
-    }else{
+    } else {
       let pages = getCurrentPages();
       let prevPage = pages[pages.length - 2];
       prevPage.setData({
-        addressId:id
+        addressId: id
       });
       wx.navigateBack({
-        
+
       })
     }
   }
