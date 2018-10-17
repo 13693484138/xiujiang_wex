@@ -42,7 +42,9 @@ Page({
   onHide: function () {
     console.log("list--onHide");
     this.setData({
-      orders:[]
+      orders:[],
+      nextPage: 0,
+      totalPage: 0
     })
   },
 
@@ -51,7 +53,6 @@ Page({
    */
   onUnload: function () {
     console.log("list--onUnload");
-  
   },
 
   /**
@@ -92,15 +93,16 @@ function getList(me, nextPage) {
     method: 'POST',
     data: { currentPage: nextPage },
     success: function (res) {
-      console.log(res);
-      let orders = me.data.orders;
+      let orders = [];
+      if(nextPage > 1){
+        orders = me.data.orders;
+      }
       orders = orders.concat(res.list);
       me.setData({
         orders: orders,
         nextPage: res.currentPage + 1,
         totalPage: res.total
       })
-      console.log(me.data.orders)
     }
   })
 }

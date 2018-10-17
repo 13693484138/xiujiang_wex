@@ -8,20 +8,20 @@
 </swiper>
 <view class='hp-images'>
   <view>
-    <image src='/images/home-page/极速上门.png' class='hp-image-1' style='height: 180rpx;'></image>
-    <image src='/images/home-page/速度快-01.png' class='hp-image-2'></image>
+    <image src='/images/home-page/jssm.png' class='hp-image-1' style='height: 180rpx;'></image>
+    <image src='/images/home-page/sdk-01.png' class='hp-image-2'></image>
   </view>
   <view>
-    <image src='/images/home-page/原厂品质.png' class='hp-image-3' style='height: 220rpx;'></image>
-    <image src='/images/home-page/品质保证.png' class='hp-image-2'></image>
+    <image src='/images/home-page/ycpz.png' class='hp-image-3' style='height: 220rpx;'></image>
+    <image src='/images/home-page/pzbz.png' class='hp-image-2'></image>
   </view>
   <view>
-    <image src='/images/home-page/维修录像.png' class='hp-image-3' style='height: 220rpx;'></image>
-    <image src='/images/home-page/品质保证拷贝.png' class='hp-image-2'></image>
+    <image src='/images/home-page/wxlx.png' class='hp-image-3' style='height: 220rpx;'></image>
+    <image src='/images/home-page/pzbzcb.png' class='hp-image-2'></image>
   </view>
   <view>
-    <image src='/images/home-page/极速上门拷贝.png' class='hp-image-1' style='height: 180rpx;'></image>
-    <image src='/images/home-page/图层7拷贝.png' class='hp-image-2'></image>
+    <image src='/images/home-page/jssmkb.png' class='hp-image-1' style='height: 180rpx;'></image>
+    <image src='/images/home-page/tc7cb.png' class='hp-image-2'></image>
   </view>
 </view>
 
@@ -30,13 +30,13 @@
   
   <image src='/images/home-page/bg1.png' class='hp-images2-bg'></image>
   <view>
-    <image src='/images/home-page/图层8.png' class='hp-images2-1' bindtap="subscribe"></image>
+    <image src='/images/home-page/tc8.png' class='hp-images2-1' bindtap="subscribe"></image>
   </view>
   <view>
-    <image src='/images/home-page/马上维修.png' class='hp-images2-2' bindtap="enterRepair"></image>
+    <image src='/images/home-page/mswx.png' class='hp-images2-2' bindtap="enterRepair"></image>
   </view>
   <view>
-    <image src='/images/home-page/联系客服.png' class='hp-images2-3' bindtap="customerService"></image>
+    <image src='/images/home-page/lxkf.png' class='hp-images2-3' bindtap="customerService"></image>
   </view>
 </view>
 

@@ -45,13 +45,13 @@
 
 
 <view class='' wx:for="{{pfaultList}}" wx:key="index" wx:for-item="pfault">
-  <view class='list2'>
+  <view class='list2' bindtap='showMoreFault' data-faultpid="{{pfault.id}}">
     <view>{{pfault.title}}</view>
     <view class='flex-row'>
       <view wx:if='{{pfault.chooseFaultNumber > 0}}' class='showFaultNumber'>
         {{pfault.chooseFaultNumber}}
       </view>
-      <view class='iconfont icon-hao {{transformFlag == pfault.id ?"xuanzhuan":""}}' bindtap='showMoreFault' data-faultpid="{{pfault.id}}"></view>
+      <view class='iconfont icon-hao {{transformFlag == pfault.id ?"xuanzhuan":""}}'></view>
     </view>
   </view>
 

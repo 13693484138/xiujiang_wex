@@ -324,10 +324,12 @@ Page({
             this.setData({
               orderNo: res
             })
+            console.log(this.data.kg)
             wx.reLaunch({
               url: '/pages/order/repair/repair?orderNo=' + this.data.orderNo + '&type=2'
             })
           }
+          
         })
       
    

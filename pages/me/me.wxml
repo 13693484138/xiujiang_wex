@@ -21,73 +21,73 @@
 
 <view class='me-center1' bindtap='alertTips'>
   <view>
-    <image src='/images/me/分销商-34.png' class='me-image1'></image>
+    <image src='/images/me/fxs-34.png' class='me-image1'></image>
   </view>
   <view class='me-text1'>
     {{pages}}
   </view>
   <view class='me-right'>
-    <image src='/images/me/Arrow拷贝.png' class='me-image2'></image>
+    <image src='/images/me/Arrowcb.png' class='me-image2'></image>
   </view>
 </view>
 
 <view class='me-center1'>
   <view>
-    <image src='/images/me/历史订单.png' class='me-image1'></image>
+    <image src='/images/me/lsdd.png' class='me-image1'></image>
   </view>
   <view class='me-text1'>
     历史订单
   </view>
   <view class='me-right'>
-    <image src='/images/me/Arrow拷贝.png' class='me-image2'></image>
+    <image src='/images/me/Arrowcb.png' class='me-image2'></image>
   </view>
 </view>
 
 <view class='me-center1' bindtap='goToAddressManage'>
   <view>
-    <image src='/images/me/地址管理.png' class='me-image1'></image>
+    <image src='/images/me/dzgl.png' class='me-image1'></image>
   </view>
   <view class='me-text1'>
     地址管理
   </view>
   <view class='me-right'>
-    <image src='/images/me/Arrow拷贝.png' class='me-image2'></image>
+    <image src='/images/me/Arrowcb.png' class='me-image2'></image>
   </view>
 </view>
 
 <view class='me-center2'>
   <view>
-    <image src='/images/me/客服.png' class='me-image1'></image>
+    <image src='/images/me/kf.png' class='me-image1'></image>
   </view>
   <view class='me-text1'>
     联系客服
   </view>
   <view class='me-right'>
-    <image src='/images/me/Arrow拷贝.png' class='me-image2'></image>
+    <image src='/images/me/Arrowcb.png' class='me-image2'></image>
   </view>
 </view>
 
 <view class='me-center1'  bindtap='goToHelpCenter'>
   <view>
-    <image src='/images/me/帮助中心.png' class='me-image1'></image>
+    <image src='/images/me/bzzx.png' class='me-image1'></image>
   </view>
   <view class='me-text1'>
     帮助中心
   </view>
   <view class='me-right'>
-    <image src='/images/me/Arrow拷贝.png' class='me-image2'></image>
+    <image src='/images/me/Arrowcb.png' class='me-image2'></image>
   </view>
 </view>
 
 <view class='me-center1' bindtap='goToSetting'>
   <view>
-    <image src='/images/me/设置.png' class='me-image1'></image>
+    <image src='/images/me/sz.png' class='me-image1'></image>
   </view>
   <view class='me-text1'>
     设置
   </view>
   <view class='me-right'>
-    <image src='/images/me/Arrow拷贝.png' class='me-image2'></image>
+    <image src='/images/me/Arrowcb.png' class='me-image2'></image>
   </view>
 </view>
 
