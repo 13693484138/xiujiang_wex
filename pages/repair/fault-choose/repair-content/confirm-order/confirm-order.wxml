@@ -89,11 +89,11 @@
 <view wx:if="{{showDate}}" class='alert-content1'>
   <view class='chooseTime'>选择日期</view>
   <view class='pRepairDate flex-row'>
-    <view class='repairDate {{dateIndex == index?"active":""}}' wx:for="{{dateList}}" wx:for-item="date" wx:for-index="index" bindtap='chooseRepairDate' data-dateIndex="{{index}}" data-curdate='{{date.curdate}}'>{{date.date}}</view>
+    <view class='repairDate {{dateIndex == index?"active":""}}' wx:for="{{dateList}}" wx:key='index' wx:for-item="date" wx:for-index="index" bindtap='chooseRepairDate' data-dateIndex="{{index}}" data-curdate='{{date.curdate}}'>{{date.date}}</view>
   </view>
   <view class='chooseTime'>选择时间</view>
   <view class='pRepairTime'>
-    <view class='repairTime {{timeIndex == index?"active":""}}' wx:for="{{timeList}}" wx:for-item="time" wx:for-index="index" data-timeIndex="{{index}}" bindtap='chooseRepairTime'>{{time}}</view>
+    <view class='repairTime {{timeIndex == index?"active":""}}' wx:for="{{timeList}}" wx:key='index' wx:for-item="time" wx:for-index="index" data-timeIndex="{{index}}" bindtap='chooseRepairTime'>{{time}}</view>
   </view>
   <view class='enterDate' bindtap='enterDate'>确定</view>
 </view>
@@ -105,7 +105,7 @@
 
 
 
-<view class='list2' wx:for="{{repairObj.faultList}}" wx:for-item="fault">
+<view class='list2' wx:for="{{repairObj.faultList}}" wx:for-item="fault" wx:key='index'>
   <view>
     <image src='{{fault.versionimg}}'></image>
   </view>

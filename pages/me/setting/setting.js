@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    avatar: "/images/me/head-image.png", //头像
+    avatar: "", //头像
     imgid: '', //上传头像所取回的id
     nickname: '', //昵称
     username: '', //姓名
@@ -94,7 +94,8 @@ Page({
               avatar: http.config.downloadInterface + res.avatar,
               nickname: res.nickname,
               username: res.username,
-              phone: res.phone
+              phone: res.phone,
+              imgid: res.avatar
             })
           }
 
@@ -154,7 +155,11 @@ Page({
   saveData(e) {
     console.log(e.detail.value)
     let values = e.detail.value;
-    values.imgid = this.data.imgid
+    if(this.data.imgid == '' || this.data.imgid == null){
+      values.imgid = this.data.avatar;
+    }else{
+       values.imgid = this.data.imgid
+    }
     //表单验证---判断昵称姓名手机号是否为空
     if(values.nickname===""){
       wx.showToast({

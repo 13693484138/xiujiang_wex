@@ -1,8 +1,9 @@
 <view class='comment-first'>
   <text class='comment-text1'>综合评价：</text>
   <view>
-    <image src='{{item?"/images/icon/yellowstar1.png":"/images/icon/yellowstar2.png"}}' 
-    class='comment-image' wx:for="{{stars}}" wx:key='stars'></image>
+    <image src="/images/icon/yellowstar2.png" class='comment-image' wx:for="{{zhpjStarg}}" wx:key='index'  data-in='zhpjStarg' id='{{index+1}}'></image>
+
+    <image src="/images/icon/yellowstar1.png" class='comment-image' wx:for="{{zhpjStar}}" wx:key='index' bindtap='starClick' data-in='zhpjStar' id='{{index+1}}'></image>
   </view>
   <text class='comment-text2'>{{text}}</text>
 </view>
@@ -12,27 +13,27 @@
   <view class='comment-second-stars comment-second-stars1'>
     <text class='comment-text1'>服务态度：</text>
     <view>
-      <image src='{{item?"/images/icon/yellowstar1.png":"/images/icon/yellowstar2.png"}}' 
-      class='comment-image' wx:for="{{stars1}}" wx:key='stars'
-      bindtap='starClick1' data-id='{{index}}'></image>
+      <image src="/images/icon/yellowstar2.png" class='comment-image' wx:for="{{fwtdStarg}}" wx:key='index' bindtap='starClick' data-in='fwtdStarg' id='{{index+1}}'></image>
+
+      <image src="/images/icon/yellowstar1.png" class='comment-image' wx:for="{{fwtdStar}}" wx:key='index' bindtap='starClick' data-in='fwtdStar' id='{{index+1}}'></image>
     </view>
     <text class='comment-text2'>{{text1}}</text>
   </view>
   <view class='comment-second-stars comment-second-stars2'>
     <text class='comment-text1'>维修技术：</text>
     <view>
-      <image src='{{item?"/images/icon/yellowstar1.png":"/images/icon/yellowstar2.png"}}' 
-      class='comment-image' wx:for="{{stars2}}" wx:key='stars'
-      bindtap='starClick2' data-id='{{index}}'></image>
+      <image src="/images/icon/yellowstar2.png" class='comment-image' wx:for="{{wxjsStarg}}" wx:key='index' bindtap='starClick' data-in='wxjsStarg' id='{{index+1}}'></image>
+
+      <image src="/images/icon/yellowstar1.png" class='comment-image' wx:for="{{wxjsStar}}" wx:key='index' bindtap='starClick' data-in='wxjsStar' id='{{index+1}}'></image>
     </view>
     <text class='comment-text2'>{{text2}}</text>
   </view>
   <view class='comment-second-stars'>
     <text class='comment-text1'>满意程度：</text>
     <view>
-      <image src='{{item?"/images/icon/yellowstar1.png":"/images/icon/yellowstar2.png"}}' 
-      class='comment-image' wx:for="{{stars3}}" wx:key='stars'
-      bindtap='starClick3' data-id='{{index}}'></image>
+      <image src="/images/icon/yellowstar2.png" class='comment-image' wx:for="{{mycdStarg}}" wx:key='index' bindtap='starClick' data-in='mycdStarg' id='{{index+1}}'></image>
+
+      <image src="/images/icon/yellowstar1.png" class='comment-image' wx:for="{{mycdStar}}" wx:key='index' bindtap='starClick' data-in='mycdStar' id='{{index+1}}'></image>
     </view>
     <text class='comment-text2'>{{text3}}</text>
   </view>
@@ -47,4 +48,3 @@
 <view class='comment-fourth' bindtap='submitComment'>
   发表评论
 </view>
-

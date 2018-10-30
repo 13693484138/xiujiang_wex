@@ -1,5 +1,6 @@
 // pages/order/repair/repair.js
 const http = require('../../../utils/http');
+const util = require('../../../utils/util');
 Page({
 
   /**
@@ -9,11 +10,16 @@ Page({
     orderStatus: 0,
     order: {},
     showModal: false,
+    showComment: false,
     reasonIndex:0,
     reasonList: [],
     disable: false,
     otherReason:'',
-    type:''
+    type:'',
+    commentReason: [],
+    commentReasonIndex:0,
+    commentDisable: false,
+    otherCommentReason:''
   },
 
   /**
@@ -102,13 +108,71 @@ Page({
         console.log(this.data.reasonList);
       }
     })
-
-
+  },
+  alertSH: function () {
+    http.request({
+      apiName:'my/getreason',
+      method:'get',
+      success: res => {
+        console.log(res)
+        this.setData({
+          showComment: true,
+          commentReason: res
+        })
+      }
+    })
+    
+  },
+  toPay: function() {
+    console.log(this.data.order.orderno)
+    http.request({
+      apiName:'pay/getPrePayOrder',
+      method:'post',
+      isShowProgress:true,
+      progressTitle:'支付中',
+      data:{
+        orderno:this.data.order.orderno
+      },
+      success: res => {
+        wx.requestPayment({
+          timeStamp: res.timeStamp,
+          nonceStr: res.nonceStr,
+          package: res.package,
+          signType: res.signType,
+          paySign: res.paySign,
+          success:function(){
+            wx.redirectTo({
+              url: '/pages/order/repair/repair?orderNo=' + id + '&type=2'
+            })
+          }
+        })
+      }
+    })
   },
   hideModal: function() {
     this.setData({
       showModal: false
     });
+  },
+  hideComment: function () {
+    this.setData({
+      showComment: false
+    });
+  },
+  changeCommentClass: function (event) {
+    var tempCommentIndex = event.currentTarget.dataset.commentindex;
+    var tempcommentReason = this.data.commentReason[tempCommentIndex];
+    if (tempcommentReason.reason == '其它原因'){
+      this.setData({
+        commentDisable: true,
+        commentReasonIndex: tempcommentReason.id
+      })
+    }else{
+      this.setData({
+        commentDisable: false,
+        commentReasonIndex: tempcommentReason.id
+      })
+    }
   },
   getReason:function(e){
     var tempOtherReason = e.detail.value;
@@ -118,6 +182,19 @@ Page({
         otherReason: tempOtherReason
       })
     }
+  },
+  getCommentReason:function(e){
+    var tempOtherCommentReason = e.detail.value;
+    if (tempOtherCommentReason){
+      this.setData({
+        otherCommentReason: tempOtherCommentReason
+      })
+    }
+  },
+  goToComment: function () {
+    wx.navigateTo({
+      url: '/pages/order/comment/comment?id=' + this.data.order.orderno
+    })
   },
   changeDuiClass: function(event) {
     var tempReasonIndex = event.currentTarget.dataset.json;
@@ -135,10 +212,10 @@ Page({
     })
     
   },
+  //取消订单
   cancelOrder: function(e) {
     var tempReason = this.data.reasonList[this.data.reasonIndex].reason;
-    console.log(tempReason)
-    if(tempReason =='其他原因'){
+    if(tempReason =='其他原因' || tempReason == '其它原因'){
       tempReason = tempReason +' :' +this.data.otherReason;
     }
     var orderNo = this.data.order.orderno;
@@ -164,7 +241,79 @@ Page({
         })
       }
     })
-
+  },
+  //呼叫技师
+  callEngineer:function(e){
+    console.log(this.data.order)
+    http.request({
+      apiName:'my/getworkerphone/'+this.data.order.workerid,
+      method:'get',
+      success: res => {
+        console.log(res);
+        wx.makePhoneCall({
+          phoneNumber: res
+        })
+      }
+    })
+    
+  },
+  //导航到店
+  driving:function(e){
+    var _this = this;
+    http.request({
+      apiName: 'reqair/getShopById/' + _this.data.order.shopid,
+      method:'get',
+      isShowProgress: true,
+      success: res => {
+        console.log(res)
+        let lon = res.lon;
+        let lat = res.lat;
+        wx.getLocation({
+          success: res => {
+            wx.openLocation({
+              latitude: lat,
+              longitude: lon,
+              scale: 28
+            })
+          },
+        })
+      }
+    })
+  },
+  //订单售后
+  afterorder:function(e){
+    var _that = this;
+    if (_that.data.commentReasonIndex == 0){
+      util.showRemind("请选择售后理由")
+     }else{
+      var tempReason = _that.data.commentReason[_that.data.commentReasonIndex].reason;
+      if (tempReason == '其它原因' || tempReason == '其他原因'){
+        tempReason = tempReason + _that.data.otherCommentReason
+      }
+      http.request({
+        apiName:'order/afterorder',
+        method:'put',
+        isShowProgress: true,
+        progressTitle: "申请中...",
+        data:{
+          orderno: _that.data.order.orderno,
+          reason: tempReason
+        },
+        success: res => {
+          wx.showToast({
+            title: '申请成功',
+            icon: 'success',
+            duration: 1000,
+            success: res => {
+              wx.switchTab({
+                url: '/pages/order/home-page/home-page',
+              })
+            }
+          })
+          
+        }
+      })
+     }
   }
 })
 

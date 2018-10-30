@@ -376,7 +376,16 @@ page {
   color: #cccccc;
   background-color: #ffffff;
 }
-
+.order_detail-footer_pay{
+   margin: 0rpx;
+  font-size: 28rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  margin-right: 35rpx;
+  color: #faf8f8;
+  background-color: #f6892f;
+}
 
 
 /* 弹出窗 */

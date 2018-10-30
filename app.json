@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/repair/smx/repair-index/repair-index",
     "pages/home-page/home-page",
+    "pages/repair/smx/repair-index/repair-index",
     "pages/index/index",
     "pages/logs/logs",
     "pages/order/home-page/home-page",
@@ -20,7 +20,7 @@
     "pages/me/become-distributor/distribution-center/me-downline/me-downline",
     "pages/me/become-distributor/distribution-center/get-money/get-money",
     "pages/me/become-distributor/distribution-center/materiel-apply/materiel-apply",
-    "pages/me/become-distributor/distribution-center/materiel-apply/materiel-apply2/materiel-apply2",
+"pages/me/become-distributor/distribution-center/materiel-apply/materiel-apply2/materiel-apply2",
     "pages/me/become-distributor/distribution-center/param-setting/param-setting",
     "pages/me/become-distributor/distribution-center/param-setting/user-protocol/user-protocol",
     "pages/me/setting/setting",
@@ -39,7 +39,8 @@
     "pages/me/help-center/location/location",
     "pages/me/help-center/service-flow/service-flow",
     "pages/me/help-center/service-terms/service-terms",
-    "pages/repair/fault-choose/repair-content/repair-explainLists/repair-explainLists"
+    "pages/repair/fault-choose/repair-content/repair-explainLists/repair-explainLists",
+    "pages/scope/scope"
   ],
   "window": {
     "backgroundTextStyle": "light",

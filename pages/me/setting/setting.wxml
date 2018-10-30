@@ -4,7 +4,7 @@
       <view>
         头像
       </view>
-      <image bindtap="changeAvatar" class="userinfo-avatar" src="{{avatar}}" mode="cover"></image>
+      <image bindtap="changeAvatar" class="userinfo-avatar" src="{{avatar}}" mode="cover" ></image>
       <!-- <view class='iconfont icon-touxiang'></view> -->
     </view>
     <view>

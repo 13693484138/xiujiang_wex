@@ -215,7 +215,9 @@ page{
   background: #FEAA42;
   margin-right: 30rpx;
   color: white;
-  line-height: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   font-size: 30rpx;
 }

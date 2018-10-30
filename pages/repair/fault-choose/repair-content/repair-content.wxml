@@ -49,7 +49,7 @@
     <view>{{pfault.title}}</view>
     <view class='flex-row'>
       <view wx:if='{{pfault.chooseFaultNumber > 0}}' class='showFaultNumber'>
-        {{pfault.chooseFaultNumber}}
+        <view>{{pfault.chooseFaultNumber}}</view>
       </view>
       <view class='iconfont icon-hao {{transformFlag == pfault.id ?"xuanzhuan":""}}'></view>
     </view>
@@ -58,7 +58,7 @@
   <!--复选框-->
   <view wx:if='{{showMorePid == pfault.id && showMore}}'>
     <checkbox-group bindchange="checkboxChange">
-      <label class='alert-radio' wx:for="{{pfault.faultList}}" wx:for-item='fault'>
+      <label class='alert-radio' wx:for="{{pfault.faultList}}" wx:for-item='fault' wx:key='index'>
         <view>
           <checkbox  value="{{fault.id}}" checked="{{fault.check_ED}}"/>
           <text class='alert-radio-text'>

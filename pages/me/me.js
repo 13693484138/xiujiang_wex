@@ -1,5 +1,6 @@
 // pages/me/me.js
 const http = require('../../utils/http.js');
+const config = require('../../utils/config.js');
 Page({
 
   /**
@@ -41,10 +42,15 @@ Page({
       method: 'GET',
       success: function (res) {
         console.log(res)
+        let tempAvatar = res.avatar;
+        if(tempAvatar.indexOf("https") != 0){
+          //说明不是微信头像
+          tempAvatar = config.downloadInterface+tempAvatar;
+        }
         that.setData({
           phone: res.phone,
           nickname: res.nickname,
-          avatar: res.avatar
+          avatar: tempAvatar
         })
         if (res.level !== '0' || res.level !== '') {
           that.setData({

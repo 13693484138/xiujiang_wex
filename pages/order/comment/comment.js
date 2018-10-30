@@ -1,23 +1,20 @@
 // pages/order/comment/comment.js
 const http = require('../../../utils/http');
+const util = require('../../../utils/util');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    stars: [false, false, false, false, false],
-    stars1: [false, false, false, false, false],
-    stars2: [false, false, false, false, false],
-    stars3: [false, false, false, false, false],
-    text: '非常好',
-    text1: '非常好',
-    text2: '非常好',
-    text3: '非常好',
-    score: 5,
-    servscore: 5,
-    techscore: 5,
-    satiscore: 5,
+    zhpjStar: 5,
+    zhpjStarg: 0,
+    fwtdStar: 5,
+    fwtdStarg: 0,
+    wxjsStar: 5,
+    wxjsStarg: 0,
+    mycdStar: 5,
+    mycdStarg: 0,
     orderno: '',
     comment: ''
   },
@@ -25,7 +22,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.setData({
       orderno: options.id
     })
@@ -34,224 +31,144 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
+  onShow: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-  
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  
+  onPullDownRefresh: function() {
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
+  onReachBottom: function() {
+
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function() {
+
   },
-  starClick1: function(event) {
-    var servscore = 5;
-    var index = event.currentTarget.dataset.id + 1;
-    var newStars = [];
-    for(var i = 1; i <= 5; i++) {
-      newStars.push(i > index);
-    }
-    var text = '';
-    if(index == 5) {
-      text = '非常好';
-      servscore = 5;
-    }else if(index == 4) {
-      text = '很好';
-      servscore = 4;
-    }else if(index == 3) {
-      text = '不错';
-      servscore = 3;
-    }else if(index == 2) {
-      text = '一般';
-      servscore = 2;
-    }else if(index == 1) {
-      text = '较差';
-      servscore = 1
-    }
-    for (var item of this.data.stars2) {
-      if (!item) {
-        index++;
+  starClick: function(e) {
+    var starType = e.currentTarget.dataset.in;
+    if ('fwtdStar' == starType) {
+      let tempStargNum = Number(e.currentTarget.id);
+      if (this.data.fwtdStar > 0) {
+        tempStargNum = tempStargNum + this.data.fwtdStarg;
       }
-    }
-    for (var item of this.data.stars2) {
-      if (!item) {
-        index++;
+      this.setData({
+        fwtdStarg: tempStargNum,
+        fwtdStar: 5 - tempStargNum
+      })
+      var score = this.data.fwtdStarg + this.data.wxjsStarg + this.data.mycdStarg;
+      score = parseInt(score / 3);
+      this.setData({
+        zhpjStarg: score,
+        zhpjStar: 5 - score
+      })
+    } else if ('fwtdStarg' == starType) {
+      let tempStarNum = Number(e.currentTarget.id);
+      if (this.data.fwtdStar > 0) {
+        tempStarNum = tempStarNum + this.data.fwtdStar;
       }
-    }
-    var newstars2 = [];
-    for (var i = 1; i <= 5; i++) {
-      newstars2.push(i > (index/3));
-    }
-    var text2 = ''
-    if(index/3 >= 5) {
-      text2 = '非常好'
-    }else if(index/3 >= 4) {
-      text2 = '很好'
-    }else if(index/3 >= 3) {
-      text2 = '不错'
-    }else if(index/3 >= 2) {
-      text2 = '一般'
-    }else if(index/3 >= 1) {
-      text2 = '较差'
-    }
-    this.setData({
-      stars: newstars2,
-      text: text2,
-      stars1: newStars,
-      text1: text,
-      servscore: servscore
-    })
-  },
-  starClick2: function (event) {
-    var techscore = 5;
-    var index = event.currentTarget.dataset.id + 1;
-    var newStars = [];
-    for (var i = 1; i <= 5; i++) {
-      newStars.push(i > index);
-    }
-    var text = '';
-    if (index == 5) {
-      text = '非常好';
-      techscore = 5
-    } else if (index == 4) {
-      text = '很好';
-      techscore = 4
-    } else if (index == 3) {
-      text = '不错';
-      techscore = 3
-    } else if (index == 2) {
-      text = '一般';
-      techscore = 2
-    } else if (index == 1) {
-      text = '较差';
-      techscore = 1
-    }
-    for (var item of this.data.stars1) {
-      if (!item) {
-        index++;
+      this.setData({
+        fwtdStar: tempStarNum,
+        fwtdStarg: 5 - tempStarNum
+      })
+      var score = this.data.fwtdStarg + this.data.wxjsStarg + this.data.mycdStarg;
+      score = parseInt(score / 3);
+      this.setData({
+        zhpjStarg: score,
+        zhpjStar: 5 - score
+      })
+    } else if ('wxjsStar' == starType) {
+      let tempStargNum = Number(e.currentTarget.id);
+      if (this.data.wxjsStarg > 0) {
+        tempStargNum = tempStargNum + this.data.wxjsStarg;
       }
-    }
-    for (var item of this.data.stars3) {
-      if (!item) {
-        index++;
+      this.setData({
+        wxjsStarg: tempStargNum,
+        wxjsStar: 5 - tempStargNum
+      })
+      var score = this.data.fwtdStarg + this.data.wxjsStarg + this.data.mycdStarg;
+      score = parseInt(score / 3);
+      this.setData({
+        zhpjStarg: score,
+        zhpjStar: 5 - score
+      })
+    } else if ('wxjsStarg' == starType) {
+      let tempStarNum = Number(e.currentTarget.id);
+      if (this.data.wxjsStar > 0) {
+        tempStarNum = tempStarNum + this.data.wxjsStar;
       }
-    }
-    var newstars2 = [];
-    for (var i = 1; i <= 5; i++) {
-      newstars2.push(i > (index / 3));
-    }
-    var text2 = ''
-    if (index / 3 >= 5) {
-      text2 = '非常好'
-    } else if (index / 3 >= 4) {
-      text2 = '很好'
-    } else if (index / 3 >= 3) {
-      text2 = '不错'
-    } else if (index / 3 >= 2) {
-      text2 = '一般'
-    } else if (index / 3 >= 1) {
-      text2 = '较差'
-    }
-    this.setData({
-      stars: newstars2,
-      text: text2,
-      stars2: newStars,
-      text2: text,
-      techscore: techscore
-    })
-  },
-  starClick3: function (event) {
-    var satiscore = 5;
-    var index = event.currentTarget.dataset.id + 1;
-    var newStars = [];
-    for (var i = 1; i <= 5; i++) {
-      newStars.push(i > index);
-    }
-    var text = '';
-    if (index == 5) {
-      text = '非常好';
-      satiscore: 5
-    } else if (index == 4) {
-      text = '很好';
-      satiscore = 4
-    } else if (index == 3) {
-      text = '不错';
-      satiscore = 3
-    } else if (index == 2) {
-      text = '一般';
-      satiscore = 2
-    } else if (index == 1) {
-      text = '较差';
-      satiscore = 1
-    }
-    for(var item of this.data.stars1){
-      if(!item) {
-        index++;
+      this.setData({
+        wxjsStar: tempStarNum,
+        wxjsStarg: 5 - tempStarNum
+      })
+      var score = this.data.fwtdStarg + this.data.wxjsStarg + this.data.mycdStarg;
+      score = parseInt(score / 3);
+      this.setData({
+        zhpjStarg: score,
+        zhpjStar: 5 - score
+      })
+    } else if ('mycdStar' == starType) {
+      let tempStargNum = Number(e.currentTarget.id);
+      if (this.data.mycdStarg > 0) {
+        tempStargNum = tempStargNum + this.data.mycdStarg;
       }
-    }
-    for (var item of this.data.stars2) {
-      if (!item) {
-        index++;
+      this.setData({
+        mycdStarg: tempStargNum,
+        mycdStar: 5 - tempStargNum
+      })
+      var score = this.data.fwtdStarg + this.data.wxjsStarg + this.data.mycdStarg;
+      score = parseInt(score / 3);
+      this.setData({
+        zhpjStarg: score,
+        zhpjStar: 5 - score
+      })
+    } else if ('mycdStarg' == starType) {
+      let tempStarNum = Number(e.currentTarget.id);
+      if (this.data.mycdStar > 0) {
+        tempStarNum = tempStarNum + this.data.mycdStar;
       }
+      this.setData({
+        mycdStar: tempStarNum,
+        mycdStarg: 5 - tempStarNum
+      })
+      var score = this.data.fwtdStarg + this.data.wxjsStarg + this.data.mycdStarg;
+      score = parseInt(score / 3);
+      this.setData({
+        zhpjStarg: score,
+        zhpjStar: 5 - score
+      })
     }
-    var newstars2 = [];
-    for (var i = 1; i <= 5; i++) {
-      newstars2.push(i > (index / 3));
-    }
-    var text2 = ''
-    if (index / 3 >= 5) {
-      text2 = '非常好'
-    } else if (index / 3 >= 4) {
-      text2 = '很好'
-    } else if (index / 3 >= 3) {
-      text2 = '不错'
-    } else if (index / 3 >= 2) {
-      text2 = '一般'
-    } else if (index / 3 >= 1) {
-      text2 = '较差'
-    }
-    this.setData({
-      stars: newstars2,
-      text: text2,
-      stars3: newStars,
-      text3: text,
-      satiscore: satiscore
-    })
   },
   getComment: function(event) {
     this.setData({
@@ -259,23 +176,33 @@ Page({
     })
   },
   submitComment: function() {
-    this.setData({
-      score: parseInt((this.data.servscore + this.data.techscore + this.data.satiscore) / 3)
-    })
-    console.log(this.data.score+'---'+this.data.servscore+'---'+this.data.techscore+'---'+this.data.satiscore);
-    console.log(this.data.comment);
+    if (this.data.comment == null || this.data.comment == ""){
+      util.showRemind("请填写维修评价");
+    }
     http.request({
       apiName: 'order/commentorder',
       method: 'PUT',
+      isShowProgress: true,
+      progressTitle: "评论中...",
       data: {
-        orderno: this.data.orderno, comment: this.data.comment,
-        score: this.data.score, servscore: this.data.servscore,
-        techscore: this.data.techscore, satiscore: this.data.satiscore},
-      success: function(res) {
-        console.log(res);
+        orderno: this.data.orderno,
+        comment: this.data.comment,
+        score: this.data.zhpjStarg,
+        servscore: this.data.fwtdStarg,
+        techscore: this.data.wxjsStarg,
+        satiscore: this.data.mycdStarg
       },
-      fail: function(res) {
-        console.log(res);
+      success: res => {
+        wx.showToast({
+          title: '评论成功',
+          duration:1000,
+          icon:'success',
+          success: res => {
+            wx.switchTab({
+              url: '/pages/order/home-page/home-page',
+            })
+          }
+        })
       }
     })
   }
