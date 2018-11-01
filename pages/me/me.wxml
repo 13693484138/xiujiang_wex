@@ -95,7 +95,6 @@
 
 
 <!-- 弹出窗 -->
-
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 <view wx:if="{{showModal}}" class='alert-content'>
   <view class='alert-view1' bindtap="goToApplyDistribution" id='view1'>

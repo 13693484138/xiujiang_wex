@@ -108,6 +108,10 @@
   font-size: 28rpx;
   color: #343434;
 }
+
+.inputcenter{
+  width: 340rpx;
+}
 .btn1 {
   width: 190rpx;
   height: 60rpx;
@@ -142,4 +146,8 @@
   text-align: center;
   line-height: 80rpx;
   font-size: 32rpx;
+}
+
+.title{
+  width:100rpx;
 }

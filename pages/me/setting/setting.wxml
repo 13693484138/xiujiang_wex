@@ -1,14 +1,14 @@
 <form bindreset="formReset" bindsubmit="saveData">
   <view class='list1'>
     <view>
-      <view>
+      <view class='title'>
         头像
       </view>
-      <image bindtap="changeAvatar" class="userinfo-avatar" src="{{avatar}}" mode="cover" ></image>
+      <image bindtap="changeAvatar" class="userinfo-avatar" src="{{avatar}}" mode="cover"></image>
       <!-- <view class='iconfont icon-touxiang'></view> -->
     </view>
     <view>
-      <view>
+      <view class='title'>
         昵称
       </view>
       <input class='right' placeholder='请输入昵称' placeholder-class='ph-class' name="nickname" value='{{nickname}}'></input>
@@ -19,22 +19,22 @@
 
   <view class='list2'>
     <view>
-      <view>
+      <view class='title'>
         姓名
       </view>
       <input class='right' placeholder='请输入真实姓名' placeholder-class='ph-class' name="username" value='{{username}}'></input>
     </view>
     <view>
-      <view>
+      <view class='title'>
         手机号
       </view>
       <input class='right' placeholder='请输入手机号' placeholder-class='ph-class' name="phone" value='{{phone}}' maxlength='11' bindblur="getPhoneNum"></input>
     </view>
     <view>
-      <view>
+      <view class='title'>
         验证码
       </view>
-      <input class='center' placeholder='请输入验证码' placeholder-class='ph-class1' name="code" maxlength='6'></input>
+      <input class='center inputcenter' placeholder='请输入验证码' placeholder-class='ph-class1' name="code" maxlength='6'></input>
       <button class='btn1' bindtap='getCode'>获取验证码</button>
     </view>
   </view>
