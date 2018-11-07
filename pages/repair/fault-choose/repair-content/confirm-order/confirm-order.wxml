@@ -115,7 +115,7 @@
     <view class='co-color'>{{fault.color}}</view>
   </view>
   <view class='co-l2-money'>
-    ￥{{fault.faultprice}}
+    ￥{{fault.faultfee}}
   </view>
 </view>
 
