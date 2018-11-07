@@ -52,11 +52,16 @@ Page({
           nickname: res.nickname,
           avatar: tempAvatar
         })
-        if (res.level !== '0' || res.level !== '') {
+        if (res.level !== 0 || res.level !== '') {
           that.setData({
             pages: '分销中心'
           })
-        } 
+        }
+        //  else{
+        //   that.setData({
+        //     pages: '分销中心'
+        //   })
+        // }
       },
       fail: function (res) {
         console.log(res);

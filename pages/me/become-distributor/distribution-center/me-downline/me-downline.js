@@ -21,6 +21,16 @@ Page({
 
   onLoad: function (options) {
     console.log(this.data.listTwo)
+    if(this.data.listOne == ''){
+      this.setData({
+        totalResult: 0
+      })
+    }
+    if (this.data.listTwo == '') {
+      this.setData({
+        totalResult1: 0
+      })
+    }
   },
 
   /**

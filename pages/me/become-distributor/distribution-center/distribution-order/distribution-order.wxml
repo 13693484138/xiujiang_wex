@@ -1,7 +1,7 @@
 <!-- 分销订单 -->
 <view class='do-top'>
   <view>
-    <text space='emsp'>累计佣金： +{{allmoney}}</text>
+    <text space='emsp'>累计佣金： + {{allmoney}}</text>
   </view>
 </view>
 

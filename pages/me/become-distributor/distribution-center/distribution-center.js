@@ -10,6 +10,7 @@ Page({
 
   /**
    * 生命周期函数--监听页面加载
+   * 
    */
   onLoad: function (options) {
     this.requestData()
@@ -96,7 +97,7 @@ Page({
       apiName: 'my/distributor',
       method: 'GET',
       success: res => {
-        console.log(res)
+        console.log(res.level)
         if (res.level == 0) {
           res.level = "未分销"
         } else if (res.level == 1) {

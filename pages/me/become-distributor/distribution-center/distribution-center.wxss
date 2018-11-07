@@ -242,3 +242,8 @@ page {
   right: 30rpx;
 }
 
+.dis-center-img{
+  width: 114rpx;
+  height: 114rpx;
+  border-radius: 57rpx;
+}
