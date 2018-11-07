@@ -91,7 +91,7 @@ Page({
           },
           success: function (res) {
             wx.showToast({
-              title: '申请成功！',
+              title: res.msg,
               icon: 'success'
             })
             wx.navigateTo({
@@ -99,13 +99,7 @@ Page({
             })
           },
           fail: function (res) {
-            wx.showToast({
-              title: res.msg,
-              icon: 'none'
-            })
-            wx.navigateTo({
-              url: '/pages/me/become-distributor/distribution-center/materiel-apply/materiel-apply'
-            })
+            console.log(res)
           }
         })
       };   

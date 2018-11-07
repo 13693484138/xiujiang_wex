@@ -1,11 +1,11 @@
 <view class='dis-center-top'>
   <view class='dis-center-top1'>
     <view>
-      <image src='/images/me/distribution-center/头像.png' class='dis-center-image1'></image>
+      <image class='dis-center-img' src='{{distributionData.avatar}}'></image>
     </view>
     <view class='dis-center-text1'>
-      <view>姓名{{distributionData.username}}\t\t</view>
-      <view>推荐人：某某某</view>
+      <view>姓名: {{distributionData.username}}\t\t</view>
+      <!-- <view>推荐人：某某某</view> -->
     </view>
     <view class='dis-center-btn1'>
       {{distributionData.level}}

@@ -38,7 +38,6 @@ Page({
     })
   },
   formSubmit: function(e) {
-    console.log(e);
     if (this.data.id == 1) {
       this.setData({
         name: e.detail.value.name,
@@ -76,6 +75,7 @@ Page({
             sex: this.data.gender
           }, 
           success: function(res) {
+            console.log(res + '成功！')
             wx.showToast({
               title: '申请成功！',
               icon: 'success'
@@ -196,6 +196,7 @@ Page({
             wx.switchTab({
               url: '/pages/me/me'
             })
+            
           },
           fail: function (res) {
             console.log(res);
